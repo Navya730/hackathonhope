@@ -19,14 +19,11 @@
             font-weight: 900;
         }
         
-        /* --- EXISTING ANIMATIONS & STYLES --- */
+        /* --- ANIMATIONS & STYLES --- */
         .welcome-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            background: #000000; z-index: 9999;
-            display: flex; align-items: center; justify-content: center;
-            animation: fadeOutWelcome 1s ease-out 3.5s forwards;
-            overflow: hidden;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: #000000; z-index: 9999; display: flex; align-items: center; justify-content: center;
+            animation: fadeOutWelcome 1s ease-out 3.5s forwards; overflow: hidden;
         }
         .fire-container { position: absolute; bottom: 0; left: 0; right: 0; height: 100%; overflow: hidden; pointer-events: none; }
         .flame {
@@ -112,246 +109,149 @@
             10% { opacity: 1; } 90% { opacity: 1; }
             100% { transform: translate(100px, -1000px) scale(0); opacity: 0; }
         }
-        
-        /* --- PROBLEM STATEMENTS / THEMES CSS --- */
-        .theme-card {
-            background: #111;
-            border-radius: 15px;
-            padding: 25px;
+
+        /* --- NEW TECH IMAGE FRAME (REPLACES BLOB) --- */
+        .tech-frame {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 101, 0, 0.2);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            animation: floatTech 6s ease-in-out infinite;
+        }
+        @keyframes floatTech {
+            0%, 100% { transform: translateY(0); box-shadow: 0 0 30px rgba(255, 101, 0, 0.2); }
+            50% { transform: translateY(-20px); box-shadow: 0 20px 50px rgba(255, 101, 0, 0.4); }
+        }
+        /* Holographic Overlay */
+        .tech-frame::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(255, 165, 0, 0.1) 50%);
+            background-size: 100% 4px; z-index: 2; pointer-events: none;
+        }
+        /* Scanline */
+        .tech-frame::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateY(-100%); animation: scanline 3s linear infinite; z-index: 3; pointer-events: none;
+        }
+        @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+
+        /* --- ADVANCED COUNTDOWN STYLES --- */
+        .countdown-advanced {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 165, 0, 0.5);
+            border-radius: 20px;
+            padding: 2rem;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.1), inset 0 0 20px rgba(255, 165, 0, 0.05);
+            animation: neonPulse 4s infinite alternate;
+        }
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.1), inset 0 0 20px rgba(255, 165, 0, 0.05); border-color: rgba(255, 165, 0, 0.3); }
+            100% { box-shadow: 0 0 40px rgba(255, 165, 0, 0.3), inset 0 0 40px rgba(255, 165, 0, 0.1); border-color: rgba(255, 165, 0, 0.8); }
+        }
+        .countdown-advanced::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,165,0,0.1) 0%, transparent 60%);
+            animation: rotateBg 10s linear infinite; z-index: 0;
+        }
+        @keyframes rotateBg { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .cd-content { position: relative; z-index: 1; }
+        
+        .cd-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .cd-box:hover { transform: translateY(-5px); background: rgba(255, 165, 0, 0.1); border-color: rgba(255, 165, 0, 0.4); }
+        
+        .cd-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(180deg, #fff 0%, #ff8c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(255, 140, 0, 0.5));
         }
         
-        .theme-card:hover {
-            transform: translateY(-5px);
+        /* --- THEMES CSS --- */
+        .theme-card {
+            background: #111; border-radius: 15px; padding: 25px; position: relative;
+            overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; border: 1px solid rgba(255,255,255,0.1);
         }
-
+        .theme-card:hover { transform: translateY(-5px); }
         .theme-card .watermark {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 80px;
-            opacity: 0.1;
-            transform: rotate(10deg);
-            pointer-events: none;
+            position: absolute; top: 10px; right: 10px; font-size: 80px; opacity: 0.1;
+            transform: rotate(10deg); pointer-events: none;
         }
-
         .theme-card .icon-box {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 10;
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 24px; margin-bottom: 20px; position: relative; z-index: 10;
         }
-
-        /* Specific Theme Colors */
         .theme-edu { box-shadow: inset 0 0 20px rgba(217, 119, 6, 0.1); border-top: 4px solid #d97706; }
         .theme-edu:hover { box-shadow: 0 0 25px rgba(217, 119, 6, 0.4); }
         .theme-edu .icon-box { background: rgba(217, 119, 6, 0.2); color: #d97706; box-shadow: 0 0 15px rgba(217, 119, 6, 0.4); }
-        
         .theme-climate { box-shadow: inset 0 0 20px rgba(34, 197, 94, 0.1); border-top: 4px solid #22c55e; }
         .theme-climate:hover { box-shadow: 0 0 25px rgba(34, 197, 94, 0.4); }
         .theme-climate .icon-box { background: rgba(34, 197, 94, 0.2); color: #22c55e; box-shadow: 0 0 15px rgba(34, 197, 94, 0.4); }
-
         .theme-health { box-shadow: inset 0 0 20px rgba(239, 68, 68, 0.1); border-top: 4px solid #ef4444; }
         .theme-health:hover { box-shadow: 0 0 25px rgba(239, 68, 68, 0.4); }
         .theme-health .icon-box { background: rgba(239, 68, 68, 0.2); color: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
-
         .theme-cities { box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.1); border-top: 4px solid #3b82f6; }
         .theme-cities:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); }
         .theme-cities .icon-box { background: rgba(59, 130, 246, 0.2); color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+        .theme-title { font-family: 'Orbitron', monospace; font-weight: 700; text-transform: uppercase; font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
+        .theme-desc { color: #9ca3af; font-size: 0.9rem; line-height: 1.5; }
 
-        .theme-title {
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .theme-desc {
-            color: #9ca3af;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* --- NEW SCHEDULE TIMELINE STYLES --- */
-        .timeline-container {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* The vertical center line */
+        /* --- SCHEDULE TIMELINE --- */
+        .timeline-container { position: relative; max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
         .timeline-container::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background: linear-gradient(to bottom, #ff6500, #9333ea, #ff6500);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            box-shadow: 0 0 15px rgba(255, 101, 0, 0.6);
-            border-radius: 2px;
+            content: ''; position: absolute; width: 4px; background: linear-gradient(to bottom, #ff6500, #9333ea, #ff6500);
+            top: 0; bottom: 0; left: 50%; margin-left: -2px; box-shadow: 0 0 15px rgba(255, 101, 0, 0.6); border-radius: 2px;
         }
-
-        /* Container around content */
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-            opacity: 0; /* For animation */
-            transform: translateY(50px);
-            transition: all 0.6s ease-out;
-        }
-
-        .timeline-item.in-view {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* The circles on the timeline */
+        .timeline-item { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; opacity: 0; transform: translateY(50px); transition: all 0.6s ease-out; }
+        .timeline-item.in-view { opacity: 1; transform: translateY(0); }
         .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: #000;
-            border: 4px solid #ff6500;
-            top: 50%;
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: 0 0 10px #ff6500;
-            transition: all 0.3s ease;
+            content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: #000;
+            border: 4px solid #ff6500; top: 50%; border-radius: 50%; z-index: 1; box-shadow: 0 0 10px #ff6500; transition: all 0.3s ease;
         }
-        
-        .timeline-item:hover::after {
-            background-color: #ff6500;
-            transform: scale(1.2);
-        }
-
-        /* Place the container to the left */
-        .left {
-            left: 0;
-        }
-
-        /* Place the container to the right */
-        .right {
-            left: 50%;
-        }
-
-        /* Add arrows to the left container (pointing right) */
+        .timeline-item:hover::after { background-color: #ff6500; transform: scale(1.2); }
+        .left { left: 0; }
+        .right { left: 50%; }
         .left::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 50%;
-            width: 0;
-            z-index: 1;
-            right: 30px;
-            border: medium solid white;
-            border-width: 10px 0 10px 10px;
-            border-color: transparent transparent transparent rgba(255, 165, 0, 0.3);
-            transform: translateY(-50%);
+            content: " "; height: 0; position: absolute; top: 50%; width: 0; z-index: 1; right: 30px;
+            border: medium solid white; border-width: 10px 0 10px 10px; border-color: transparent transparent transparent rgba(255, 165, 0, 0.3); transform: translateY(-50%);
         }
-
-        /* Add arrows to the right container (pointing left) */
         .right::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 50%;
-            width: 0;
-            z-index: 1;
-            left: 30px;
-            border: medium solid white;
-            border-width: 10px 10px 10px 0;
-            border-color: transparent rgba(255, 165, 0, 0.3) transparent transparent;
-            transform: translateY(-50%);
+            content: " "; height: 0; position: absolute; top: 50%; width: 0; z-index: 1; left: 30px;
+            border: medium solid white; border-width: 10px 10px 10px 0; border-color: transparent rgba(255, 165, 0, 0.3) transparent transparent; transform: translateY(-50%);
         }
-
-        /* Fix the circle for containers on the right side */
-        .right::after {
-            left: -10px;
-        }
-
-        /* The actual content box */
+        .right::after { left: -10px; }
         .timeline-content {
-            padding: 20px 30px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            position: relative;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 165, 0, 0.2);
-            transition: all 0.3s ease;
+            padding: 20px 30px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); position: relative;
+            border-radius: 15px; border: 1px solid rgba(255, 165, 0, 0.2); transition: all 0.3s ease;
         }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 101, 0, 0.2);
-            border-color: rgba(255, 165, 0, 0.6);
-        }
-
-        /* Media queries - Responsive timeline on screens less than 600px wide */
+        .timeline-content:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 101, 0, 0.2); border-color: rgba(255, 165, 0, 0.6); }
         @media screen and (max-width: 768px) {
-            /* Place the timelime to the left */
-            .timeline-container::after {
-                left: 31px;
-            }
-            
-            /* Full-width containers */
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            /* Make sure that all arrows are pointing leftwards */
-            .timeline-item::before {
-                left: 60px;
-                border: medium solid white;
-                border-width: 10px 10px 10px 0;
-                border-color: transparent rgba(255, 165, 0, 0.3) transparent transparent;
-            }
-
-            /* Make sure all circles are at the same spot */
-            .left::after, .right::after {
-                left: 21px;
-            }
-            
-            /* Make all right containers behave like the left ones */
-            .right {
-                left: 0%;
-            }
+            .timeline-container::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::before { left: 60px; border: medium solid white; border-width: 10px 10px 10px 0; border-color: transparent rgba(255, 165, 0, 0.3) transparent transparent; }
+            .left::after, .right::after { left: 21px; }
+            .right { left: 0%; }
         }
 
-        /* --- CHATBOT & MODAL STYLES --- */
-        .chatbot-button {
-            position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; border-radius: 50%;
-            background: linear-gradient(135deg, #ff6500 0%, #ff8c00 100%);
-            box-shadow: 0 8px 30px rgba(255, 101, 0, 0.6); display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 1000; transition: all 0.3s ease; animation: chatbotPulse 2s ease-in-out infinite;
-        }
+        /* --- CHATBOT & MODAL --- */
+        .chatbot-button { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #ff6500 0%, #ff8c00 100%); box-shadow: 0 8px 30px rgba(255, 101, 0, 0.6); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; transition: all 0.3s ease; animation: chatbotPulse 2s ease-in-out infinite; }
         .chatbot-button:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(255, 101, 0, 0.8); }
         @keyframes chatbotPulse { 0%, 100% { box-shadow: 0 8px 30px rgba(255, 101, 0, 0.6); } 50% { box-shadow: 0 8px 50px rgba(255, 101, 0, 0.9); } }
-        .chatbot-window {
-            position: fixed; bottom: 120px; right: 30px; width: 380px; height: 550px;
-            background: rgba(0, 0, 0, 0.95); border: 2px solid rgba(255, 101, 0, 0.5); border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(255, 101, 0, 0.3); z-index: 1000; display: none; flex-direction: column; backdrop-filter: blur(10px);
-        }
+        .chatbot-window { position: fixed; bottom: 120px; right: 30px; width: 380px; height: 550px; background: rgba(0, 0, 0, 0.95); border: 2px solid rgba(255, 101, 0, 0.5); border-radius: 20px; box-shadow: 0 20px 60px rgba(255, 101, 0, 0.3); z-index: 1000; display: none; flex-direction: column; backdrop-filter: blur(10px); }
         .chatbot-window.active { display: flex; animation: slideUpFade 0.3s ease-out; }
         .chatbot-header { background: linear-gradient(135deg, #ff6500 0%, #ff8c00 100%); padding: 20px; border-radius: 18px 18px 0 0; display: flex; justify-content: space-between; align-items: center; }
         .chatbot-close { cursor: pointer; font-size: 24px; color: white; transition: transform 0.2s; }
@@ -361,40 +261,11 @@
         .chatbot-input { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 101, 0, 0.3); border-radius: 25px; color: white; outline: none; }
         .chatbot-input:focus { border-color: rgba(255, 101, 0, 0.6); }
         
-        .countdown-card {
-            backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 101, 0, 0.4);
-            border-radius: 30px; padding: 2.5rem; width: 100%; max-width: 540px;
-        }
-        .countdown-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .countdown-item { 
-            text-align: center; 
-            padding: 1.5rem 1rem; 
-            border-radius: 1.5rem; 
-            background: rgba(255, 101, 0, 0.12); 
-            border: 2px solid rgba(255, 101, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-        .countdown-item:hover { 
-            background: rgba(255, 101, 0, 0.2);
-            border-color: rgba(255, 101, 0, 0.7);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 101, 0, 0.2);
-        }
-        .countdown-value { display: block; font-size: 2.5rem; font-weight: 900; color: #ff6500; margin-bottom: 0.5rem; font-family: 'Orbitron', monospace; }
-        .countdown-label { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: #ffa500; font-weight: 700; }
-        
-        .about-highlight {
-            border: 2px solid #e0e0e0; border-radius: 12px; padding: 24px; background-color: #f9f9f9;
-            max-width: 800px; margin: 2rem auto; color: #2c3e50; font-family: 'Inter', sans-serif;
-        }
+        .about-highlight { border: 2px solid #e0e0e0; border-radius: 12px; padding: 24px; background-color: #f9f9f9; max-width: 800px; margin: 2rem auto; color: #2c3e50; font-family: 'Inter', sans-serif; }
         .about-highlight h3 { color: #16a085; margin-bottom: 1rem; text-align: center; }
         .about-know-section { padding: 40px; background-color: #000; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); margin-top: 3rem; }
         .card-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .info-card {
-            flex: 1; min-width: 280px; max-width: 320px; background: #111; color: #ecf0f1; border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); padding: 20px; opacity: 0;
-            transform: scale(0.9); transition: all 0.6s ease, box-shadow 0.3s ease, transform 0.3s ease; cursor: pointer;
-        }
+        .info-card { flex: 1; min-width: 280px; max-width: 320px; background: #111; color: #ecf0f1; border-radius: 12px; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); padding: 20px; opacity: 0; transform: scale(0.9); transition: all 0.6s ease, box-shadow 0.3s ease, transform 0.3s ease; cursor: pointer; }
         .info-card h3 { color: #f39c12; text-align: center; margin-bottom: 12px; }
         .info-card.visible { opacity: 1; transform: scale(1); }
         .info-card:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 8px 20px rgba(241, 196, 15, 0.6); }
@@ -405,54 +276,18 @@
         .close { float: right; font-size: 24px; cursor: pointer; color: #f1c40f; }
         @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         
-        /* REGISTRATION MODAL STYLES */
+        /* REGISTRATION MODAL */
         .reg-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); overflow-y: auto; align-items: center; justify-content: center; padding: 20px; }
-        .reg-modal-content {
-            background: #111; border: 1px solid #ff6500; border-radius: 12px; width: 100%; max-width: 600px;
-            padding: 0; position: relative; box-shadow: 0 0 30px rgba(255, 101, 0, 0.2); animation: fadeInScale 0.3s ease-out;
-        }
+        .reg-modal-content { background: #111; border: 1px solid #ff6500; border-radius: 12px; width: 100%; max-width: 600px; padding: 0; position: relative; box-shadow: 0 0 30px rgba(255, 101, 0, 0.2); animation: fadeInScale 0.3s ease-out; }
         @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .reg-header { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; }
         .reg-body { padding: 30px; max-height: 80vh; overflow-y: auto; }
         .form-group { margin-bottom: 20px; }
         .form-label { display: block; color: #f5f5f5; margin-bottom: 8px; font-weight: 500; }
         .form-label span { color: #ef4444; }
-        .form-input {
-            width: 100%; padding: 12px 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px; color: white; transition: all 0.3s;
-        }
+        .form-input { width: 100%; padding: 12px 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: white; transition: all 0.3s; }
         .form-input:focus { outline: none; border-color: #ff6500; box-shadow: 0 0 0 2px rgba(255, 101, 0, 0.2); }
-        .radio-group { display: flex; gap: 15px; }
-        .radio-option { flex: 1; position: relative; }
-        .radio-option input[type="radio"] { position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
-        .radio-tile {
-            display: flex; align-items: center; justify-content: center; padding: 12px;
-            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #aaa; transition: all 0.3s; font-weight: 500;
-        }
-        .radio-option input[type="radio"]:checked + .radio-tile { background: rgba(255, 101, 0, 0.1); border-color: #ff6500; color: #ff6500; }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-        
-        /* RESPONSIVE MEDIA QUERIES */
-        @media (max-width: 1024px) {
-            .hero-title { font-size: 2.5rem; line-height: 1.2; }
-        }
-        
-        @media (max-width: 768px) {
-            .countdown-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-            .countdown-value { font-size: 1.5rem; }
-            .countdown-label { font-size: 0.6rem; }
-            .hero-title { font-size: 2rem; line-height: 1.1; }
-            h2 { font-size: 1.25rem !important; }
-        }
-        
-        @media (max-width: 640px) {
-            .countdown-item { padding: 1rem 0.75rem; }
-            .countdown-value { font-size: 1.25rem; }
-            .countdown-label { font-size: 0.55rem; letter-spacing: 0.1em; }
-            .hero-title { font-size: 1.75rem; line-height: 1; }
-            h2 { font-size: 1.1rem !important; }
-            .grid.lg\\:grid-cols-2 { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body class="text-white">
@@ -480,120 +315,140 @@
     <div class="fixed inset-0 pointer-events-none z-0" id="particles"></div>
 
     <div class="hero-section hero-bg min-h-screen relative">
-        <header class="fixed w-full z-50 py-4 bg-black bg-opacity-90 backdrop-blur-lg border-b border-orange-400 border-opacity-20" role="banner">
-        <nav class="container mx-auto px-6" aria-label="Primary">
+        <header class="fixed w-full z-50 py-4 bg-black/90 backdrop-blur-lg border-b border-white/10" role="banner">
+            <nav class="container mx-auto px-6" aria-label="Primary">
                 <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="./witchhuntlogo.jpeg" alt="Witch Hunt Logo" class="h-12 w-auto rounded-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="hidden text-3xl">🔮</div>
+                    </div>
+
+                    <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                        <a href="#hero" class="hover:text-orange-400 transition-colors">Home</a>
+                        <a href="#about" class="hover:text-orange-400 transition-colors">About</a>
+                        <a href="#themes" class="hover:text-orange-400 transition-colors">Themes</a>
+                        <a href="#program" class="hover:text-orange-400 transition-colors">Tracks</a>
+                        <a href="#schedule" class="hover:text-orange-400 transition-colors">Schedule</a>
+                        <a href="#prizes" class="hover:text-orange-400 transition-colors">Prizes</a>
+                        <a href="#contact" class="hover:text-orange-400 transition-colors">Contact</a>
+                    </div>
+
                     <div class="flex items-center space-x-4">
-                        <img src="./witchhuntlogo.jpeg" alt="Witch Hunt logotype" loading="lazy" class="h-16 w-auto transform hover:scale-110 transition-transform duration-300" style="filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5));" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="hidden items-center space-x-2"><div class="text-4xl">🔮</div><span class="text-2xl font-bold text-orange-400 hero-title">WITCH HUNT</span></div>
-                    </div>
-                    <button class="md:hidden border border-orange-400 rounded-full px-4 py-2 text-sm tracking-wide" aria-controls="mobileMenu" aria-expanded="false" onclick="toggleMobileMenu(this)">Menu</button>
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="#hero" class="hover:text-orange-400 transition-colors duration-300 font-medium">Home</a>
-                        <a href="#about" class="hover:text-orange-400 transition-colors duration-300 font-medium">About</a>
-                        <a href="#themes" class="hover:text-orange-400 transition-colors duration-300 font-medium">Themes</a>
-                        <a href="#program" class="hover:text-orange-400 transition-colors duration-300 font-medium">Tracks</a>
-                        <a href="#schedule" class="hover:text-orange-400 transition-colors duration-300 font-medium">Schedule</a>
-                        <a href="#prizes" class="hover:text-orange-400 transition-colors duration-300 font-medium">Prizes</a>
-                        <a href="#contact" class="hover:text-orange-400 transition-colors duration-300 font-medium">Contact</a>
-                        <button onclick="openRegisterModal()" class="bg-orange-500 hover:bg-orange-600 px-8 py-3 rounded-full transition-all duration-300 pulse-glow font-semibold">Pre-Register Now</button>
+                        <button onclick="openRegisterModal()" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg shadow-orange-500/30 transition-all transform hover:scale-105">
+                            Pre-Register Now
+                        </button>
+                        <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu(this)">☰</button>
                     </div>
                 </div>
-                <div id="mobileMenu" class="md:hidden hidden flex-col space-y-4 pb-4 text-center text-lg border-t border-orange-400/30 pt-4">
-                    <a href="#hero" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Home</a>
-                    <a href="#about" class="hover:text-orange-400 transition-colors duration-300 font-medium block">About</a>
-                    <a href="#themes" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Themes</a>
-                    <a href="#program" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Tracks</a>
-                    <a href="#schedule" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Schedule</a>
-                    <a href="#prizes" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Prizes</a>
-                    <a href="#contact" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Contact</a>
-                    <button onclick="openRegisterModal()" class="bg-orange-500 hover:bg-orange-600 px-8 py-3 rounded-full transition-all duration-300 font-semibold w-full">Pre-Register Now</button>
+
+                <div id="mobileMenu" class="md:hidden hidden flex-col space-y-4 pb-4 text-center text-lg border-t border-white/10 pt-4 bg-black">
+                    <a href="#hero" class="block py-2 hover:text-orange-400">Home</a>
+                    <a href="#about" class="block py-2 hover:text-orange-400">About</a>
+                    <a href="#themes" class="block py-2 hover:text-orange-400">Themes</a>
+                    <a href="#program" class="block py-2 hover:text-orange-400">Tracks</a>
+                    <a href="#schedule" class="block py-2 hover:text-orange-400">Schedule</a>
+                    <a href="#prizes" class="block py-2 hover:text-orange-400">Prizes</a>
+                    <a href="#contact" class="block py-2 hover:text-orange-400">Contact</a>
                 </div>
-                
-                <div class="flex items-center justify-center space-x-8 pt-3 border-t border-orange-400 border-opacity-20">
+
+                <div class="flex items-center justify-center space-x-8 pt-3 border-t border-white/10">
                     <div class="flex items-center space-x-3">
                         <span class="text-gray-400 text-sm font-medium">In Partnership With:</span>
-                        <div class="flex items-center px-6 py-3 bg-orange-500 bg-opacity-10 rounded-lg border border-orange-400 border-opacity-30 hover:bg-opacity-20 transition-all duration-300">
-                            <img src="./AI4logo.jpeg" alt="AI4India wordmark" loading="lazy" class="h-10 w-auto" style="filter: brightness(1.2);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <span class="text-orange-400 font-bold text-lg hidden">AI4India.org</span>
+                        <div class="flex items-center px-6 py-2 bg-orange-500 bg-opacity-10 rounded-lg border border-orange-400 border-opacity-30 hover:bg-opacity-20 transition-all duration-300">
+                            <img src="./AI4logo.jpeg" alt="AI4India" class="h-8 w-auto opacity-80 hover:opacity-100">
                         </div>
                     </div>
-                    <div class="h-8 w-px bg-orange-400 bg-opacity-30"></div>
+                    <div class="h-6 w-px bg-orange-400 bg-opacity-30"></div>
                     <div class="flex items-center space-x-3">
                         <span class="text-gray-400 text-sm font-medium">Sponsored By:</span>
-                        <div class="flex items-center px-6 py-3 bg-orange-500 bg-opacity-10 rounded-lg border border-orange-400 border-opacity-30 hover:bg-opacity-20 transition-all duration-300">
-                            <img src="./hopeworkslogo.jpeg" alt="Hopeworks Foundation emblem" loading="lazy" class="h-10 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <span class="text-orange-400 font-bold text-lg hidden">Hopeworks Foundation</span>
+                        <div class="flex items-center px-6 py-2 bg-orange-500 bg-opacity-10 rounded-lg border border-orange-400 border-opacity-30 hover:bg-opacity-20 transition-all duration-300">
+                            <img src="./hopeworkslogo.jpeg" alt="Hopeworks" class="h-8 w-auto opacity-80 hover:opacity-100">
                         </div>
                     </div>
                 </div>
-        </nav>
+            </nav>
         </header>
 
-        <main id="hero" class="min-h-screen flex items-center justify-center pt-24 px-4 md:px-6 relative z-10" role="main">
+        <main id="hero" class="min-h-screen flex items-center justify-center pt-36 px-6 relative z-10" role="main">
             <div class="container mx-auto max-w-7xl">
-                <div class="grid lg:grid-cols-2 gap-8 items-start mb-16">
-                    <!-- Left Content -->
-                    <div class="hero-content pt-12">
-                        <h1 class="hero-title text-5xl sm:text-6xl md:text-7xl gradient-text mb-4 leading-tight break-words">WITCH HUNT</h1>
-                        <h2 class="text-3xl md:text-4xl mb-6 font-bold text-white">Women in Tech Challenge</h2>
-                        <p class="text-base md:text-lg text-gray-300 mb-8 leading-relaxed">Reclaiming Innovation, Rewriting Narratives</p>
-                        <p class="text-base md:text-lg text-gray-400 mb-12 leading-relaxed">India's largest women-led hackathon leveraging AI to solve critical social problems. Join <span class="text-orange-400 font-bold">5,000+ women</span> creating impact at scale</p>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    
+                    <div class="hero-content text-left">
+                        <h1 class="text-6xl md:text-8xl font-bold text-orange-500 hero-title mb-2 tracking-tighter">WITCH HUNT</h1>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Women in Tech Challenge</h2>
+                        <h3 class="text-xl text-orange-200/80 font-medium mb-6 tracking-wide">Reclaiming Innovation, Rewriting Narratives</h3>
                         
-                        <!-- Key Stats Grid -->
-                        <div class="grid grid-cols-2 md:grid-cols-2 gap-6 mb-12">
-                            <div class="flex flex-col items-center text-center">
-                                <div class="text-4xl mb-2">👥</div>
-                                <p class="text-sm text-gray-300 font-medium">5,000+ Women Participants</p>
+                        <p class="text-lg text-gray-400 mb-8 leading-relaxed max-w-lg">
+                            India's largest women-led hackathon leveraging AI to solve critical social problems. Join <span class="text-orange-400 font-bold">5,000+ women</span> creating impact at scale.
+                        </p>
+
+                        <div class="grid grid-cols-4 gap-4 mb-12">
+                            <div class="text-center">
+                                <div class="text-3xl text-orange-500 mb-2">👥</div>
+                                <p class="text-xs font-bold text-white">5,000+ Women</p>
+                                <p class="text-[10px] text-gray-400 uppercase">Participants</p>
                             </div>
-                            <div class="flex flex-col items-center text-center">
-                                <div class="text-4xl mb-2">🤖</div>
-                                <p class="text-sm text-gray-300 font-medium">AI-Powered Problem Solving</p>
+                            <div class="text-center">
+                                <div class="text-3xl text-orange-500 mb-2">🤖</div>
+                                <p class="text-xs font-bold text-white">AI-Powered</p>
+                                <p class="text-[10px] text-gray-400 uppercase">Problem Solving</p>
                             </div>
-                            <div class="flex flex-col items-center text-center">
-                                <div class="text-4xl mb-2">🤝</div>
-                                <p class="text-sm text-gray-300 font-medium">Nationwide Mentorship</p>
+                            <div class="text-center">
+                                <div class="text-3xl text-orange-500 mb-2">🤝</div>
+                                <p class="text-xs font-bold text-white">Nationwide</p>
+                                <p class="text-[10px] text-gray-400 uppercase">Mentorship</p>
                             </div>
-                            <div class="flex flex-col items-center text-center">
-                                <div class="text-4xl mb-2">🏆</div>
-                                <p class="text-sm text-gray-300 font-medium">Cash Prizes & Tech Opportunities</p>
+                            <div class="text-center">
+                                <div class="text-3xl text-orange-500 mb-2">🏆</div>
+                                <p class="text-xs font-bold text-white">Cash Prizes &</p>
+                                <p class="text-[10px] text-gray-400 uppercase">Tech Opportunities</p>
+                            </div>
+                        </div>
+
+                        <div class="countdown-advanced max-w-lg">
+                            <div class="cd-content">
+                                <div class="flex justify-between items-end mb-6">
+                                    <p class="text-xs text-orange-300 uppercase tracking-[0.2em]">Event Launch</p>
+                                    <p class="text-sm text-white font-bold">Jan 24, 2026</p>
+                                </div>
+                                <div class="grid grid-cols-4 gap-4 text-center" id="countdownTimer">
+                                    <div class="cd-box">
+                                        <span class="cd-number" id="countdownDays">00</span>
+                                        <span class="text-[10px] text-gray-400 block uppercase tracking-wider mt-1">Days</span>
+                                    </div>
+                                    <div class="cd-box">
+                                        <span class="cd-number" id="countdownHours">00</span>
+                                        <span class="text-[10px] text-gray-400 block uppercase tracking-wider mt-1">Hours</span>
+                                    </div>
+                                    <div class="cd-box">
+                                        <span class="cd-number" id="countdownMinutes">00</span>
+                                        <span class="text-[10px] text-gray-400 block uppercase tracking-wider mt-1">Mins</span>
+                                    </div>
+                                    <div class="cd-box">
+                                        <span class="cd-number" id="countdownSeconds">00</span>
+                                        <span class="text-[10px] text-gray-400 block uppercase tracking-wider mt-1">Secs</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Right Image -->
-                    <div class="hero-visual float-animation">
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-700 rounded-3xl opacity-20 blur-3xl"></div>
-                            <div class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl overflow-hidden border-2 border-orange-400 border-opacity-40 shadow-2xl">
-                                <img src="./heroimage.jpeg" alt="Women in tech working together" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                <div class="hidden w-full h-96 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-800 items-center justify-center text-9xl">👩‍💻</div>
-                            </div>
+                    <div class="hero-visual flex flex-col items-center relative">
+                        <div class="tech-frame w-full aspect-[4/3] mb-8 group bg-gray-900">
+                            <img src="./hacka img.jpg" 
+                                 alt="Hackathon participants working" 
+                                 class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                                 onerror="this.src='https://via.placeholder.com/800x600?text=Image+Not+Found';">
                         </div>
-                    </div>
-                </div>
+                        
+                        <p class="text-gray-300 text-lg font-medium mb-6 text-center">Be Part of India's Largest AI Hackathon for Women</p>
 
-                <!-- Event Kickoff Box -->
-                <div class="grid lg:grid-cols-2 gap-8 items-end">
-                    <div class="hero-content">
-                        <div class="border-2 border-orange-400 border-opacity-40 rounded-3xl p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-black backdrop-blur-sm">
-                            <p class="text-sm uppercase tracking-[0.3em] text-orange-300 mb-4 font-semibold">BE PART OF INDIA'S LARGEST</p>
-                            <p class="text-4xl md:text-5xl font-bold text-white mb-8">Event kicks off January 24, 2026</p>
-                            <div class="countdown-grid" id="countdownTimer">
-                                <div class="countdown-item"><span class="countdown-value" id="countdownDays">00</span><span class="countdown-label">DAYS</span></div>
-                                <div class="countdown-item"><span class="countdown-value" id="countdownHours">00</span><span class="countdown-label">HOURS</span></div>
-                                <div class="countdown-item"><span class="countdown-value" id="countdownMinutes">00</span><span class="countdown-label">MINUTES</span></div>
-                                <div class="countdown-item"><span class="countdown-value" id="countdownSeconds">00</span><span class="countdown-label">SECONDS</span></div>
-                            </div>
+                        <div class="flex flex-col items-center animate-bounce">
+                            <span class="text-3xl text-orange-500">↓</span>
+                            <span class="text-white text-sm font-semibold mt-2">Scroll to Explore</span>
                         </div>
                     </div>
 
-                    <!-- Right Side Info -->
-                    <div class="hero-visual text-center">
-                        <p class="text-white text-lg font-semibold mb-4">Be Part of India's Largest AI Hackathon for Women</p>
-                        <p class="text-orange-400 mb-4 text-lg font-semibold scroll-indicator">Scroll to Explore</p>
-                        <div class="text-5xl scroll-indicator">⬇</div>
-                    </div>
                 </div>
             </div>
         </main>
@@ -936,9 +791,9 @@
         
         function toggleMobileMenu(button) {
             const menu = document.getElementById('mobileMenu');
-            const expanded = button.getAttribute('aria-expanded') === 'true';
-            button.setAttribute('aria-expanded', (!expanded).toString());
+            // Simple toggle
             menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
         }
 
         // REGISTRATION FORM LOGIC
