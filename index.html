@@ -497,50 +497,67 @@
 
         <main id="hero" class="min-h-screen flex items-center justify-center pt-24 px-6 relative z-10" role="main">
             <div class="container mx-auto max-w-7xl">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="hero-content">
-                        <div class="inline-block mb-8 px-6 py-3 bg-orange-500 bg-opacity-20 rounded-full border-2 border-orange-400 backdrop-blur-sm">
-                            <p class="text-orange-300 font-semibold text-lg">🗓️ Registration Opens January 24, 2026</p>
-                        </div>
-                        <h1 class="hero-title text-7xl md:text-8xl lg:text-9xl gradient-text mb-8 leading-none">WITCH HUNT</h1>
-                        <h2 class="text-3xl md:text-5xl mb-6 font-bold text-white">Women in Tech Challenge</h2>
-                        <p class="text-xl md:text-2xl mb-10 text-gray-300 leading-relaxed">India's largest women-led hackathon leveraging AI to solve critical social problems. Join <span class="text-orange-400 font-bold">5,000+ women</span> creating impact at scale.</p>
-                        <div class="mb-12">
-                            <div class="countdown-card">
-                                <p class="text-sm uppercase tracking-[0.3em] text-orange-200">Countdown to Launch</p>
-                                <p class="text-2xl md:text-3xl font-semibold text-white mt-2">Event kicks off January 24, 2026</p>
-                                <div class="countdown-grid" id="countdownTimer">
-                                    <div class="countdown-item"><span class="countdown-value" id="countdownDays">00</span><span class="countdown-label">Days</span></div>
-                                    <div class="countdown-item"><span class="countdown-value" id="countdownHours">00</span><span class="countdown-label">Hours</span></div>
-                                    <div class="countdown-item"><span class="countdown-value" id="countdownMinutes">00</span><span class="countdown-label">Minutes</span></div>
-                                    <div class="countdown-item"><span class="countdown-value" id="countdownSeconds">00</span><span class="countdown-label">Seconds</span></div>
-                                </div>
+                <div class="grid lg:grid-cols-2 gap-12 items-start mb-16">
+                    <!-- Left Content -->
+                    <div class="hero-content pt-12">
+                        <h1 class="hero-title text-7xl md:text-8xl lg:text-9xl gradient-text mb-6 leading-none">WITCH HUNT</h1>
+                        <h2 class="text-3xl md:text-4xl mb-6 font-bold text-white">Women in Tech Challenge</h2>
+                        <p class="text-base md:text-lg text-gray-300 mb-8 leading-relaxed">Reclaiming Innovation, Rewriting Narratives</p>
+                        <p class="text-base md:text-lg text-gray-400 mb-12 leading-relaxed">India's largest women-led hackathon leveraging AI to solve critical social problems. Join <span class="text-orange-400 font-bold">5,000+ women</span> creating impact at scale</p>
+                        
+                        <!-- Key Stats Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-2 gap-6 mb-12">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="text-4xl mb-2">👥</div>
+                                <p class="text-sm text-gray-300 font-medium">5,000+ Women Participants</p>
                             </div>
-                        </div>
-                        <div class="grid grid-cols-3 gap-8 pt-8 border-t border-orange-400 border-opacity-30">
-                            <div class="text-center transform hover:scale-110 transition-transform duration-300"><p class="text-5xl font-bold text-orange-400 mb-2">5K+</p><p class="text-sm text-gray-400 font-medium">Women</p></div>
-                            <div class="text-center transform hover:scale-110 transition-transform duration-300"><p class="text-5xl font-bold text-orange-400 mb-2">₹19L</p><p class="text-sm text-gray-400 font-medium">Prizes</p></div>
-                            <div class="text-center transform hover:scale-110 transition-transform duration-300"><p class="text-5xl font-bold text-orange-400 mb-2">1000</p><p class="text-sm text-gray-400 font-medium">Teams</p></div>
+                            <div class="flex flex-col items-center text-center">
+                                <div class="text-4xl mb-2">🤖</div>
+                                <p class="text-sm text-gray-300 font-medium">AI-Powered Problem Solving</p>
+                            </div>
+                            <div class="flex flex-col items-center text-center">
+                                <div class="text-4xl mb-2">🤝</div>
+                                <p class="text-sm text-gray-300 font-medium">Nationwide Mentorship</p>
+                            </div>
+                            <div class="flex flex-col items-center text-center">
+                                <div class="text-4xl mb-2">🏆</div>
+                                <p class="text-sm text-gray-300 font-medium">Cash Prizes & Tech Opportunities</p>
+                            </div>
                         </div>
                     </div>
                     
+                    <!-- Right Image -->
                     <div class="hero-visual float-animation">
                         <div class="relative">
                             <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-700 rounded-3xl opacity-20 blur-3xl"></div>
-                            <div class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl p-12 border-2 border-orange-400 border-opacity-40 shadow-2xl">
-                                <div class="text-center mb-10">
-                                    <div class="w-40 h-40 mx-auto p-4 bg-white rounded-2xl transform hover:scale-110 transition-transform duration-500 shadow-xl">
-                                        <img src="./Witch-Hunt-logo.png.jpg" alt="Witch Hunt badge artwork" loading="lazy" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><br>
-                                        <p> WITCH HUNT <br> <B>COMING SOON </B></p>
-                                        <div class="hidden text-9xl">🔮</div>
-                                    </div>
-                                </div>
-                                <div class="text-center mt-24 scroll-indicator">
-                                    <p class="text-orange-400 mb-4 text-lg font-semibold">Scroll to Explore</p>
-                                    <div class="text-5xl">⬇</div>
-                                </div>
+                            <div class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl overflow-hidden border-2 border-orange-400 border-opacity-40 shadow-2xl">
+                                <img src="./heroimage.jpeg" alt="Women in tech working together" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="hidden w-full h-96 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-800 items-center justify-center text-9xl">👩‍💻</div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Event Kickoff Box -->
+                <div class="grid lg:grid-cols-2 gap-12 items-end">
+                    <div class="hero-content">
+                        <div class="border-2 border-orange-400 border-opacity-40 rounded-3xl p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-black backdrop-blur-sm">
+                            <p class="text-sm uppercase tracking-[0.3em] text-orange-300 mb-4 font-semibold">BE PART OF INDIA'S LARGEST</p>
+                            <p class="text-4xl md:text-5xl font-bold text-white mb-8">Event kicks off January 24, 2026</p>
+                            <div class="countdown-grid" id="countdownTimer">
+                                <div class="countdown-item"><span class="countdown-value" id="countdownDays">00</span><span class="countdown-label">DAYS</span></div>
+                                <div class="countdown-item"><span class="countdown-value" id="countdownHours">00</span><span class="countdown-label">HOURS</span></div>
+                                <div class="countdown-item"><span class="countdown-value" id="countdownMinutes">00</span><span class="countdown-label">MINUTES</span></div>
+                                <div class="countdown-item"><span class="countdown-value" id="countdownSeconds">00</span><span class="countdown-label">SECONDS</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side Info -->
+                    <div class="hero-visual text-center">
+                        <p class="text-white text-lg font-semibold mb-4">Be Part of India's Largest AI Hackathon for Women</p>
+                        <p class="text-orange-400 mb-4 text-lg font-semibold scroll-indicator">Scroll to Explore</p>
+                        <div class="text-5xl scroll-indicator">⬇</div>
                     </div>
                 </div>
             </div>
