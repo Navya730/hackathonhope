@@ -1,770 +1,995 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Witch Hunt - Women in Tech Challenge 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            background: #000000;
-        }
-        
-        .hero-title {
-            font-family: 'Orbitron', monospace;
-            font-weight: 900;
-        }
-        
-        /* --- EXISTING ANIMATIONS & STYLES (Kept exactly as before) --- */
-        .welcome-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            background: #000000; z-index: 9999;
-            display: flex; align-items: center; justify-content: center;
-            animation: fadeOutWelcome 1s ease-out 3.5s forwards;
-            overflow: hidden;
-        }
-        .fire-container { position: absolute; bottom: 0; left: 0; right: 0; height: 100%; overflow: hidden; pointer-events: none; }
-        .flame {
-            position: absolute; bottom: -50px; width: 40px; height: 100px;
-            background: linear-gradient(to top, rgba(255, 69, 0, 0.9) 0%, rgba(255, 140, 0, 0.7) 30%, rgba(255, 165, 0, 0.5) 60%, rgba(255, 215, 0, 0.2) 100%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            filter: blur(8px); animation: flameRise 3s ease-in infinite; opacity: 0;
-        }
-        @keyframes flameRise {
-            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            50% { opacity: 0.8; transform: translateY(-50vh) scale(1.5) rotate(5deg); }
-            100% { opacity: 0; transform: translateY(-100vh) scale(2) rotate(10deg); }
-        }
-        .ember {
-            position: absolute; bottom: 0; width: 4px; height: 4px;
-            background: rgba(255, 140, 0, 0.9); border-radius: 50%;
-            animation: emberFloat 4s ease-out infinite;
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
-        }
-        @keyframes emberFloat {
-            0% { transform: translateY(0) translateX(0); opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
-        }
-        @keyframes fadeOutWelcome { to { opacity: 0; visibility: hidden; } }
-        .logo-animate { animation: logoEntrance 2s ease-out forwards; }
-        @keyframes logoEntrance {
-            0% { transform: scale(0.3) rotate(-360deg); opacity: 0; }
-            70% { transform: scale(1.15) rotate(20deg); opacity: 1; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; }
-        }
-        .welcome-text { animation: slideUpFade 1.5s ease-out 0.5s forwards; opacity: 0; }
-        @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
-        .text-glow { animation: textGlow 2s ease-in-out infinite; }
-        @keyframes textGlow {
-            0%, 100% { text-shadow: 0 0 20px rgba(255, 165, 0, 0.6); }
-            50% { text-shadow: 0 0 30px rgba(255, 165, 0, 0.9); }
-        }
-        .loading-bar { animation: loadingProgress 3s ease-out forwards; }
-        @keyframes loadingProgress { 0% { width: 0%; } 100% { width: 100%; } }
-        .hero-section { opacity: 0; animation: fadeInHero 1.5s ease-out 4s forwards; }
-        @keyframes fadeInHero { to { opacity: 1; } }
-        .hero-bg { background: #000000; background-attachment: fixed; position: relative; overflow: hidden; }
-        .hero-bg::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(circle at 20% 30%, rgba(255, 101, 0, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255, 165, 0, 0.1) 0%, transparent 50%);
-            animation: bgPulse 8s ease-in-out infinite;
-        }
-        @keyframes bgPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-        .float-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-30px); } }
-        .gradient-text {
-            background: linear-gradient(135deg, #ff6500 0%, #ffa500 50%, #ff6500 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; background-size: 200% auto; animation: gradientShift 3s ease infinite;
-        }
-        @keyframes gradientShift { 0%, 100% { background-position: 0% center; } 50% { background-position: 100% center; } }
-        .stat-card {
-            backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 165, 0, 0.3); transition: all 0.4s ease;
-        }
-        .stat-card:hover {
-            transform: translateY(-10px) scale(1.05); box-shadow: 0 25px 50px rgba(255, 101, 0, 0.4);
-            border-color: rgba(255, 165, 0, 0.8); background: rgba(255, 165, 0, 0.1);
-        }
-        .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.5); }
-            50% { box-shadow: 0 0 50px rgba(255, 165, 0, 0.9); }
-        }
-        .scroll-indicator { animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-7px); } }
-        .hero-content { animation: slideInLeft 1.2s ease-out 4.5s backwards; }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
-        .hero-visual { animation: slideInRight 1.2s ease-out 4.7s backwards; }
-        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
-        .particle {
-            position: absolute; width: 4px; height: 4px; background: rgba(255, 165, 0, 0.6);
-            border-radius: 50%; animation: particleFloat 10s infinite;
-        }
-        @keyframes particleFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }
-            10% { opacity: 1; } 90% { opacity: 1; }
-            100% { transform: translate(100px, -1000px) scale(0); opacity: 0; }
-        }
-        
-        /* --- PROBLEM STATEMENTS / THEMES CSS (NEW) --- */
-        .theme-card {
-            background: #111;
-            border-radius: 15px;
-            padding: 25px;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .theme-card:hover {
-            transform: translateY(-5px);
-        }
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>WITCH HUNT — Women In Technology Challenge 2026</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<style>
+		:root{
+			--primary: #d16bd9;
+			--primary-dark: #a85b93;
+			--accent: #ff7b85;
+			--accent-light: #ffb38a;
+			--dark: #111827;
+			--gray-50: #f9fafb;
+			--gray-100: #f3f4f6;
+			--gray-200: #e5e7eb;
+			--gray-600: #4b5563;
+			--gray-700: #374151;
+			--gray-900: #111827;
+		}
 
-        .theme-card .watermark {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 80px;
-            opacity: 0.1;
-            transform: rotate(10deg);
-            pointer-events: none;
-        }
+		*{box-sizing:border-box;margin:0;padding:0}
+		html{scroll-behavior:smooth}
+		body{font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--gray-700);background:var(--gray-50);line-height:1.6;font-size:15px}
 
-        .theme-card .icon-box {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 10;
-        }
+		/* Header */
+		header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200);z-index:100;padding:16px 0}
+		.header-container{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+		.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+		.logo-circle{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:22px;box-shadow:0 4px 12px rgba(209,107,217,0.3)}
+		.brand-text h1{font-size:18px;font-weight:800;color:var(--dark);margin:0}
+		.brand-text p{font-size:11px;color:var(--gray-600);margin:0}
+		
+		/* Mobile menu button */
+		.mobile-menu-btn{display:none;background:none;border:none;font-size:24px;color:var(--dark);cursor:pointer}
+		
+		nav{display:flex;align-items:center;gap:32px}
+		nav a{color:var(--gray-700);text-decoration:none;font-weight:600;font-size:14px;transition:color 0.2s}
+		nav a:hover{color:var(--primary)}
+		.nav-cta{background:var(--primary);color:white!important;padding:10px 20px;border-radius:8px;transition:all 0.2s}
+		.nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 4px 12px rgba(209,107,217,0.3)}
 
-        /* Specific Theme Colors */
-        .theme-edu { box-shadow: inset 0 0 20px rgba(217, 119, 6, 0.1); border-top: 4px solid #d97706; }
-        .theme-edu:hover { box-shadow: 0 0 25px rgba(217, 119, 6, 0.4); }
-        .theme-edu .icon-box { background: rgba(217, 119, 6, 0.2); color: #d97706; box-shadow: 0 0 15px rgba(217, 119, 6, 0.4); }
+		/* Hero Section */
+		.hero{background:linear-gradient(135deg,#fef5f9 0%,#f8f4fc 100%);padding:80px 24px 60px;position:relative;overflow:hidden}
+		.hero::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(209,107,217,0.1),transparent);border-radius:50%}
+		.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,123,133,0.08),transparent);border-radius:50%}
+		.hero-container{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;position:relative;z-index:2}
+		.hero-content h2{font-size:clamp(32px,5vw,56px);font-weight:800;color:var(--dark);line-height:1.1;margin-bottom:20px}
+		.hero-content h2 .highlight{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+		.hero-content p{font-size:18px;color:var(--gray-600);margin-bottom:32px;line-height:1.7}
+		.hero-logo-wrap{background:white;padding:24px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.08);transition:transform 0.3s}
+		.hero-logo-wrap:hover{transform:translateY(-5px)}
+		.hero-logo{width:100%;height:auto;border-radius:12px;display:block}
+
+		/* Stats Bar */
+		.stats-bar{background:white;border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);padding:40px 24px}
+		.stats-container{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+		.stat-item{text-align:center}
+		.stat-number{font-size:42px;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:8px}
+		.stat-label{color:var(--gray-600);font-weight:600;font-size:14px}
+
+		/* Countdown Card */
+		.countdown-wrapper{background:white;padding:24px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.06)}
+		.countdown-title{font-size:14px;font-weight:700;color:var(--gray-700);margin-bottom:16px;text-align:center}
+		.countdown-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+		.countdown-item{background:var(--gray-50);padding:16px;border-radius:12px;text-align:center}
+		.countdown-item strong{display:block;font-size:32px;font-weight:800;color:var(--accent);line-height:1}
+		.countdown-item span{font-size:12px;color:var(--gray-600);margin-top:8px;display:block;font-weight:600}
+		.hero-cta{display:flex;flex-direction:column;gap:12px}
+		.btn{display:block;padding:14px 24px;border-radius:10px;text-align:center;font-weight:700;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;font-size:14px}
+		.btn-primary{background:var(--primary);color:white}
+		.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(209,107,217,0.3)}
+		.btn-outline{background:transparent;border:2px solid var(--gray-200);color:var(--gray-700)}
+		.btn-outline:hover{border-color:var(--primary);color:var(--primary)}
+
+		/* Partners */
+		.partners{margin-top:24px}
+		.partners-title{font-size:12px;color:var(--gray-600);font-weight:700;margin-bottom:12px;text-align:center}
+		.partners-grid{display:flex;gap:12px;justify-content:center;align-items:center}
+		.partner-logo{width:70px;height:auto;border-radius:8px;background:white;padding:8px;border:1px solid var(--gray-200)}
+
+		/* Sections */
+		section{padding:80px 24px}
+		.section-header{text-align:center;margin-bottom:60px}
+		.section-header h2{font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--dark);margin-bottom:16px}
+		.section-header p{font-size:18px;color:var(--gray-600);max-width:700px;margin:0 auto}
+		.container{max-width:1280px;margin:0 auto}
+
+		/* Tracks */
+		#tracks{background:linear-gradient(135deg,#f8f4fc 0%,#fef5f9 100%)}
+		.tracks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+		.track-card{background:white;padding:32px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);transition:all 0.3s;border:1px solid var(--gray-200)}
+		.track-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
+		.track-icon{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px}
+		.track-card h3{font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px}
+		.track-card p{color:var(--gray-600);line-height:1.6}
+
+		/* Timeline */
+		#roadmap{background:white}
+		.timeline{position:relative;max-width:900px;margin:0 auto}
+		.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--primary),var(--accent));transform:translateX(-50%)}
+		.timeline-item{position:relative;margin-bottom:60px;display:flex}
+		.timeline-item:nth-child(odd){justify-content:flex-end;padding-right:calc(50% + 40px)}
+		.timeline-item:nth-child(even){justify-content:flex-start;padding-left:calc(50% + 40px)}
+		.timeline-content{background:white;padding:24px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.06);border:1px solid var(--gray-200);max-width:380px}
+		.timeline-marker{position:absolute;left:50%;top:20px;width:16px;height:16px;background:var(--accent);border:4px solid white;border-radius:50%;transform:translateX(-50%);box-shadow:0 0 0 4px rgba(255,123,133,0.2)}
+		.timeline-date{font-size:12px;font-weight:700;color:var(--primary);margin-bottom:8px;text-transform:uppercase}
+		.timeline-content h3{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:8px}
+		.timeline-content p{color:var(--gray-600);font-size:14px}
+
         
-        .theme-climate { box-shadow: inset 0 0 20px rgba(34, 197, 94, 0.1); border-top: 4px solid #22c55e; }
-        .theme-climate:hover { box-shadow: 0 0 25px rgba(34, 197, 94, 0.4); }
-        .theme-climate .icon-box { background: rgba(34, 197, 94, 0.2); color: #22c55e; box-shadow: 0 0 15px rgba(34, 197, 94, 0.4); }
+		/* Team */
+		#team{background:linear-gradient(135deg,#fff9f5 0%,#fef8fb 100%)}
+		.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+		.team-member{background:white;padding:24px;border-radius:16px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.04);transition:all 0.3s;border:1px solid var(--gray-200)}
+		.team-member:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
+		.member-avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-size:36px;font-weight:700;margin:0 auto 16px}
+		.member-name{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:4px}
+		.member-role{font-size:13px;color:var(--primary);font-weight:600;margin-bottom:12px}
+		.member-bio{font-size:13px;color:var(--gray-600);line-height:1.5}
 
-        .theme-health { box-shadow: inset 0 0 20px rgba(239, 68, 68, 0.1); border-top: 4px solid #ef4444; }
-        .theme-health:hover { box-shadow: 0 0 25px rgba(239, 68, 68, 0.4); }
-        .theme-health .icon-box { background: rgba(239, 68, 68, 0.2); color: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+		/* Awards */
+		#awards{background:linear-gradient(135deg,#fff5f8 0%,#fef7fb 100%)}
+		.awards-grid{display:grid;grid-template-columns:1fr 2fr;gap:32px;margin-top:40px}
+		.prize-pool{background:white;padding:40px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);text-align:center;border:1px solid var(--gray-200)}
+		.prize-pool h3{font-size:16px;font-weight:700;color:var(--gray-700);margin-bottom:16px}
+		.prize-amount{font-size:52px;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px}
+		.prize-note{font-size:13px;color:var(--gray-600)}
+		.award-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+		.award-card{background:white;padding:24px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);border:1px solid var(--gray-200)}
+		.award-icon{font-size:32px;margin-bottom:12px}
+		.award-title{font-size:14px;font-weight:700;color:var(--gray-700);margin-bottom:8px}
+		.award-value{font-size:24px;font-weight:800;color:var(--accent);margin-bottom:8px}
+		.award-detail{font-size:12px;color:var(--gray-600)}
 
-        .theme-cities { box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.1); border-top: 4px solid #3b82f6; }
-        .theme-cities:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); }
-        .theme-cities .icon-box { background: rgba(59, 130, 246, 0.2); color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+		/* Contact & Register */
+		#contact,#register{background:white}
+		.contact-content,.register-content{text-align:center;max-width:600px;margin:0 auto}
+		.contact-content a{color:var(--primary);font-weight:700;text-decoration:none}
+		.contact-content a:hover{text-decoration:underline}
 
-        .theme-title {
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
+		/* Footer */
+		footer{background:var(--gray-900);color:var(--gray-200);padding:60px 24px 30px;text-align:center}
+		.footer-content{max-width:1280px;margin:0 auto}
+		.footer-brand{font-size:24px;font-weight:800;color:white;margin-bottom:12px}
+		.footer-tagline{font-size:14px;color:var(--gray-600);margin-bottom:32px}
+		.footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:32px;flex-wrap:wrap}
+		.footer-links a{color:var(--gray-200);text-decoration:none;font-size:14px}
+		.footer-links a:hover{color:white}
+		.footer-social{display:flex;justify-content:center;gap:20px;margin-bottom:32px}
+		.footer-social a{color:var(--gray-200);font-size:20px;transition:color 0.2s}
+		.footer-social a:hover{color:var(--primary)}
+		.footer-bottom{border-top:1px solid var(--gray-700);padding-top:24px;font-size:13px;color:var(--gray-600)}
 
-        .theme-desc {
-            color: #9ca3af;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
+		/* Mobile Responsive */
+		@media (max-width:968px){
+			.mobile-menu-btn{display:block}
+			nav{position:fixed;top:80px;left:-100%;width:100%;background:white;flex-direction:column;padding:24px;gap:16px;box-shadow:0 10px 40px rgba(0,0,0,0.1);transition:left 0.3s;border-bottom:1px solid var(--gray-200)}
+			nav.active{left:0}
+			.hero-container{grid-template-columns:1fr;gap:40px}
+			.hero-logo-wrap{max-width:400px;margin:0 auto}
+			.stats-container{grid-template-columns:repeat(2,1fr);gap:24px}
+			.countdown-grid{grid-template-columns:repeat(4,1fr)}
+			.timeline::before{left:20px}
+			.timeline-item{padding-left:50px!important;padding-right:0!important}
+			.timeline-item:nth-child(odd),.timeline-item:nth-child(even){justify-content:flex-start}
+			.timeline-marker{left:20px}
+			.awards-grid{grid-template-columns:1fr}
+			section{padding:60px 24px}
+		}
 
-        /* --- CHATBOT & MODAL STYLES (Existing + New Form Styles) --- */
-        .chatbot-button {
-            position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; border-radius: 50%;
-            background: linear-gradient(135deg, #ff6500 0%, #ff8c00 100%);
-            box-shadow: 0 8px 30px rgba(255, 101, 0, 0.6); display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 1000; transition: all 0.3s ease; animation: chatbotPulse 2s ease-in-out infinite;
-        }
-        .chatbot-button:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(255, 101, 0, 0.8); }
-        @keyframes chatbotPulse { 0%, 100% { box-shadow: 0 8px 30px rgba(255, 101, 0, 0.6); } 50% { box-shadow: 0 8px 50px rgba(255, 101, 0, 0.9); } }
-        .chatbot-window {
-            position: fixed; bottom: 120px; right: 30px; width: 380px; height: 550px;
-            background: rgba(0, 0, 0, 0.95); border: 2px solid rgba(255, 101, 0, 0.5); border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(255, 101, 0, 0.3); z-index: 1000; display: none; flex-direction: column; backdrop-filter: blur(10px);
-        }
-        .chatbot-window.active { display: flex; animation: slideUpFade 0.3s ease-out; }
-        .chatbot-header { background: linear-gradient(135deg, #ff6500 0%, #ff8c00 100%); padding: 20px; border-radius: 18px 18px 0 0; display: flex; justify-content: space-between; align-items: center; }
-        .chatbot-close { cursor: pointer; font-size: 24px; color: white; transition: transform 0.2s; }
-        .chatbot-close:hover { transform: rotate(90deg); }
-        .chatbot-messages { flex: 1; padding: 20px; overflow-y: auto; }
-        .chatbot-input-area { padding: 15px; border-top: 1px solid rgba(255, 101, 0, 0.3); }
-        .chatbot-input { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 101, 0, 0.3); border-radius: 25px; color: white; outline: none; }
-        .chatbot-input:focus { border-color: rgba(255, 101, 0, 0.6); }
-        
-        .countdown-card {
-            backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 101, 0, 0.4);
-            border-radius: 30px; padding: 2.5rem; width: 100%; max-width: 540px;
-        }
-        .countdown-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-        .countdown-item { text-align: center; padding: 1rem; border-radius: 1.25rem; background: rgba(255, 101, 0, 0.08); border: 1px solid rgba(255, 101, 0, 0.3); }
-        .countdown-value { display: block; font-size: 2.5rem; font-weight: 700; color: #ff8533; margin-bottom: 0.25rem; }
-        .countdown-label { font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; color: #f5f5f5; }
-        
-        .about-highlight {
-            border: 2px solid #e0e0e0; border-radius: 12px; padding: 24px; background-color: #f9f9f9;
-            max-width: 800px; margin: 2rem auto; color: #2c3e50; font-family: 'Inter', sans-serif;
-        }
-        .about-highlight h3 { color: #16a085; margin-bottom: 1rem; text-align: center; }
-        .about-know-section { padding: 40px; background-color: #000; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); margin-top: 3rem; }
-        .card-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .info-card {
-            flex: 1; min-width: 280px; max-width: 320px; background: #111; color: #ecf0f1; border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); padding: 20px; opacity: 0;
-            transform: scale(0.9); transition: all 0.6s ease, box-shadow 0.3s ease, transform 0.3s ease; cursor: pointer;
-        }
-        .info-card h3 { color: #f39c12; text-align: center; margin-bottom: 12px; }
-        .info-card.visible { opacity: 1; transform: scale(1); }
-        .info-card:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 8px 20px rgba(241, 196, 15, 0.6); }
-        
-        .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); justify-content: center; align-items: flex-end; }
-        .modal-content { background: #1c1c1c; color: #fff; padding: 24px; border-radius: 20px 20px 0 0; max-width: 600px; width: 100%; animation: slideUp 0.5s ease; touch-action: none; }
-        .modal-content h3 { color: #f39c12; margin-bottom: 12px; }
-        .close { float: right; font-size: 24px; cursor: pointer; color: #f1c40f; }
-        @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        
-        /* REGISTRATION MODAL STYLES */
-        .reg-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); overflow-y: auto; align-items: center; justify-content: center; padding: 20px; }
-        .reg-modal-content {
-            background: #111; border: 1px solid #ff6500; border-radius: 12px; width: 100%; max-width: 600px;
-            padding: 0; position: relative; box-shadow: 0 0 30px rgba(255, 101, 0, 0.2); animation: fadeInScale 0.3s ease-out;
-        }
-        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .reg-header { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; }
-        .reg-body { padding: 30px; max-height: 80vh; overflow-y: auto; }
-        .form-group { margin-bottom: 20px; }
-        .form-label { display: block; color: #f5f5f5; margin-bottom: 8px; font-weight: 500; }
-        .form-label span { color: #ef4444; }
-        .form-input {
-            width: 100%; padding: 12px 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px; color: white; transition: all 0.3s;
-        }
-        .form-input:focus { outline: none; border-color: #ff6500; box-shadow: 0 0 0 2px rgba(255, 101, 0, 0.2); }
-        .radio-group { display: flex; gap: 15px; }
-        .radio-option { flex: 1; position: relative; }
-        .radio-option input[type="radio"] { position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
-        .radio-tile {
-            display: flex; align-items: center; justify-content: center; padding: 12px;
-            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #aaa; transition: all 0.3s; font-weight: 500;
-        }
-        .radio-option input[type="radio"]:checked + .radio-tile { background: rgba(255, 101, 0, 0.1); border-color: #ff6500; color: #ff6500; }
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-    </style>
+		@media (max-width:600px){
+			.hero{padding:60px 20px 40px}
+			.hero-content h2{font-size:32px}
+			.hero-content p{font-size:16px}
+			.stats-container{grid-template-columns:1fr;gap:20px}
+			.countdown-grid{grid-template-columns:repeat(2,1fr)}
+			.countdown-item strong{font-size:28px}
+			.team-grid,.tracks-grid{grid-template-columns:1fr}
+			.award-cards{grid-template-columns:1fr}
+		}
+
+        /* === Horizontal, Compact Roadmap Cards === */
+#roadmap .timeline {
+  max-width: 1100px; /* allow wider cards */
+}
+
+#roadmap .timeline-content {
+  max-width: 460px;       /* long rectangular cards */
+  padding: 12px 20px;     /* slim height */
+  border-radius: 6px;     /* rectangular feel */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Date on the left, small and tight */
+#roadmap .timeline-date {
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-bottom: 0;
+  color: var(--primary);
+}
+
+/* Text block */
+#roadmap .timeline-content h3 {
+  font-size: 14px;
+  margin: 0 0 2px;
+}
+
+#roadmap .timeline-content p {
+  font-size: 12px;
+  line-height: 1.35;
+  margin: 0;
+  max-width: 320px;
+}
+
+/* Reduce vertical spacing */
+#roadmap .timeline-item {
+  margin-bottom: 28px;
+}
+
+/* Smaller timeline dot */
+#roadmap .timeline-marker {
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 600px) {
+  #roadmap .timeline-content {
+    max-width: 100%;
+    padding: 12px 16px;
+  }
+}
+
+/* Team member photo avatar */
+.member-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image inside avatar */
+.member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 600px) {
+  .member-avatar {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Header Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+/* Brand wrapper */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+/* Circular logo avatar */
+.logo-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--gray-200);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Logo image */
+.logo-avatar img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  display: block;
+}
+@media (max-width: 600px) {
+  .logo-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .logo-avatar img {
+    width: 82%;
+    height: 82%;
+  }
+}
+
+
+/* =========================
+   Partners Section Design
+========================= */
+.partners-section {
+  background: linear-gradient(135deg, #fef5f9 0%, #f8f4fc 100%);
+  padding: 80px 24px;
+}
+
+.partners-categories {
+  display: grid;
+  gap: 48px;
+}
+
+.partner-block h3 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray-700);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.partners-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.partner-card {
+  background: white;
+  padding: 24px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--gray-200);
+  text-align: center;
+  width: 220px;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.partner-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.partner-card img {
+  max-width: 140px;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.partner-card p {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+/* Mobile friendly */
+@media (max-width: 600px) {
+  .partner-card {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+/* =========================
+   Modal Styles
+========================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  background: white;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+  animation: modalFadeIn 0.25s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: var(--gray-600);
+}
+
+.modal-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-form label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-700);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-form span {
+  color: #e11d48;
+}
+
+.modal-form input,
+.modal-form textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.modal-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.modal-form small {
+  font-size: 11px;
+  color: var(--gray-600);
+}
+
+.modal-submit {
+  margin-top: 8px;
+}
+/* =========================
+   Hero Background Image
+========================= */
+.hero {
+  position: relative;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 245, 249, 0.78) 0%,
+      rgba(248, 244, 252, 0.75) 45%,
+      rgba(255, 255, 255, 0.82) 100%
+    ),
+    url("bgimage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  .hero {
+    background-position: top;
+    padding: 60px 20px 40px;
+  }
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(209,107,217,0.18), transparent 70%);
+  z-index: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -35%;
+  left: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,123,133,0.15), transparent 70%);
+  z-index: 0;
+}
+
+	</style>
 </head>
-<body class="text-white">
-    <div class="welcome-screen">
-        <div class="fire-container" id="fireContainer" aria-hidden="true"></div>
-        <div class="text-center px-6 relative z-10">
-            <div class="logo-animate mb-8">
-                <div class="w-64 h-64 mx-auto rounded-full flex items-center justify-center shadow-2xl bg-white p-6">
-                    <img src="./witchhuntlogo.jpeg" alt="Witch Hunt circular logo" loading="lazy" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="hidden w-full h-full bg-gradient-to-br from-orange-500 via-orange-600 to-orange-800 rounded-full items-center justify-center text-9xl">🔮</div>
+<body>
+
+	<header>
+		<div class="header-container">
+			<a href="#home" class="brand">
+				<div class="logo-avatar">
+                                <img src="witchhuntlogonew.jpeg" alt="Logo">
+                        </div>
+				<div class="brand-text">
+					<h1>WITCH HUNT</h1>
+					<p>Women In Technology Challenge</p>
+				</div>
+			</a>
+			<button class="mobile-menu-btn" onclick="toggleMenu()">
+				<i class="fas fa-bars"></i>
+			</button>
+			<nav id="mainNav">
+				<a href="#home">Home</a>
+				<a href="#about">About</a>
+				<a href="#tracks">Tracks</a>
+				<a href="#roadmap">Roadmap</a>
+				<a href="#team">Team</a>
+				<a href="#awards">Awards</a>
+				<a href="#contact">Contact</a>
+                <button class="btn btn-primary" onclick="openRegisterModal()">Register Now</button>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<section class="hero" id="home">
+			<div class="hero-container">
+				<div class="hero-content">
+					<h2>Empowering Women to <span class="highlight">Build AI Solutions</span> for India</h2>
+					<p>Join India's largest women-led AI hackathon. Build scalable solutions across Education, Climate Action, Health, and Smart Cities.</p>
+					<div style="display:flex;gap:16px;flex-wrap:wrap">
+                <button class="btn btn-primary" onclick="openRegisterModal()">Register Now</button>
+					</div>
+				</div>
+				<div>
+					<div class="countdown-wrapper">
+						<div class="countdown-title">Event Launches In</div>
+						<div class="countdown-grid">
+							<div class="countdown-item"><strong id="cd-days">30</strong><span>Days</span></div>
+							<div class="countdown-item"><strong id="cd-hours">17</strong><span>Hours</span></div>
+							<div class="countdown-item"><strong id="cd-mins">13</strong><span>Mins</span></div>
+							<div class="countdown-item"><strong id="cd-secs">31</strong><span>Secs</span></div>
+						</div>
+						<div class="hero-cta">
+							<a href="#register" class="btn btn-primary">Get Notified</a>
+							<a href="#about" class="btn btn-outline">Explore Event</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="stats-bar">
+			<div class="stats-container">
+				<div class="stat-item">
+					<span class="stat-number">5,000</span>
+					<span class="stat-label">Women Participants</span>
+				</div>
+				<div class="stat-item">
+					<span class="stat-number">1,000</span>
+					<span class="stat-label">Teams Competing</span>
+				</div>
+				<div class="stat-item">
+					<span class="stat-number">40</span>
+					<span class="stat-label">Finalists</span>
+				</div>
+				<div class="stat-item">
+					<span class="stat-number">₹19L</span>
+					<span class="stat-label">Prize Pool</span>
+				</div>
+			</div>
+		</section>
+
+		<section id="about">
+			<div class="container">
+				<div class="section-header">
+					<h2>About The Challenge</h2>
+					<p>WITCH Hunt empowers women and girls across India to build practical, scalable AI solutions. The program combines mentorship, workshops, and resources to help teams progress from prototype to pilot, creating real-world impact in critical social sectors.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="tracks">
+			<div class="container">
+				<div class="section-header">
+					<h2>Challenge Tracks</h2>
+					<p>Choose your track and build AI solutions that matter</p>
+				</div>
+				<div class="tracks-grid">
+					<div class="track-card">
+						<div class="track-icon" style="background:rgba(255,179,138,0.2);color:#ff7b3d">
+							<i class="fas fa-graduation-cap"></i>
+						</div>
+						<h3>Education</h3>
+						<p>Develop AI solutions to improve learning outcomes, increase access to quality education, and personalize learning experiences for students across India.</p>
+					</div>
+					<div class="track-card">
+						<div class="track-icon" style="background:rgba(207,101,144,0.2);color:#cf6590">
+							<i class="fas fa-leaf"></i>
+						</div>
+						<h3>Climate Action</h3>
+						<p>Create innovative solutions to mitigate climate challenges, promote sustainability, and help communities adapt to environmental changes.</p>
+					</div>
+					<div class="track-card">
+						<div class="track-icon" style="background:rgba(168,91,147,0.2);color:#a85b93">
+							<i class="fas fa-heart-pulse"></i>
+						</div>
+						<h3>Health & Well-Being</h3>
+						<p>Build technology solutions for scalable healthcare delivery, mental health support, and community well-being initiatives.</p>
+					</div>
+					<div class="track-card">
+						<div class="track-icon" style="background:rgba(255,123,133,0.2);color:#ff7b85">
+							<i class="fas fa-city"></i>
+						</div>
+						<h3>Smart Cities</h3>
+						<p>Design AI-driven solutions for urban resilience, efficient public services, and improved quality of life in Indian cities.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="roadmap">
+			<div class="container">
+				<div class="section-header">
+					<h2>Event Roadmap</h2>
+					<p>Your journey from registration to demo day</p>
+				</div>
+				<div class="timeline">
+					<div class="timeline-item">
+						<div class="timeline-marker"></div>
+						<div class="timeline-content">
+							<div class="timeline-date">Jan - Feb 2026</div>
+							<h3>Registration-Onboarding</h3>
+							<p>Participants register, form teams, and get onboarded onto the platform. Access resources and connect with mentors.</p>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="timeline-marker"></div>
+						<div class="timeline-content">
+							<div class="timeline-date">Jan 24, 2026</div>
+							<h3>Official Launch</h3>
+							<p>Kick-off event on National Day for Girl Child. Theme reveals, keynote sessions, and challenge guidelines announced.</p>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="timeline-marker"></div>
+						<div class="timeline-content">
+							<div class="timeline-date">Feb - Mar 2026</div>
+							<h3>Prototype Development</h3>
+							<p>Teams work on AI solutions with mentorship sessions, technical workshops, and regular feedback from experts.</p>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="timeline-marker"></div>
+						<div class="timeline-content">
+							<div class="timeline-date">March 2026</div>
+							<h3>Final Submission</h3>
+							<p>Final submissions due. Top teams from each track are evaluated, shortlisted and announced for the Grand Finale.</p>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="timeline-marker"></div>
+						<div class="timeline-content">
+							<div class="timeline-date">April 2026</div>
+							<h3>Grand Finale</h3>
+							<p>Live presentations to jury panel, awards ceremony, networking opportunities, and celebration of achievements.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="team">
+			<div class="container">
+				<div class="section-header">
+					<h2>Meet Our Team</h2>
+					<p>The dedicated organizers, mentors, and judges driving WITCH HUNT</p>
+				</div>
+				<div class="team-grid">
+					<div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker1.jpg" alt="Chithra Gurjar">
+                        </div>
+
+						<div class="member-name">Chithra Gurjar</div>
+						<div class="member-role">Chair</div>
+						<div class="member-bio">Tech entrepreneur with 12+ years in AI education. Passionate about women's empowerment in technology.</div>
+					</div>
+					<div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker2.jpg" alt="Chithra Gurjar">
+                        </div>
+						<div class="member-name">Neeraja Ganesh</div>
+						<div class="member-role">Co-Chair</div>
+						<div class="member-bio">Expert in organizing large-scale hackathons. Former product lead at tech unicorns.</div>
+					</div>
+					<div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker3.jpg" alt="Chithra Gurjar">
+                        </div>
+						<div class="member-name">Varsha Verma</div>
+						<div class="member-role">Co-Chair</div>
+						<div class="member-bio">ML engineer and researcher. Published author on AI ethics and inclusive technology.</div>
+					</div>
+					<div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker4.jpg" alt="Chithra Gurjar">
+                        </div>
+						<div class="member-name">Noella D'Souza Coutinho</div>
+						<div class="member-role">Chief of Staff</div>
+						<div class="member-bio">Strategic partnerships expert. Built collaborations with Fortune 500 companies.</div>
+					</div>
+					<div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker5.jpg" alt="Chithra Gurjar">
+                        </div>
+						<div class="member-name">Sanjay Kumar</div>
+						<div class="member-role">Finance Controller</div>
+						<div class="member-bio">Community builder and educator. Mentored 500+ women in technology careers.</div>
+					</div>
+					<div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker6.jpg" alt="Chithra Gurjar">
+                        </div>
+						<div class="member-name">Shanmugapriya Gnanasekara</div>
+						<div class="member-role">Head of PMO</div>
+						<div class="member-bio">Digital marketing strategist with expertise in tech events and community outreach.</div>
+					</div>
+					<div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker7.jpg" alt="Chithra Gurjar">
+                        </div>
+						<div class="member-name">Dr. Muthukumaraswamy B</div>
+						<div class="member-role">Lead, Tech Track</div>
+						<div class="member-bio">AI researcher and professor. Advisory board member at leading tech institutions.</div>
+					</div>
+					<div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker8.jpg" alt="Chithra Gurjar">
+                        </div>
+						<div class="member-name">Bhuvana Subramanyan</div>
+						<div class="member-role">Head, Marketing & Outreach</div>
+						<div class="member-bio">Event operations specialist. Managed 50+ national and international tech events.</div>
+					</div>
+					<div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker9.jpg" alt="Chithra Gurjar">
+                        </div>
+						<div class="member-name">Riththika</div>
+						<div class="member-role">Young women community outreach</div>
+						<div class="member-bio">Tech writer and curriculum designer. Created learning programs for 10,000+ students.</div>
+					</div>
+					<div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker10.jpg" alt="Chithra Gurjar">
+                        </div>
+						<div class="member-name">Yasmeen MS</div>
+						<div class="member-role">Member, Tech Track</div>
+						<div class="member-bio">Community engagement expert. Built vibrant tech communities across India.</div>
+                    </div>
+                    <div class="team-member">
+						<div class="member-avatar">
+                                <img src="speaker11.jpg" alt="Kaajal Ahuja">
+                        </div>
+						<div class="member-name">Kaajal Ahuja</div>
+						<div class="member-role">Member, Tech Track</div>
+						<div class="member-bio">Community engagement expert. Built vibrant tech communities across India.</div>
+                    </div>
                 </div>
             </div>
-            <h1 class="hero-title text-6xl md:text-8xl text-orange-400 text-glow mb-6 welcome-text" style="transform: translateY(30px);">WITCH HUNT</h1>
-            <p class="text-2xl md:text-3xl text-white font-light mb-8 welcome-text" style="transform: translateY(30px); animation-delay: 1s;">Women in Tech Challenge 2026</p>
-            <div class="mt-12 welcome-text" style="transform: translateY(30px); animation-delay: 1.5s;">
-                <div class="inline-block px-8 py-4 bg-orange-500 bg-opacity-20 rounded-full border border-orange-400">
-                    <p class="text-orange-300 mb-3">Igniting your journey...</p>
-                    <div class="w-64 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-orange-500 to-orange-300 loading-bar"></div></div>
-                </div>
-            </div>
-            <button class="mt-10 px-6 py-3 bg-white bg-opacity-10 border border-orange-400 rounded-full text-sm uppercase tracking-widest hover:bg-opacity-20 transition" onclick="skipWelcome()" aria-label="Skip intro animation">Skip Intro</button>
+        </section>
+        <section id="awards">
+			<div class="section-inner awards-inner">
+				<h2 style="color:var(--black-rock);margin:0 0 12px">Awards & Prize Distribution</h2>
+				<div class="awards-grid">
+					<div class="prize-overview">
+						<div style="font-size:13px;font-weight:700;color:var(--black-rock);margin-bottom:8px">Total Prize Pool</div>
+						<div class="prize-amount">₹19,00,000</div>
+						<div style="margin-top:10px;color:rgba(17,24,39,0.65);font-size:13px">Support, incubation opportunities, mentorship and recognition included.</div>
+					</div>
+					<div class="award-cards">
+						<div class="award-card">
+							<div class="icon">🏆</div>
+							<div class="label" style="font-weight:700">Winners</div>
+							<div class="value" style="font-weight:800;color:var(--mandy);margin:6px 0">₹2.5L <span style="font-weight:600;color:rgba(17,24,39,0.7);font-size:12px">Per Track</span></div>
+							<div class="calc" style="font-size:13px;color:rgba(17,24,39,0.7)">4 Winners × ₹2.5L = ₹10L</div>
+						</div>
+						<div class="award-card">
+							<div class="icon">🥈</div>
+							<div class="label" style="font-weight:700">Runners-Up</div>
+							<div class="value" style="font-weight:800;color:var(--hibiscus);margin:6px 0">₹1L <span style="font-weight:600;color:rgba(17,24,39,0.7);font-size:12px">Per Track</span></div>
+							<div class="calc" style="font-size:13px;color:rgba(17,24,39,0.7)">4 Runners-Up × ₹1L = ₹4L</div>
+						</div>
+						<div class="award-card">
+							<div class="icon">🌟</div>
+							<div class="label" style="font-weight:700">Special Mentions</div>
+							<div class="value" style="font-weight:800;color:var(--disco);margin:6px 0">₹50K <span style="font-weight:600;color:rgba(17,24,39,0.7);font-size:12px">Per Team</span></div>
+							<div class="calc" style="font-size:13px;color:rgba(17,24,39,0.7)">8 Teams × ₹50K = ₹4L</div>
+						</div>
+					</div>
+				</div>
+				<div class="award-footer" style="margin-top:14px;font-size:13px;color:rgba(17,24,39,0.8)"><span style="font-size:18px;margin-right:8px">🎖️</span>All participants receive Certificates and Recognition</div>
+			</div>
+		</section>
+
+		<section id="contact">
+			<div class="section-inner">
+				<h2 style="color:var(--black-rock);margin:0 0 8px">Contact</h2>
+				<p style="margin:0 0 12px">Questions? Reach out at <a href="mailto:hello@witchhunt.org" style="color:var(--red-violet)">hello@witchhunt.org</a>.</p>
+			</div>
+		</section>
+
+		<section id="register">
+			<div class="section-inner">
+				<h2 style="color:var(--black-rock);margin:0 0 8px">Register</h2>
+				<p style="margin:0 0 12px">Registrations open soon — sign up to receive updates.</p>
+				<a class="btn" href="#">Notify Me</a>
+			</div>
+		</section>
+	</main>
+
+    <section id="partners" class="partners-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Partners & Collaborators</h2>
+      <p>Organizations supporting women to build impactful AI solutions</p>
+    </div>
+
+    <div class="partners-categories">
+      
+      <div class="partner-block">
+        <h3>Community Partner</h3>
+        <div class="partners-row">
+          <div class="partner-card">
+            <img src="partner3logo.jpeg" alt="HopeWorks Foundation">
+            <p>Celebration Experts</p>
+          </div>
         </div>
+      </div>
+
+      <div class="partner-block">
+        <h3>Knowledge Partner</h3>
+        <div class="partners-row">
+          <div class="partner-card">
+            <img src="AI4logo.jpeg" alt="AI4India">
+            <p>AI4India</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="partner-block">
+        <h3>Organizing Partner</h3>
+        <div class="partners-row">
+          <div class="partner-card">
+            <img src="hopeworkslogo.jpeg" alt="WITCH HUNT">
+            <p>Hopeworks Foundation</p>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
+</section>
 
-    <div class="fixed inset-0 pointer-events-none z-0" id="particles"></div>
 
-    <div class="hero-section hero-bg min-h-screen relative">
-        <header class="fixed w-full z-50 py-4 bg-black bg-opacity-90 backdrop-blur-lg border-b border-orange-400 border-opacity-20" role="banner">
-        <nav class="container mx-auto px-6" aria-label="Primary">
-                <div class="flex justify-between items-center mb-4">
-                    <div class="flex items-center space-x-4">
-                        <img src="./witchhuntlogo.jpeg" alt="Witch Hunt logotype" loading="lazy" class="h-16 w-auto transform hover:scale-110 transition-transform duration-300" style="filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5));" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="hidden items-center space-x-2"><div class="text-4xl">🔮</div><span class="text-2xl font-bold text-orange-400 hero-title">WITCH HUNT</span></div>
-                    </div>
-                    <button class="md:hidden border border-orange-400 rounded-full px-4 py-2 text-sm tracking-wide" aria-controls="mobileMenu" aria-expanded="false" onclick="toggleMobileMenu(this)">Menu</button>
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="#hero" class="hover:text-orange-400 transition-colors duration-300 font-medium">Home</a>
-                        <a href="#about" class="hover:text-orange-400 transition-colors duration-300 font-medium">About</a>
-                        <a href="#themes" class="hover:text-orange-400 transition-colors duration-300 font-medium">Themes</a>
-                        <a href="#program" class="hover:text-orange-400 transition-colors duration-300 font-medium">Tracks</a>
-                        <a href="#prizes" class="hover:text-orange-400 transition-colors duration-300 font-medium">Prizes</a>
-                        <a href="#contact" class="hover:text-orange-400 transition-colors duration-300 font-medium">Contact</a>
-                        <button onclick="openRegisterModal()" class="bg-orange-500 hover:bg-orange-600 px-8 py-3 rounded-full transition-all duration-300 pulse-glow font-semibold">Register Now</button>
-                    </div>
-                </div>
-                <div id="mobileMenu" class="md:hidden hidden flex-col space-y-4 pb-4 text-center text-lg border-t border-orange-400/30 pt-4">
-                    <a href="#hero" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Home</a>
-                    <a href="#about" class="hover:text-orange-400 transition-colors duration-300 font-medium block">About</a>
-                    <a href="#themes" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Themes</a>
-                    <a href="#program" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Tracks</a>
-                    <a href="#prizes" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Prizes</a>
-                    <a href="#contact" class="hover:text-orange-400 transition-colors duration-300 font-medium block">Contact</a>
-                    <button onclick="openRegisterModal()" class="bg-orange-500 hover:bg-orange-600 px-8 py-3 rounded-full transition-all duration-300 font-semibold w-full">Register Now</button>
-                </div>
-                
-                <div class="flex items-center justify-center space-x-8 pt-3 border-t border-orange-400 border-opacity-20">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-gray-400 text-sm font-medium">In Partnership With:</span>
-                        <div class="flex items-center px-6 py-3 bg-orange-500 bg-opacity-10 rounded-lg border border-orange-400 border-opacity-30 hover:bg-opacity-20 transition-all duration-300">
-                            <img src="./AI4logo.jpeg" alt="AI4India wordmark" loading="lazy" class="h-10 w-auto" style="filter: brightness(1.2);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <span class="text-orange-400 font-bold text-lg hidden">AI4India.org</span>
-                        </div>
-                    </div>
-                    <div class="h-8 w-px bg-orange-400 bg-opacity-30"></div>
-                    <div class="flex items-center space-x-3">
-                        <span class="text-gray-400 text-sm font-medium">Sponsored By:</span>
-                        <div class="flex items-center px-6 py-3 bg-orange-500 bg-opacity-10 rounded-lg border border-orange-400 border-opacity-30 hover:bg-opacity-20 transition-all duration-300">
-                            <img src="./hopeworkslogo.jpeg" alt="Hopeworks Foundation emblem" loading="lazy" class="h-10 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <span class="text-orange-400 font-bold text-lg hidden">Hopeworks Foundation</span>
-                        </div>
-                    </div>
-                </div>
-        </nav>
-        </header>
+	<footer>
+		<div>© 2026 WITCH HUNT — Women In Technology Challenge</div>
+	</footer>
 
-        <main id="hero" class="min-h-screen flex items-center justify-center pt-24 px-6 relative z-10" role="main">
-            <div class="container mx-auto max-w-7xl">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="hero-content">
-                        <div class="inline-block mb-8 px-6 py-3 bg-orange-500 bg-opacity-20 rounded-full border-2 border-orange-400 backdrop-blur-sm">
-                            <p class="text-orange-300 font-semibold text-lg">🗓️ Registration Opens January 24, 2026</p>
-                        </div>
-                        <h1 class="hero-title text-7xl md:text-8xl lg:text-9xl gradient-text mb-8 leading-none">WITCH HUNT</h1>
-                        <h2 class="text-3xl md:text-5xl mb-6 font-bold text-white">Women in Tech Challenge</h2>
-                        <p class="text-xl md:text-2xl mb-10 text-gray-300 leading-relaxed">India's largest women-led hackathon leveraging AI to solve critical social problems. Join <span class="text-orange-400 font-bold">5,000+ women</span> creating impact at scale.</p>
-                        <div class="mb-12">
-                            <div class="countdown-card">
-                                <p class="text-sm uppercase tracking-[0.3em] text-orange-200">Countdown to Launch</p>
-                                <p class="text-2xl md:text-3xl font-semibold text-white mt-2">Event kicks off January 24, 2026</p>
-                                <div class="countdown-grid" id="countdownTimer">
-                                    <div class="countdown-item"><span class="countdown-value" id="countdownDays">00</span><span class="countdown-label">Days</span></div>
-                                    <div class="countdown-item"><span class="countdown-value" id="countdownHours">00</span><span class="countdown-label">Hours</span></div>
-                                    <div class="countdown-item"><span class="countdown-value" id="countdownMinutes">00</span><span class="countdown-label">Minutes</span></div>
-                                    <div class="countdown-item"><span class="countdown-value" id="countdownSeconds">00</span><span class="countdown-label">Seconds</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-3 gap-8 pt-8 border-t border-orange-400 border-opacity-30">
-                            <div class="text-center transform hover:scale-110 transition-transform duration-300"><p class="text-5xl font-bold text-orange-400 mb-2">5K+</p><p class="text-sm text-gray-400 font-medium">Women</p></div>
-                            <div class="text-center transform hover:scale-110 transition-transform duration-300"><p class="text-5xl font-bold text-orange-400 mb-2">₹19L</p><p class="text-sm text-gray-400 font-medium">Prizes</p></div>
-                            <div class="text-center transform hover:scale-110 transition-transform duration-300"><p class="text-5xl font-bold text-orange-400 mb-2">1000</p><p class="text-sm text-gray-400 font-medium">Teams</p></div>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-visual float-animation">
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-700 rounded-3xl opacity-20 blur-3xl"></div>
-                            <div class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl p-12 border-2 border-orange-400 border-opacity-40 shadow-2xl">
-                                <div class="text-center mb-10">
-                                    <div class="w-40 h-40 mx-auto p-4 bg-white rounded-2xl transform hover:scale-110 transition-transform duration-500 shadow-xl">
-                                        <img src="./Witch-Hunt-logo.png.jpg" alt="Witch Hunt badge artwork" loading="lazy" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><br>
-                                        <p> WITCH HUNT <br> <B>COMING SOON </B></p>
-                                        <div class="hidden text-9xl">🔮</div>
-                                    </div>
-                                </div>
-                                <div class="text-center mt-24 scroll-indicator">
-                                    <p class="text-orange-400 mb-4 text-lg font-semibold">Scroll to Explore</p>
-                                    <div class="text-5xl">⬇</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
+	<script>
+		// Countdown to Jan 24, 2026 00:00:00 (local timezone)
+		(function(){
+			const target = new Date('2026-01-24T00:00:00');
+			const $days = document.getElementById('cd-days');
+			const $hours = document.getElementById('cd-hours');
+			const $mins = document.getElementById('cd-mins');
+			const $secs = document.getElementById('cd-secs');
+
+			function update(){
+				const now = new Date();
+				let diff = Math.max(0, target - now);
+				const days = Math.floor(diff / (1000*60*60*24));
+				diff -= days * (1000*60*60*24);
+				const hours = Math.floor(diff / (1000*60*60));
+				diff -= hours * (1000*60*60);
+				const mins = Math.floor(diff / (1000*60));
+				diff -= mins * (1000*60);
+				const secs = Math.floor(diff / 1000);
+
+				$days.textContent = String(days).padStart(2,'0');
+				$hours.textContent = String(hours).padStart(2,'0');
+				$mins.textContent = String(mins).padStart(2,'0');
+				$secs.textContent = String(secs).padStart(2,'0');
+			}
+
+			update();
+			setInterval(update,1000);
+		})();
+	</script>
+<!-- Registration Modal -->
+<div id="registerModal" class="modal-overlay">
+  <div class="modal-card">
     
-    <section id="about" class="py-24 px-6 bg-black relative z-10">
-        <div class="container mx-auto max-w-6xl text-white">
-            <h2 class="hero-title text-5xl text-orange-400 mb-6">About Witch Hunt</h2>
-            <p class="text-lg text-gray-300 max-w-4xl leading-relaxed mb-6">Witch (Women In Technology Challenge) Hunt Hackathon is envisaged to be a movement that changes the narrative of the traditional witch hunt by offering an alternative and more powerful vision—women and girls with intuitive, empathetic, and technical skills emerging as changemakers and leaders in the AI era.</p>
-            <div class="about-highlight text-gray-800">
-                <h3> • EmpowerHer Hackathon: Reimagining Solutions with AI</h3>
-                <p class="text-base leading-relaxed mb-4">The hackathon is designed to ignite the power of girls and women across India to tackle pressing social challenges—Public Education, Climate Action, Public Health &amp; Well‑Being, and Smart Cities—by harnessing the potential of AI and Technology.</p>
-                <h4 class="text-lg font-semibold text-emerald-600 mb-2 text-center"> → Our Core Objectives</h4>
-                <ul class="list-disc list-inside text-base leading-relaxed text-gray-700 space-y-2">
-                    <li>• Deepen understanding of the scale and impact of these challenges.</li>
-                    <li>• Co‑create innovative solutions with stakeholders—academia, policymakers, technologists, social leaders, and corporates—on one collaborative platform.</li>
-                    <li>• Across four months, participants ideate, collaborate, and design solutions that boost both <strong>learning</strong> and <strong>earning</strong> opportunities while expanding their exposure to diverse ecosystems.</li>
-                </ul>
-                <p class="text-base leading-relaxed mt-4 text-gray-700">This hackathon is more than a competition—it’s a movement to reimagine problems, craft bold solutions, and empower women to emerge as changemakers in the AI‑driven world.</p>
-            </div>
-            <p class="text-lg text-gray-300 max-w-4xl leading-relaxed mb-10">Join us in this exciting journey to foster diversity and inclusion in tech while driving meaningful change through cutting-edge technology and collaborative spirit.</p>
-            <div class="about-know-section">
-                <h3 class="text-center text-3xl font-semibold text-yellow-300 mb-8"> Know More About Us</h3>
-                <div class="card-container">
-                    <div class="info-card" data-modal="modal1"><h3>🚀 Outcome of the Hackathon</h3><p>Hands-on experience in building AI-powered solutions and sharpening critical thinking.</p></div>
-                    <div class="info-card" data-modal="modal2"><h3>📈 Scale of the Initiative</h3><p>Targeting <strong>1000 teams</strong> with majority women representation across India.</p></div>
-                    <div class="info-card" data-modal="modal3"><h3>🤝 Inclusive &amp; Equitable Spaces</h3><p>Involving girls from villages and tier-2/3 cities to evolve as AI-literate talent.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="themes" class="py-24 px-6 bg-gradient-to-b from-black to-gray-900 relative z-10">
-        <div class="container mx-auto max-w-7xl">
-            <div class="text-center mb-16">
-                <h2 class="hero-title text-5xl md:text-6xl text-white mb-4">Problem <span class="text-orange-500" style="text-decoration: underline; text-decoration-color: #f97316; text-decoration-thickness: 4px;">Statements</span></h2>
-                <p class="text-xl text-gray-300">Identify solutions and co-create with stakeholders across these key domains.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="theme-card theme-edu">
-                    <div class="watermark">🎓</div>
-                    <div class="icon-box">📖</div>
-                    <h3 class="theme-title">PUBLIC EDUCATION</h3>
-                    <p class="theme-desc">Closing learning gaps and creating virtual labs to democratize access to quality education.</p>
-                </div>
-
-                <div class="theme-card theme-climate">
-                    <div class="watermark">🌿</div>
-                    <div class="icon-box">🌱</div>
-                    <h3 class="theme-title">CLIMATE ACTION</h3>
-                    <p class="theme-desc">Disaster prediction models and climate-resilient farming solutions driven by AI data.</p>
-                </div>
-
-                <div class="theme-card theme-health">
-                    <div class="watermark">⚕️</div>
-                    <div class="icon-box">🏥</div>
-                    <h3 class="theme-title">PUBLIC HEALTH</h3>
-                    <p class="theme-desc">Bridging healthcare gaps with low-cost diagnostics and well-being monitoring systems.</p>
-                </div>
-
-                <div class="theme-card theme-cities">
-                    <div class="watermark">🏢</div>
-                    <div class="icon-box">🏙️</div>
-                    <h3 class="theme-title">SMART CITIES</h3>
-                    <p class="theme-desc">Enhancing safety through crime prevention algorithms and intelligent traffic management.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="modal1" class="modal"><div class="modal-content"><span class="close">&times;</span><h3>🚀 Outcome of the Hackathon</h3><p>Participants gain hands-on experience in building AI-powered solutions, explore real-world applications, and sharpen critical thinking. With mentorship, training, and sector-specific guidance, they discover how technology can transform education, health, climate, and smart cities.</p></div></div>
-    <div id="modal2" class="modal"><div class="modal-content"><span class="close">&times;</span><h3>📈 Scale of the Initiative</h3><p>Targeting <strong>1000 teams</strong> with majority women representation, this initiative includes girls who are unreached, underserved, and under-resourced across India. Led by HopeWorks Foundation, it’s a nationwide movement to democratize innovation.</p></div></div>
-    <div id="modal3" class="modal"><div class="modal-content"><span class="close">&times;</span><h3>🤝 Inclusive &amp; Equitable Spaces</h3><p>By involving girls from villages and tier-2/3 cities, every phase of the hackathon becomes a gateway to learning and growth. Beneficiaries of HopeWorks Foundation evolve into an AI-literate, future-ready talent base shaping India’s next generation of changemakers.</p></div></div>
-    
-    <section id="program" class="py-24 px-6 bg-black relative z-10">
-        <div class="container mx-auto max-w-5xl">
-            <h2 class="hero-title text-5xl text-orange-400 mb-6">Program Tracks</h2>
-            <div class="space-y-6">
-                <div class="stat-card p-6 rounded-2xl flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div><p class="text-sm uppercase tracking-[0.3em] text-orange-300 mb-2">Track 01</p><h3 class="text-3xl font-bold text-white">AI for Public Health</h3></div>
-                    <p class="text-gray-400 mt-4 md:mt-0 md:max-w-sm">Rapid diagnostics, maternal health monitoring, and inclusive care assistants.</p>
-                </div>
-                <div class="stat-card p-6 rounded-2xl flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div><p class="text-sm uppercase tracking-[0.3em] text-orange-300 mb-2">Track 02</p><h3 class="text-3xl font-bold text-white">Climate Resilience</h3></div>
-                    <p class="text-gray-400 mt-4 md:mt-0 md:max-w-sm">Forecasting, agri-intelligence, and community-led adaptation tools.</p>
-                </div>
-                <div class="stat-card p-6 rounded-2xl flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div><p class="text-sm uppercase tracking-[0.3em] text-orange-300 mb-2">Track 03</p><h3 class="text-3xl font-bold text-white">Civic & Safety Tech</h3></div>
-                    <p class="text-gray-400 mt-4 md:mt-0 md:max-w-sm">Legal literacy, incident reporting, and financial inclusion for women.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="prizes" class="py-24 px-6 bg-black relative z-10">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="hero-title text-5xl text-orange-400 mb-12 text-center">Awards & Prizes</h2>
-            <div class="flex justify-center mb-16">
-                <div class="inline-block px-8 py-4 bg-orange-500 bg-opacity-10 rounded-full border border-orange-400 border-opacity-50 backdrop-blur-md">
-                    <span class="text-2xl md:text-3xl font-bold text-white">Total Prize Pool: <span class="text-orange-400">₹ 19,00,000</span></span>
-                </div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="stat-card p-8 rounded-2xl text-center flex flex-col items-center justify-center relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-b from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-300">🏆</div>
-                    <h3 class="text-2xl font-bold text-white mb-2 font-orbitron">Winners</h3>
-                    <div class="text-4xl font-bold text-orange-400 mb-2">₹ 2.5 Lakhs</div>
-                    <p class="text-gray-400 text-sm uppercase tracking-widest mb-4">Per Theme (4 Teams)</p>
-                    <div class="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">Total: ₹ 10,00,000</div>
-                </div>
-                <div class="stat-card p-8 rounded-2xl text-center flex flex-col items-center justify-center relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-b from-gray-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-300">🥈</div>
-                    <h3 class="text-2xl font-bold text-white mb-2 font-orbitron">Runners Up</h3>
-                    <div class="text-4xl font-bold text-orange-400 mb-2">₹ 1.0 Lakh</div>
-                    <p class="text-gray-400 text-sm uppercase tracking-widest mb-4">Per Team (4 Teams)</p>
-                    <div class="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">Total: ₹ 4,00,000</div>
-                </div>
-                <div class="stat-card p-8 rounded-2xl text-center flex flex-col items-center justify-center relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-300">🌟</div>
-                    <h3 class="text-2xl font-bold text-white mb-2 font-orbitron">Special Mention</h3>
-                    <div class="text-4xl font-bold text-orange-400 mb-2">₹ 50,000</div>
-                    <p class="text-gray-400 text-sm uppercase tracking-widest mb-4">Per Team (8 Teams)</p>
-                    <div class="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">Total: ₹ 4,00,000</div>
-                </div>
-            </div>
-            <div class="mt-16 text-center">
-                <p class="text-gray-300 text-lg bg-white/5 inline-block px-8 py-3 rounded-full border border-white/10"><span class="mr-2">📜</span> All participants receive Trophies & Certificates (Total value: ₹ 1,00,000)</p>
-            </div>
-        </div>
-    </section>
-    
-    <section id="contact" class="py-24 px-6 bg-black relative z-10">
-        <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="hero-title text-5xl text-orange-400 mb-6">Stay in Touch</h2>
-            <p class="text-gray-300 mb-12">Have questions about eligibility, partnerships, or volunteering? Drop us a note and the team will respond within two working days.</p>
-            <a href="mailto:info@witchhunt.org" class="inline-flex items-center justify-center px-10 py-4 rounded-full border border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-white transition-all duration-300">info@witchhunt.org</a>
-        </div>
-    </section>
-
-    <div class="chatbot-button" onclick="toggleChatbot()"><div class="text-4xl text-white">💬</div></div>
-    <div class="chatbot-window" id="chatbotWindow" role="dialog" aria-modal="true" aria-labelledby="chatbotTitle" aria-live="polite">
-        <div class="chatbot-header"><div><h3 id="chatbotTitle" class="text-white font-bold text-lg">Witch Hunt Assistant</h3><p class="text-white text-xs opacity-80">Ask us anything!</p></div><div class="chatbot-close" onclick="toggleChatbot()">✕</div></div>
-        <div class="chatbot-messages" id="chatMessages"><div class="mb-4 p-4 bg-orange-500 bg-opacity-20 rounded-2xl rounded-tl-none border border-orange-400 border-opacity-30"><p class="text-white text-sm">👋 Hi! I'm your Witch Hunt assistant. How can I help you today?</p></div></div>
-        <form class="chatbot-input-area" onsubmit="handleChatInput(event)"><label class="sr-only" for="chatInput">Send a message</label><div class="flex space-x-2"><input id="chatInput" type="text" placeholder="Type your message..." class="chatbot-input" autocomplete="off"><button type="submit" class="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition">Send</button></div></form>
+    <div class="modal-header">
+      <h3>Hackathon Registration</h3>
+      <button class="modal-close" onclick="closeRegisterModal()">×</button>
     </div>
 
-    <div id="registerModal" class="reg-modal">
-        <div class="reg-modal-content">
-            <div class="reg-header">
-                <h3 class="text-2xl font-bold text-orange-400 hero-title">Hackathon Registration</h3>
-                <button onclick="closeRegisterModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
-            </div>
-            <div class="reg-body">
-                <form id="hackathonForm" onsubmit="handleRegistration(event)">
-                    <div class="form-group"><label class="form-label">Full Name <span>*</span></label><input type="text" class="form-input" placeholder="Enter your full name" required></div>
-                    <div class="form-group"><label class="form-label">Email Address <span>*</span></label><input type="email" class="form-input" placeholder="Enter your email" required></div>
-                    <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" placeholder="Enter your phone number"></div>
-                    <div class="form-group"><label class="form-label">University or Company</label><input type="text" class="form-input" placeholder="Enter your university or company name"></div>
+    <form class="modal-form">
 
-                    <div class="form-group">
-                        <label class="form-label">ID Proof (PDF/Doc/Image, Max 5MB) <span>*</span></label>
-                        <input type="file" id="idProof" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" class="form-input" required onchange="validateFileSize(this)">
-                        <p id="fileError" class="text-red-500 text-sm mt-2 hidden">File size exceeds 5MB limit. Please upload a smaller file.</p>
-                    </div>
+      <label>
+        Full Name*
+        <input type="text" placeholder="Enter your full name" required>
+      </label>
 
-                    <div class="form-group">
-                        <label class="form-label">Are you registering as an individual or a team? <span>*</span></label>
-                        <div class="radio-group">
-                            <label class="radio-option"><input type="radio" name="regType" value="individual" checked onchange="toggleTeamFields()"><div class="radio-tile">A Individual</div></label>
-                            <label class="radio-option"><input type="radio" name="regType" value="team" onchange="toggleTeamFields()"><div class="radio-tile">B Team</div></label>
-                        </div>
-                    </div>
-                    <div id="teamFields" class="form-group hidden"><label class="form-label">Team Name</label><input type="text" class="form-input" placeholder="Enter your team name"></div>
-                    <div class="form-group">
-                        <label class="form-label">Experience Level <span>*</span></label>
-                        <div class="space-y-2">
-                            <label class="radio-option block"><input type="radio" name="experience" value="beginner" required><div class="radio-tile justify-start px-4">A Beginner</div></label>
-                            <label class="radio-option block"><input type="radio" name="experience" value="intermediate"><div class="radio-tile justify-start px-4">B Intermediate</div></label>
-                            <label class="radio-option block"><input type="radio" name="experience" value="advanced"><div class="radio-tile justify-start px-4">C Advanced</div></label>
-                        </div>
-                    </div>
-                    <div class="form-group"><label class="form-label">Skills and Technologies</label><input type="text" class="form-input" placeholder="e.g. Python, React, AI/ML..."></div>
-                    <div class="form-group"><label class="form-label">Project Idea (if any)</label><textarea class="form-input h-24" placeholder="Describe your project idea"></textarea></div>
-                    <button type="submit" id="submitBtn" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-[1.02]">Submit Registration</button>
-                </form>
+      <label>
+        College/Corporate Email Address*
+        <input type="email" placeholder="Enter your college or corporate email" required>
+      </label>
 
-                <div id="successMessage" class="hidden text-center py-10">
-                    <div class="text-6xl mb-4">🎉</div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Thank You for Registering!</h3>
-                    <p class="text-gray-400">We have received your registration. We will contact you with further details soon.</p>
-                    <button onclick="closeRegisterModal()" class="mt-8 px-6 py-2 border border-orange-400 text-orange-400 rounded-full hover:bg-orange-400 hover:text-white transition">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+      <label>
+        Team Members (Names & Emails)
+        <textarea placeholder="Enter names and emails (e.g., Jane Doe: jane@corp.com, Ali Khan: ali@college.edu)"></textarea>
+        <small>A maximum of 4 members per team (including yourself) is allowed.</small>
+      </label>
 
-    <script>
-        function skipWelcome() {
-            const welcome = document.querySelector('.welcome-screen');
-            welcome.style.animation = 'fadeOutWelcome 0.4s ease-out forwards';
-        }
-        
-        // Fire effect
-        const fireContainer = document.getElementById('fireContainer');
-        for (let i = 0; i < 30; i++) {
-            const flame = document.createElement('div');
-            flame.className = 'flame';
-            flame.style.left = Math.random() * 100 + '%';
-            flame.style.animationDelay = Math.random() * 3 + 's';
-            flame.style.animationDuration = (Math.random() * 2 + 2) + 's';
-            fireContainer.appendChild(flame);
-        }
-        for (let i = 0; i < 50; i++) {
-            const ember = document.createElement('div');
-            ember.className = 'ember';
-            ember.style.left = Math.random() * 100 + '%';
-            ember.style.animationDelay = Math.random() * 4 + 's';
-            ember.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            fireContainer.appendChild(ember);
-        }
-        
-        // Particles
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 10 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            particlesContainer.appendChild(particle);
-        }
-        
-        // Chatbot
-        function toggleChatbot() {
-            const chatWindow = document.getElementById('chatbotWindow');
-            chatWindow.classList.toggle('active');
-            if (chatWindow.classList.contains('active')) document.getElementById('chatInput').focus();
-        }
-        
-        function appendMessage(text, type) {
-            const messagesContainer = document.getElementById('chatMessages');
-            const wrapper = document.createElement('div');
-            wrapper.className = type === 'user'
-                ? 'mb-4 p-4 bg-white bg-opacity-10 rounded-2xl rounded-tr-none border border-white border-opacity-20 ml-12'
-                : 'mb-4 p-4 bg-orange-500 bg-opacity-20 rounded-2xl rounded-tl-none border border-orange-400 border-opacity-30';
-            const paragraph = document.createElement('p');
-            paragraph.className = 'text-white text-sm';
-            paragraph.textContent = text;
-            wrapper.appendChild(paragraph);
-            messagesContainer.appendChild(wrapper);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-        
-        function handleChatInput(event) {
-            event.preventDefault();
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            if (message) {
-                appendMessage(message, 'user');
-                input.value = '';
-                setTimeout(() => {
-                    appendMessage('Thanks for your message! For detailed information about the Witch Hunt hackathon, please check our website sections or contact us at info@witchhunt.org', 'bot');
-                }, 600);
-            }
-        }
-        
-        function toggleMobileMenu(button) {
-            const menu = document.getElementById('mobileMenu');
-            const expanded = button.getAttribute('aria-expanded') === 'true';
-            button.setAttribute('aria-expanded', (!expanded).toString());
-            menu.classList.toggle('hidden');
-        }
+      <label>
+        Photo of College/Company ID & Masked Aadhaar (Max 5MB) *
+        <input type="file" required>
+      </label>
 
-        // REGISTRATION FORM LOGIC
-        function openRegisterModal() { document.getElementById('registerModal').style.display = 'flex'; }
-        function closeRegisterModal() { document.getElementById('registerModal').style.display = 'none'; }
-        
-        function toggleTeamFields() {
-            const teamFields = document.getElementById('teamFields');
-            const isTeam = document.querySelector('input[name="regType"][value="team"]').checked;
-            if (isTeam) { teamFields.classList.remove('hidden'); } else { teamFields.classList.add('hidden'); }
-        }
+      <button type="submit" class="btn btn-primary modal-submit">
+        Submit Registration
+      </button>
 
-        // NEW: File Size Validation
-        function validateFileSize(input) {
-            const fileSize = input.files[0].size / 1024 / 1024; // in MB
-            const errorMsg = document.getElementById('fileError');
-            const submitBtn = document.getElementById('submitBtn');
-            
-            if (fileSize > 5) {
-                errorMsg.classList.remove('hidden');
-                input.value = ""; // Clear the input
-                submitBtn.disabled = true;
-                submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-            } else {
-                errorMsg.classList.add('hidden');
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-            }
-        }
+    </form>
+  </div>
+</div>
 
-        function handleRegistration(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
-            if (btn.disabled) return; // Prevent submission if file validation failed
+<script>
+  function openRegisterModal() {
+    document.getElementById('registerModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
-            const originalText = btn.textContent;
-            btn.textContent = 'Submitting...';
-            btn.disabled = true;
+  function closeRegisterModal() {
+    document.getElementById('registerModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
-            setTimeout(() => {
-                document.getElementById('hackathonForm').classList.add('hidden');
-                document.getElementById('successMessage').classList.remove('hidden');
-                btn.textContent = originalText;
-                btn.disabled = false;
-            }, 1500);
-        }
+  // Close modal when clicking outside
+  document.getElementById('registerModal').addEventListener('click', function(e) {
+    if (e.target === this) closeRegisterModal();
+  });
+</script>
 
-        window.onclick = function(event) {
-            const regModal = document.getElementById('registerModal');
-            if (event.target == regModal) { closeRegisterModal(); }
-            
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => { if (event.target === modal) modal.style.display = 'none'; });
-        }
-        
-        // Countdown
-        const countdownTimer = document.getElementById('countdownTimer');
-        if (countdownTimer) {
-            const countdownTargets = {
-                days: document.getElementById('countdownDays'), hours: document.getElementById('countdownHours'),
-                minutes: document.getElementById('countdownMinutes'), seconds: document.getElementById('countdownSeconds'),
-            };
-            const eventDate = new Date('2026-01-24T09:00:00+05:30').getTime();
-            let countdownInterval;
-            const updateCountdown = () => {
-                const now = Date.now();
-                let distance = eventDate - now;
-                if (distance <= 0) {
-                    distance = 0; if (countdownInterval) clearInterval(countdownInterval);
-                }
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                countdownTargets.days.textContent = String(days).padStart(2, '0');
-                countdownTargets.hours.textContent = String(hours).padStart(2, '0');
-                countdownTargets.minutes.textContent = String(minutes).padStart(2, '0');
-                countdownTargets.seconds.textContent = String(seconds).padStart(2, '0');
-            };
-            updateCountdown();
-            countdownInterval = setInterval(updateCountdown, 1000);
-        }
-        
-        // About & Modal Logic
-        const infoCards = document.querySelectorAll('.info-card');
-        const aboutObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.2 }) : null;
-        if (aboutObserver) { infoCards.forEach(card => aboutObserver.observe(card)); } else { infoCards.forEach(card => card.classList.add('visible')); }
-        
-        const closeButtons = document.querySelectorAll('.modal .close');
-        infoCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const modalId = card.getAttribute('data-modal');
-                const modal = document.getElementById(modalId);
-                if (modal) modal.style.display = 'flex';
-            });
-        });
-        closeButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const modal = btn.closest('.modal');
-                if (modal) modal.style.display = 'none';
-            });
-        });
-    </script>
+
 </body>
 </html>
