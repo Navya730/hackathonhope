@@ -772,7 +772,7 @@
                     </div>
                     <div class="team-member">
 						<div class="member-avatar">
-                                <img src="speaker11.jpg" alt="Kaajal Ahuja">
+                                <img src="Member11.jpg" alt="Kaajal Ahuja">
                         </div>
 						<div class="member-name">Kaajal Ahuja</div>
 						<div class="member-role">Member, Tech Track</div>
@@ -880,6 +880,8 @@
 	</footer>
 
 	<script>
+		const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpc4zHLJTTUPd2CUKiuITxfCWsps-ggYW1326pRxJH32-dx9xFNcUhrIdIzQZrTNf2/exec";
+
 		// Countdown to Jan 24, 2026 00:00:00 (local timezone)
 		(function(){
 			const target = new Date('2026-01-24T00:00:00');
@@ -918,34 +920,54 @@
       <button class="modal-close" onclick="closeRegisterModal()">×</button>
     </div>
 
-    <form class="modal-form">
+	<form id="hackathonForm" class="modal-form" onsubmit="handleRegistration(event)">
 
-      <label>
-        Full Name*
-        <input type="text" placeholder="Enter your full name" required>
-      </label>
+  <label>
+    Full Name*
+    <input
+      type="text"
+      name="full_name"
+      placeholder="Enter your full name"
+      required
+    >
+  </label>
 
-      <label>
-        College/Corporate Email Address*
-        <input type="email" placeholder="Enter your college or corporate email" required>
-      </label>
+  <label>
+    College/Corporate Email Address*
+    <input
+  type="email"
+  name="email"
+  placeholder="Enter your college or corporate email"
+  required
+>
 
-      <label>
-        Team Members (Names & Emails)
-        <textarea placeholder="Enter names and emails (e.g., Jane Doe: jane@corp.com, Ali Khan: ali@college.edu)"></textarea>
-        <small>A maximum of 4 members per team (including yourself) is allowed.</small>
-      </label>
+  </label>
 
-      <label>
-        Photo of College/Company ID & Masked Aadhaar (Max 5MB) *
-        <input type="file" required>
-      </label>
+  <label>
+    Team Members (Names & Emails)
+    <textarea
+      name="team_members"
+      placeholder="Enter names and emails (e.g., Jane Doe: jane@corp.com)"
+    ></textarea>
+    <small>A maximum of 4 members per team (including yourself) is allowed.</small>
+  </label>
 
-      <button type="submit" class="btn btn-primary modal-submit">
-        Submit Registration
-      </button>
+  <label>
+    Photo of College/Company ID & Masked Aadhaar (Max 5MB) *
+    <input
+      type="file"
+      name="id_proof"
+      required
+    >
+  </label>
 
-    </form>
+  <button id="submitBtn" type="submit" class="btn btn-primary modal-submit">
+    Submit Registration
+  </button>
+
+</form>
+
+
   </div>
 </div>
 
@@ -964,13 +986,69 @@
   document.getElementById('registerModal').addEventListener('click', function(e) {
     if (e.target === this) closeRegisterModal();
   });
-</script>
 
-<script>
   function toggleMenu() {
     const nav = document.getElementById("mainNav");
     nav.classList.toggle("active");
   }
+
+
+function handleRegistration(e) {
+  e.preventDefault();
+
+  const form = document.getElementById("hackathonForm");
+  const btn = document.getElementById("submitBtn");
+
+  const formData = new FormData(form);
+
+  btn.textContent = "Submitting...";
+  btn.disabled = true;
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(response => {
+    if (response === "success") {
+      form.classList.add("hidden");
+      document.getElementById("successMessage").classList.remove("hidden");
+    } 
+    else if (response === "duplicate") {
+      alert("This email is already registered.");
+    } 
+    else {
+      alert("Error: " + response);
+    }
+  })
+  .catch(err => {
+    alert("Submission failed. Please try again.");
+    console.error(err);
+  })
+  .finally(() => {
+    btn.textContent = "Submit Registration";
+    btn.disabled = false;
+  });
+}
+
+
+
+
+        window.onclick = function(event) { const regModal = document.getElementById('registerModal'); if (event.target == regModal) { closeRegisterModal(); } const modals = document.querySelectorAll('.modal'); modals.forEach(modal => { if (event.target === modal) modal.style.display = 'none'; }); }
+        const countdownTimer = document.getElementById('countdownTimer'); if (countdownTimer) { const countdownTargets = { days: document.getElementById('countdownDays'), hours: document.getElementById('countdownHours'), minutes: document.getElementById('countdownMinutes'), seconds: document.getElementById('countdownSeconds'), }; const eventDate = new Date('2026-01-24T09:00:00+05:30').getTime(); let countdownInterval; const updateCountdown = () => { const now = Date.now(); let distance = eventDate - now; if (distance <= 0) { distance = 0; if (countdownInterval) clearInterval(countdownInterval); } const days = Math.floor(distance / (1000 * 60 * 60 * 24)); const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); const seconds = Math.floor((distance % (1000 * 60)) / 1000); countdownTargets.days.textContent = String(days).padStart(2, '0'); countdownTargets.hours.textContent = String(hours).padStart(2, '0'); countdownTargets.minutes.textContent = String(minutes).padStart(2, '0'); countdownTargets.seconds.textContent = String(seconds).padStart(2, '0'); }; updateCountdown(); countdownInterval = setInterval(updateCountdown, 1000); }
+        const infoCards = document.querySelectorAll('.info-card'); const aboutObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.2 }) : null; if (aboutObserver) { infoCards.forEach(card => aboutObserver.observe(card)); } else { infoCards.forEach(card => card.classList.add('visible')); }
+        const closeButtons = document.querySelectorAll('.modal .close'); infoCards.forEach(card => { card.addEventListener('click', () => { const modalId = card.getAttribute('data-modal'); const modal = document.getElementById(modalId); if (modal) modal.style.display = 'flex'; }); }); closeButtons.forEach(btn => { btn.addEventListener('click', () => { const modal = btn.closest('.modal'); if (modal) modal.style.display = 'none'; }); });
+
+        // Back to top scroll visibility logic
+        window.addEventListener('scroll', function() {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
 </script>
 
 
