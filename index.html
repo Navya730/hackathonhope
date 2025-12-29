@@ -110,16 +110,125 @@
 		.timeline-content h3{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:8px}
 		.timeline-content p{color:var(--gray-600);font-size:14px}
 
+		/* Scroll container */
+.timeline-wrapper {
+  max-height: 520px;           /* ⬅️ controls visible height */
+  overflow-y: auto;
+  padding-right: 12px;         /* space for scrollbar */
+  position: relative;
+}
+
+/* Smooth scrolling */
+.timeline-wrapper {
+  scroll-behavior: smooth;
+}
+
+/* Optional: nicer scrollbar (Webkit browsers) */
+.timeline-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.timeline-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--primary),
+    var(--accent)
+  );
+  border-radius: 10px;
+}
+
+.timeline-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.timeline {
+  position: relative;
+}
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    max-height: 420px;
+  }
+}
+
+
         
 		/* Team */
-		#team{background:linear-gradient(135deg,#fff9f5 0%,#fef8fb 100%)}
-		.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
-		.team-member{background:white;padding:24px;border-radius:16px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.04);transition:all 0.3s;border:1px solid var(--gray-200)}
-		.team-member:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
-		.member-avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-size:36px;font-weight:700;margin:0 auto 16px}
-		.member-name{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:4px}
-		.member-role{font-size:13px;color:var(--primary);font-weight:600;margin-bottom:12px}
-		.member-bio{font-size:13px;color:var(--gray-600);line-height:1.5}
+		/* Horizontal scroll container */
+.team-scroll {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  padding: 32px 8px 20px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide ugly scrollbar (optional) */
+.team-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.team-scroll::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 10px;
+}
+
+/* Bigger team card */
+.team-member {
+  flex: 0 0 300px;              /* ⬅️ bigger card */
+  background: #fff;
+  border-radius: 24px;
+  padding: 28px 20px 32px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  border: 1px solid var(--gray-200);
+  scroll-snap-align: start;
+  transition: 
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Hover effect (desktop only feel) */
+.team-member:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.14);
+}
+
+/* BIG avatar */
+.member-avatar {
+  width: 200px;                /* ⬅️ bigger photo */
+  height: 200px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Subtle image zoom on hover */
+.team-member:hover .member-avatar img {
+  transform: scale(1.08);
+}
+
+/* Image styling */
+.member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Text */
+.member-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+.member-role {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
 
 		/* Awards */
 		#awards{background:linear-gradient(135deg,#fff5f8 0%,#fef7fb 100%)}
@@ -637,6 +746,7 @@
 					<h2>Event Roadmap</h2>
 					<p>Your journey from registration to demo day</p>
 				</div>
+				<div class="timeline-wrapper">
 				<div class="timeline">
 					<div class="timeline-item">
 						<div class="timeline-marker"></div>
@@ -679,6 +789,7 @@
 						</div>
 					</div>
 				</div>
+				</div>
 			</div>
 		</section>
 
@@ -688,7 +799,7 @@
 					<h2>Meet Our Team</h2>
 					<p>The dedicated organizers, mentors, and judges driving WITCH HUNT</p>
 				</div>
-				<div class="team-grid">
+				<div class="team-scroll">
 					<div class="team-member">
 						<div class="member-avatar">
                                 <img src="speaker1.jpg" alt="Chithra Gurjar">
@@ -696,7 +807,6 @@
 
 						<div class="member-name">Chithra Gurjar</div>
 						<div class="member-role">Chair</div>
-						<div class="member-bio">Tech entrepreneur with 12+ years in AI education. Passionate about women's empowerment in technology.</div>
 					</div>
 					<div class="team-member">
 						<div class="member-avatar">
@@ -704,7 +814,6 @@
                         </div>
 						<div class="member-name">Neeraja Ganesh</div>
 						<div class="member-role">Co-Chair</div>
-						<div class="member-bio">Expert in organizing large-scale hackathons. Former product lead at tech unicorns.</div>
 					</div>
 					<div class="team-member">
 						<div class="member-avatar">
@@ -712,7 +821,6 @@
                         </div>
 						<div class="member-name">Varsha Verma</div>
 						<div class="member-role">Co-Chair</div>
-						<div class="member-bio">ML engineer and researcher. Published author on AI ethics and inclusive technology.</div>
 					</div>
 					<div class="team-member">
 						<div class="member-avatar">
@@ -720,7 +828,6 @@
                         </div>
 						<div class="member-name">Noella D'Souza Coutinho</div>
 						<div class="member-role">Chief of Staff</div>
-						<div class="member-bio">Strategic partnerships expert. Built collaborations with Fortune 500 companies.</div>
 					</div>
 					<div class="team-member">
 						<div class="member-avatar">
@@ -728,7 +835,6 @@
                         </div>
 						<div class="member-name">Sanjay Kumar</div>
 						<div class="member-role">Finance Controller</div>
-						<div class="member-bio">Community builder and educator. Mentored 500+ women in technology careers.</div>
 					</div>
 					<div class="team-member">
 						<div class="member-avatar">
@@ -736,7 +842,6 @@
                         </div>
 						<div class="member-name">Shanmugapriya Gnanasekara</div>
 						<div class="member-role">Head of PMO</div>
-						<div class="member-bio">Digital marketing strategist with expertise in tech events and community outreach.</div>
 					</div>
 					<div class="team-member">
 						<div class="member-avatar">
@@ -744,7 +849,6 @@
                         </div>
 						<div class="member-name">Dr. Muthukumaraswamy B</div>
 						<div class="member-role">Lead, Tech Track</div>
-						<div class="member-bio">AI researcher and professor. Advisory board member at leading tech institutions.</div>
 					</div>
 					<div class="team-member">
 						<div class="member-avatar">
@@ -752,7 +856,6 @@
                         </div>
 						<div class="member-name">Bhuvana Subramanyan</div>
 						<div class="member-role">Head, Marketing & Outreach</div>
-						<div class="member-bio">Event operations specialist. Managed 50+ national and international tech events.</div>
 					</div>
 					<div class="team-member">
 						<div class="member-avatar">
@@ -760,7 +863,6 @@
                         </div>
 						<div class="member-name">Riththika</div>
 						<div class="member-role">Young women community outreach</div>
-						<div class="member-bio">Tech writer and curriculum designer. Created learning programs for 10,000+ students.</div>
 					</div>
 					<div class="team-member">
 						<div class="member-avatar">
@@ -768,7 +870,6 @@
                         </div>
 						<div class="member-name">Yasmeen MS</div>
 						<div class="member-role">Member, Tech Track</div>
-						<div class="member-bio">Community engagement expert. Built vibrant tech communities across India.</div>
                     </div>
                     <div class="team-member">
 						<div class="member-avatar">
@@ -776,7 +877,6 @@
                         </div>
 						<div class="member-name">Kaajal Ahuja</div>
 						<div class="member-role">Member, Tech Track</div>
-						<div class="member-bio">Community engagement expert. Built vibrant tech communities across India.</div>
                     </div>
                 </div>
             </div>
@@ -825,8 +925,8 @@
 		<section id="register">
 			<div class="section-inner">
 				<h2 style="color:var(--black-rock);margin:0 0 8px">Register</h2>
-				<p style="margin:0 0 12px">Registrations open soon — sign up to receive updates.</p>
-				<a class="btn" href="#">Notify Me</a>
+				<p style="margin:0 0 12px">Registrations open now! — sign up to receive updates.</p>
+				<button class="btn btn-primary" onclick="openRegisterModal()">Register Now</button>
 			</div>
 		</section>
 	</main>
@@ -926,7 +1026,7 @@
     Full Name*
     <input
       type="text"
-      name="full_name"
+      name="name"
       placeholder="Enter your full name"
       required
     >
