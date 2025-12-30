@@ -745,6 +745,142 @@
 
 .highlight-witch {  color: #7c3aed;   font-weight: 700;}
 
+.team-section {
+  position: relative;   /* REQUIRED */
+  padding: 64px 24px;
+}
+
+
+.team-section::after {
+  content: "➜";
+  position: absolute;
+  right: 16px;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* doesn't block scroll */
+  animation: nudgeRight 1.6s ease-in-out infinite;
+  z-index: 5;
+}
+
+/* subtle movement */
+@keyframes nudgeRight {
+  0%   { transform: translateY(-50%) translateX(0); }
+  50%  { transform: translateY(-50%) translateX(-6px); }
+  100% { transform: translateY(-50%) translateX(0); }
+}
+
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+/* Horizontal scroll */
+.speaker-scroll {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  padding-bottom: 24px;
+  scroll-snap-type: x mandatory;
+}
+
+.speaker-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.speaker-details {
+  min-height: auto;
+  height: auto;
+}
+
+/* Card */
+.speaker-card {
+  width: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  background:  rgba(124,58,237,0.25);; /* dark card base */
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.speaker-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(124,58,237,0.25);
+}
+
+/* Image */
+.speaker-image {
+  height: 320px;
+  background: radial-gradient(circle at center, #d946ef, #6b21a8);
+}
+
+.speaker-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Details block (THIS is the key part) */
+.speaker-details {
+  position: relative;
+  padding: 16px;
+  background: linear-gradient(
+    135deg,
+    #3b0a45,
+    #1e0b2c
+  );
+  color: #fff;
+}
+
+.speaker-details h3 {
+  margin: 0 0 4px;
+}
+
+
+.speaker-details .role {
+  margin: 0;
+}
+
+
+/* .speaker-details .company {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 4px;
+} */
+
+/* LinkedIn icon */
+.linkedin {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+
 
 	</style>
 </head>
@@ -932,94 +1068,164 @@
 			</div>
 		</section>
 
-		<section id="team">
-			<div class="container">
-				<div class="section-header">
+<section class="team-section">
+  <div class="section-header">
 					<h2>Meet Our Team</h2>
 					<p>The dedicated organizers, mentors, and judges driving WITCH HUNT</p>
-				</div>
-				<div class="team-scroll">
-					<div class="team-member">
-						<div class="member-avatar">
-                                <img src="speaker1.jpg" alt="Chithra Gurjar">
-                        </div>
+	</div>
 
-						<div class="member-name">Chithra Gurjar</div>
-						<div class="member-role">Chair</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar">
-                                <img src="speaker2.jpg" alt="Chithra Gurjar">
-                        </div>
-						<div class="member-name">Neeraja Ganesh</div>
-						<div class="member-role">Co-Chair</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar">
-                                <img src="speaker3.jpg" alt="Chithra Gurjar">
-                        </div>
-						<div class="member-name">Varsha Verma</div>
-						<div class="member-role">Co-Chair</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar">
-                                <img src="speaker4.jpg" alt="Chithra Gurjar">
-                        </div>
-						<div class="member-name">Noella D'Souza Coutinho</div>
-						<div class="member-role">Chief of Staff</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar">
-                                <img src="speaker5.jpg" alt="Chithra Gurjar">
-                        </div>
-						<div class="member-name">Sanjay Kumar</div>
-						<div class="member-role">Finance Controller</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar">
-                                <img src="speaker6.jpg" alt="Chithra Gurjar">
-                        </div>
-						<div class="member-name">Shanmugapriya Gnanasekara</div>
-						<div class="member-role">Head of PMO</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar">
-                                <img src="speaker7.jpg" alt="Chithra Gurjar">
-                        </div>
-						<div class="member-name">Dr. Muthukumaraswamy B</div>
-						<div class="member-role">Lead, Tech Track</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar">
-                                <img src="speaker8.jpg" alt="Chithra Gurjar">
-                        </div>
-						<div class="member-name">Bhuvana Subramanyan</div>
-						<div class="member-role">Head, Marketing & Outreach</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar">
-                                <img src="speaker9.jpg" alt="Chithra Gurjar">
-                        </div>
-						<div class="member-name">Riththika</div>
-						<div class="member-role">Young women community outreach</div>
-					</div>
-					<div class="team-member">
-						<div class="member-avatar">
-                                <img src="speaker10.jpg" alt="Chithra Gurjar">
-                        </div>
-						<div class="member-name">Yasmeen MS</div>
-						<div class="member-role">Member, Tech Track</div>
-                    </div>
-                    <div class="team-member">
-						<div class="member-avatar">
-                                <img src="Member11.jpg" alt="Kaajal Ahuja">
-                        </div>
-						<div class="member-name">Kaajal Ahuja</div>
-						<div class="member-role">Member, Tech Track</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <div class="speaker-scroll">
+
+    <div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker1.jpg" alt="Chithra Gurjar">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Chithra Gurjar</h3>
+        <p class="role">CHAIR</p>
+        <!-- <p class="company"> </p> -->
+
+        <a href="https://www.linkedin.com/in/chitra-gurjar/" class="linkedin">in</a>
+      </div>
+    </div>
+
+    <div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker2.jpg" alt="Neeraja Ganesh">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Neeraja Ganesh</h3>
+        <p class="role">CO-CHAIR</p>
+
+        <a href="https://www.linkedin.com/in/neeraja-ganesh/" class="linkedin">in</a>
+      </div>
+    </div>
+
+	 <div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker3.jpg" alt="Varsha Verma">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Varsha Verma</h3>
+        <p class="role">CO-CHAIR</p>
+        <a href="#" class="linkedin">in</a>
+      </div>
+    </div>
+	 <div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker4.jpg" alt="Noella D'Souza Coutinho">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Noella D'Souza Coutinho</h3>
+        <p class="role">Chief of Staff</p>
+
+        <a href="#" class="linkedin">in</a>
+      </div>
+    </div>
+
+
+	 <div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker5.jpg" alt="Sanjay Kumar">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Sanjay Kumar</h3>
+        <p class="role">Finance Controller</p>
+
+        <a href="#" class="linkedin">in</a>
+      </div>
+    </div>
+
+
+	 <div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker6.jpg" alt="Shanmugapriya Gnanasekara">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Shanmugapriya Gnanasekara</h3>
+        <p class="role">Head of PMO</p>
+
+        <a href="#" class="linkedin">in</a>
+      </div>
+    </div>
+
+
+	 <div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker7.jpg" alt="Dr. Muthukumaraswamy B">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Dr. Muthukumaraswamy B</h3>
+        <p class="role">Lead, Tech Track</p>
+
+        <a href="#" class="linkedin">in</a>
+      </div>
+    </div>
+
+
+	 <div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker8.jpg" alt="Bhuvana Subramanyan">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Bhuvana Subramanyan</h3>
+        <p class="role">Head, Marketing & Outreach</p>
+
+        <a href="#" class="linkedin">in</a>
+      </div>
+    </div>
+
+	<div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker9.jpg" alt="Riththika">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Riththika</h3>
+        <p class="role">Young women community outreach</p>
+        <a href="#" class="linkedin">in</a>
+      </div>
+    </div>
+
+		<div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker10.jpg" alt="Riththika">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Yasmeen MS</h3>
+        <p class="role">Member, Tech Track</p>
+
+        <a href="#" class="linkedin">in</a>
+      </div>
+    </div>
+
+	<div class="speaker-card">
+      <div class="speaker-image">
+        <img src="Member11.jpg" alt="Kaajal Ahuja">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Kaajal Ahuja</h3>
+        <p class="role">Member, Tech Track</p>
+
+        <a href="https://www.linkedin.com/in/kaajal-ahuja-89b71713b/" class="linkedin">in</a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+
         <section id="awards">
 			<div class="section-inner awards-inner">
 				<h2 style="color:var(--black-rock);margin:0 0 12px">Awards & Prize Distribution</h2>
