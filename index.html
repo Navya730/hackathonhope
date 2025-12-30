@@ -26,7 +26,7 @@
 		body{font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--gray-700);background:var(--gray-50);line-height:1.6;font-size:12px}
 
 		/* Header */
-		header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200);z-index:100;padding:16px 0}
+		header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200);z-index:100;padding:8px 0}
 		.header-container{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
 		.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 		.logo-circle{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:22px;box-shadow:0 4px 12px rgba(209,107,217,0.3)}
@@ -149,6 +149,10 @@
   }
 }
 
+/* Footer */
+ .site-footer {  padding: 16px 0;  text-align: center;  font-size: 12px;  color: var(--gray-600);  border-top: 1px solid var(--gray-200);}
+.site-footer a {  color: var(--gray-700);  text-decoration: none;  margin: 0 4px;}
+.site-footer a:hover {  color: var(--accent);  text-decoration: underline;}
 
         
 	/*Team*/
@@ -700,7 +704,7 @@
       rgba(248, 244, 252, 0.75) 45%,
       rgba(255, 255, 255, 0.82) 100%
     ),
-    url("witchhuntbg.jpeg");
+    url("witchhuntlogonew.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1110,9 +1114,15 @@
 </section>
 
 
-	<footer>
-		<div>© 2026 WITCH HUNT — Women In Technology Challenge</div>
-	</footer>
+	<footer class="site-footer">
+  <div>
+    © 2026 WITCH HUNT — Women In Technology Challenge
+    <span class="footer-links">
+      · <a href="privacy-policy.html">Privacy Policy</a>
+      · <a href="terms-and-conditions.html">Terms & Conditions</a>
+    </span>
+  </div>
+</footer>
 
 	<script>
 		const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpc4zHLJTTUPd2CUKiuITxfCWsps-ggYW1326pRxJH32-dx9xFNcUhrIdIzQZrTNf2/exec";
