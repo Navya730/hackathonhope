@@ -48,9 +48,9 @@
 		.hero::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(209,107,217,0.1),transparent);border-radius:50%}
 		.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,123,133,0.08),transparent);border-radius:50%}
 		.hero-container{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;position:relative;z-index:2}
-		.hero-content h2{font-size:clamp(32px,5vw,56px);font-weight:800;color:var(--dark);line-height:1.1;margin-bottom:20px}
+		.hero-content h2{font-size:clamp(32px,5vw,56px);font-weight:800;color:white;line-height:1.1;margin-bottom:20px}
 		.hero-content h2 .highlight{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-		.hero-content p{font-size:18px;color:var(--gray-600);margin-bottom:32px;line-height:1.7}
+		.hero-content p{font-size:18px;color:white;margin-bottom:32px;line-height:1.7}
 		.hero-logo-wrap{background:white;padding:24px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.08);transition:transform 0.3s}
 		.hero-logo-wrap:hover{transform:translateY(-5px)}
 		.hero-logo{width:100%;height:auto;border-radius:12px;display:block}
@@ -665,7 +665,7 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.1);
   display: none;
   align-items: center;
   justify-content: center;
@@ -945,7 +945,13 @@
 
 .hero{position:relative;min-height:70vh;overflow:hidden;}
 .hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,245,249,.78) 0%,rgba(248,244,252,.75) 45%,rgba(255,255,255,.82) 100%);z-index:1;}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1); /* simple subtle light overlay */
+  z-index: 1;
+}
+
 .hero-container{position:relative;z-index:2;}
 
 @media (max-width:768px){
@@ -1026,7 +1032,7 @@
 		<section class="stats-bar">
 			<div class="stats-container">
 				<div class="stat-item">
-					<span class="stat-number">5,000</span>
+					<span class="stat-number">5,000+</span>
 					<span class="stat-label">Women Participants</span>
 				</div>
 				<div class="stat-item">
@@ -1394,13 +1400,13 @@
     </div>
 
     <div class="partners-row">
-      <!-- <div class="partner-card">
+      <div class="partner-card">
         <h3>Organizing Partner</h3>
         <img src="hopeworkslogo.jpeg" alt="HopeWorks Foundation">
         <p>HopeWorks Foundation</p>
       </div>
 
-      <div class="partner-card">
+      <!-- <div class="partner-card">
         <h3>Community Partner</h3>
         <img src="partner3logo.jpeg" alt="Celebration Experts">
         <p>Celebration Experts</p>
