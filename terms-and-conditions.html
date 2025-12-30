@@ -2,10 +2,190 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms & Conditions | WITCH HUNT</title>
+
+  <style>
+    :root {
+      --accent: #7c3aed;
+      --accent-dark: #4c1d95;
+      --bg-dark: #0f0a1a;
+      --card-bg: rgba(124, 58, 237, 0.18);
+      --text-light: #f8fafc;
+      --text-muted: #cbd5f5;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #0b0614, #140b26);
+      color: var(--text-light);
+    }
+
+    /* Header */
+    header {
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(
+        135deg,
+        rgba(124,58,237,0.35),
+        rgba(76,29,149,0.35)
+      );
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 20%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .header-text h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+    }
+
+    .header-text p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Main */
+    main {
+      max-width: 900px;
+      margin: 40px auto 64px;
+      padding: 0 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .terms-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .terms-list li {
+      margin-bottom: 18px;
+      padding-left: 24px;
+      position: relative;
+      line-height: 1.6;
+      color: var(--text-light);
+    }
+
+    .terms-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 22px;
+      line-height: 1;
+      top: 2px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 20px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .card h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Terms & Conditions</h1>
-  <p>Your terms and conditions content goes here.</p>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="witchhuntlogonew.jpeg" alt="WITCH HUNT Logo">
+    </div>
+    <div class="header-text">
+      <h1>WITCH HUNT</h1>
+      <p>Women In Technology Challenge</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main>
+    <div class="card">
+      <h2>Terms and Conditions</h2>
+
+      <ul class="terms-list">
+        <li>
+          Teams must consist of a minimum of <strong>3</strong> and a maximum of
+          <strong>5 participants</strong>, of which <strong>at least one member must be a HopeWorks student</strong>.
+        </li>
+
+        <li>
+          Each team must ensure that <strong>at least 50% of its members are women</strong>.
+        </li>
+
+        <li>
+          The contest will be conducted in <strong>two phases</strong>. 
+          <strong>Phase 1</strong> will be conducted <strong>virtually</strong>.
+        </li>
+
+        <li>
+          <strong>Phase 2</strong> will be limited to the finalists shortlisted from Phase 1.
+          The final round of Phase 2 will be conducted <strong>in person in Bengaluru in May 2026</strong>.
+        </li>
+
+        <li>
+          All registration and participant data will be handled in compliance with
+          <strong>applicable government regulations and data confidentiality standards</strong>.
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 WITCH HUNT — Women In Technology Challenge
+  </footer>
+
 </body>
 </html>
