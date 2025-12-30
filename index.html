@@ -6,7 +6,8 @@
 	<title>WITCH HUNT — Women In Technology Challenge 2026</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
 		:root{
 			--primary: #d16bd9;
 			--primary-dark: #a85b93;
@@ -74,12 +75,6 @@
 		.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(209,107,217,0.3)}
 		.btn-outline{background:transparent;border:2px solid var(--gray-200);color:var(--gray-700)}
 		.btn-outline:hover{border-color:var(--primary);color:var(--primary)}
-
-		/* Partners */
-		.partners{margin-top:24px}
-		.partners-title{font-size:12px;color:var(--gray-600);font-weight:700;margin-bottom:12px;text-align:center}
-		.partners-grid{display:flex;gap:12px;justify-content:center;align-items:center}
-		.partner-logo{width:70px;height:auto;border-radius:8px;background:white;padding:8px;border:1px solid var(--gray-200)}
 
 		/* Sections */
 		section{padding:80px 24px}
@@ -149,12 +144,127 @@
   }
 }
 
-/* Footer */
- .site-footer {  padding: 16px 0;  text-align: center;  font-size: 12px;  color: var(--gray-600);  border-top: 1px solid var(--gray-200);}
-.site-footer a {  color: var(--gray-700);  text-decoration: none;  margin: 0 4px;}
-.site-footer a:hover {  color: var(--accent);  text-decoration: underline;}
+.site-footer{
+  position:relative;
+  padding:50px 24px;
+  background:linear-gradient(135deg,#3b0a45,#1e0b2c);
+  color:#f5eefa;
+  overflow:hidden;
+}
 
-        
+/* soft curved depth */
+.footer-bg{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(1200px 400px at 50% 20%,rgba(255,255,255,0.08),transparent 60%);
+}
+
+/* mesh dots */
+.footer-mesh{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size:28px 28px;
+  opacity:.4;
+}
+
+.footer-container{
+  position:relative;
+  z-index:2;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:60px;
+}
+
+.footer-left{display:flex;flex-direction:column;gap:16px;}
+@media (max-width:768px){
+  .footer-left{align-items:center;text-align:center;}
+  .social-icons{justify-content:center;}
+}
+
+/* logo glow */
+.logo-glow{
+  position:relative;
+  display:inline-block;
+}
+.logo-glow::before{
+  content:"";
+  position:absolute;
+  inset:-30px;
+  background:radial-gradient(circle,rgba(255,94,247,.35),transparent 65%);
+  filter:blur(40px);
+  z-index:-1;
+}
+
+.footer-logo{width:220px}
+
+.footer-tagline{
+  margin:18px 0 22px;
+  font-size:14px;
+  color:#e6d8ef;
+  line-height:1.6;
+}
+
+.social-icons{
+  display:flex;
+  gap:12px;
+}
+.social-icons a{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  backdrop-filter:blur(6px);
+}
+.social-icons a:hover{background:rgba(255,255,255,.28)}
+
+/* divider glow */
+.footer-divider{
+  width:1px;
+  height:160px;
+  background:linear-gradient(to bottom,transparent,rgba(255,255,255,.3),transparent);
+}
+
+.footer-right{
+  margin-left:auto;
+  text-align:right;
+}
+@media (max-width:768px){
+  .footer-right{
+    margin-left:0;
+    text-align:center;
+  }
+}
+
+.footer-right p{margin:8px 0}
+.footer-links a{
+  color:#f5eefa;
+  text-decoration:none;
+  margin:0 6px;
+}
+.footer-links a:hover{text-decoration:underline}
+
+/* mobile */
+@media(max-width:768px){
+  .footer-container{
+    flex-direction:column;
+    text-align:center;
+  }
+  .footer-divider{display:none}
+  .footer-right{margin-left:0}
+}
+
+
+
 	/*Team*/
 	/* Team Section *//* Team Section */
 .team-scroll {
@@ -380,19 +490,6 @@
 		.contact-content a{color:var(--primary);font-weight:700;text-decoration:none}
 		.contact-content a:hover{text-decoration:underline}
 
-		/* Footer */
-		footer{background:var(--gray-900);color:var(--gray-200);padding:60px 24px 30px;text-align:center}
-		.footer-content{max-width:1280px;margin:0 auto}
-		.footer-brand{font-size:24px;font-weight:800;color:white;margin-bottom:12px}
-		.footer-tagline{font-size:14px;color:var(--gray-600);margin-bottom:32px}
-		.footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:32px;flex-wrap:wrap}
-		.footer-links a{color:var(--gray-200);text-decoration:none;font-size:14px}
-		.footer-links a:hover{color:white}
-		.footer-social{display:flex;justify-content:center;gap:20px;margin-bottom:32px}
-		.footer-social a{color:var(--gray-200);font-size:20px;transition:color 0.2s}
-		.footer-social a:hover{color:var(--primary)}
-		.footer-bottom{border-top:1px solid var(--gray-700);padding-top:24px;font-size:13px;color:var(--gray-600)}
-
 		/* Mobile Responsive */
 		@media (max-width:968px){
 			.mobile-menu-btn{display:block}
@@ -534,68 +631,23 @@
 /* =========================
    Partners Section Design
 ========================= */
-.partners-section {
-  background: linear-gradient(135deg, #fef5f9 0%, #f8f4fc 100%);
-  padding: 80px 24px;
-}
+.partners-section{background:linear-gradient(135deg,#fef5f9 0%,#f8f4fc 100%);padding:80px 24px} 
+.section-header h2{text-align:center;margin-bottom:8px} 
+.section-header p{text-align:center;color:var(--gray-600);margin-bottom:24px} 
+.partners-row{display:flex;gap:32px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:16px;justify-content:center} 
+.partners-row::-webkit-scrollbar{display:none} 
+.partner-card{background:white;padding:24px 32px;border-radius:16px;border:1px solid var(--gray-200);text-align:center;width:220px;transition:all 0.25s ease;box-shadow:0 6px 20px rgba(0,0,0,0.06);flex-shrink:0;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;justify-content:center} 
+.partner-card h3{font-size:14px;font-weight:700;margin-bottom:12px;color:var(--gray-700);text-transform:uppercase;letter-spacing:0.06em} 
+.partner-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.12)} 
+.partner-card img{max-width:140px;height:auto;margin-bottom:12px} 
+.partner-card p{font-size:13px;font-weight:600;color:var(--gray-700)} 
+@media (max-width:900px){.partners-row{flex-wrap:nowrap}} 
+@media (max-width:600px){.partner-card{width:100%;max-width:280px}}
 
-.partners-categories {
-  display: grid;
-  gap: 48px;
-}
 
-.partner-block h3 {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--gray-700);
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
 
-.partners-row {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
 
-.partner-card {
-  background: white;
-  padding: 24px 32px;
-  border-radius: 16px;
-  border: 1px solid var(--gray-200);
-  text-align: center;
-  width: 220px;
-  transition: all 0.25s ease;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-}
 
-.partner-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-}
-
-.partner-card img {
-  max-width: 140px;
-  height: auto;
-  margin-bottom: 12px;
-}
-
-.partner-card p {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--gray-700);
-}
-
-/* Mobile friendly */
-@media (max-width: 600px) {
-  .partner-card {
-    width: 100%;
-    max-width: 280px;
-  }
-}
 /* =========================
    Modal Styles
 ========================= */
@@ -1276,59 +1328,77 @@
 		</section>
 	</main>
 
-    <section id="partners" class="partners-section">
+
+
+
+<section id="partners" class="partners-section">
   <div class="container">
     <div class="section-header">
       <h2>Our Partners & Collaborators</h2>
       <p>Organizations supporting women to build impactful AI solutions</p>
     </div>
 
-    <div class="partners-categories">
-      
-      <div class="partner-block">
-        <h3>Community Partner</h3>
-        <div class="partners-row">
-          <div class="partner-card">
-            <img src="partner3logo.jpeg" alt="HopeWorks Foundation">
-            <p>Celebration Experts</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="partner-block">
-        <h3>Knowledge Partner</h3>
-        <div class="partners-row">
-          <div class="partner-card">
-            <img src="AI4logo.jpeg" alt="AI4India">
-            <p>AI4India</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="partner-block">
+    <div class="partners-row">
+      <div class="partner-card">
         <h3>Organizing Partner</h3>
-        <div class="partners-row">
-          <div class="partner-card">
-            <img src="hopeworkslogo.jpeg" alt="WITCH HUNT">
-            <p>Hopeworks Foundation</p>
-          </div>
-        </div>
+        <img src="hopeworkslogo.jpeg" alt="HopeWorks Foundation">
+        <p>HopeWorks Foundation</p>
       </div>
 
-    </div>
+      <div class="partner-card">
+        <h3>Community Partner</h3>
+        <img src="partner3logo.jpeg" alt="Celebration Experts">
+        <p>Celebration Experts</p>
+      </div>
+
+      <div class="partner-card">
+        <h3>Knowledge Partner</h3>
+        <img src="AI4logo.jpeg" alt="AI4India">
+        <p>AI4India</p>
+      </div>
+
   </div>
 </section>
 
 
-	<footer class="site-footer">
-  <div>
-    © 2026 WITCH HUNT — Women In Technology Challenge
-    <span class="footer-links">
-      · <a href="privacy-policy.html">Privacy Policy</a>
-      · <a href="terms-and-conditions.html">Terms & Conditions</a>
-    </span>
+
+<footer class="site-footer">
+  <div class="footer-bg"></div>
+  <div class="footer-mesh"></div>
+
+  <div class="footer-container">
+    <div class="footer-left">
+      <div class="logo-glow">
+        <img src="witchhuntlogonew.jpeg" class="footer-logo" alt="WITCH HUNT">
+      </div>
+
+      <p class="footer-tagline">
+        Empowering women to build bold, ethical AI solutions.
+      </p>
+
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/company/hopeworks-foundation/?originalSubdomain=in"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/hopeworksfoundation/"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/hopeworksf"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.youtube.com/@hopeworksfoundation3784"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/hopeworksIndia/"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-right">
+      <p>Email: <strong>contact@witchhunt.org</strong></p>
+      <p>© 2026 WITCH HUNT — Women In Technology Challenge</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <span>|</span>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
   </div>
 </footer>
+
 
 	<script>
 		const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpc4zHLJTTUPd2CUKiuITxfCWsps-ggYW1326pRxJH32-dx9xFNcUhrIdIzQZrTNf2/exec";
