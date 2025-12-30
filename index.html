@@ -756,7 +756,7 @@
       rgba(248, 244, 252, 0.75) 45%,
       rgba(255, 255, 255, 0.82) 100%
     ),
-    url("witchhuntlogonew.jpeg");
+    url("bgvideo.mp4");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -932,6 +932,10 @@
   text-decoration: none;
 }
 
+.hero{position:relative;min-height:100vh;overflow:hidden;}
+.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,245,249,.78) 0%,rgba(248,244,252,.75) 45%,rgba(255,255,255,.82) 100%);z-index:1;}
+.hero-container{position:relative;z-index:2;}
 
 
 	</style>
@@ -971,32 +975,38 @@
 	</header>
 
 	<main>
-		<section class="hero" id="home">
-			<div class="hero-container">
-				<div class="hero-content">
-					<h2>Empowering Women to <span class="highlight">Build AI Solutions</span> for India</h2>
-					<p>Join India's largest women-led AI hackathon. Build scalable solutions across Education, Climate Action, Health, and Smart Cities.</p>
-					<div style="display:flex;gap:16px;flex-wrap:wrap">
-                <button class="btn btn-primary" onclick="openRegisterModal()">Register Now</button>
-					</div>
-				</div>
-				<div>
-					<div class="countdown-wrapper">
-						<div class="countdown-title">Event Launches In</div>
-						<div class="countdown-grid">
-							<div class="countdown-item"><strong id="cd-days">30</strong><span>Days</span></div>
-							<div class="countdown-item"><strong id="cd-hours">17</strong><span>Hours</span></div>
-							<div class="countdown-item"><strong id="cd-mins">13</strong><span>Mins</span></div>
-							<div class="countdown-item"><strong id="cd-secs">31</strong><span>Secs</span></div>
-						</div>
-						<div class="hero-cta">
-							<!-- <a href="#register" class="btn btn-primary">Get Notified</a> -->
-							<a href="#about" class="btn btn-primary">Explore Event</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <section class="hero" id="home">
+  <video class="hero-video" autoplay muted loop playsinline poster="hero-fallback.jpg">
+    <source src="bgvideo.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-container">
+    <div class="hero-content">
+      <h2>Empowering Women to <span class="highlight">Build AI Solutions</span> for India</h2>
+      <p>Join India's largest women-led AI hackathon. Build scalable solutions across Education, Climate Action, Health, and Smart Cities.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="openRegisterModal()">Register Now</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="countdown-wrapper">
+        <div class="countdown-title">Event Launches In</div>
+        <div class="countdown-grid">
+          <div class="countdown-item"><strong id="cd-days">30</strong><span>Days</span></div>
+          <div class="countdown-item"><strong id="cd-hours">17</strong><span>Hours</span></div>
+          <div class="countdown-item"><strong id="cd-mins">13</strong><span>Mins</span></div>
+          <div class="countdown-item"><strong id="cd-secs">31</strong><span>Secs</span></div>
+        </div>
+        <div class="hero-cta">
+          <a href="#about" class="btn btn-primary">Explore Event</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 		<section class="stats-bar">
 			<div class="stats-container">
@@ -1315,7 +1325,7 @@
 		<section id="contact">
 			<div class="section-inner">
 				<h2 style="color:var(--black-rock);margin:0 0 8px">Contact</h2>
-				<p style="margin:0 0 12px">Questions? Reach out at <a href="mailto:hello@witchhunt.org" style="color:var(--red-violet)">hello@witchhunt.org</a>.</p>
+				<p style="margin:0 0 12px">Questions? Reach out at <a href="mailto: info@thewitch-hunt.com" style="color:var(--red-violet)"> info@thewitch-hunt.com</a>.</p>
 			</div>
 		</section>
 
@@ -1388,7 +1398,7 @@
     <div class="footer-divider"></div>
 
     <div class="footer-right">
-      <p>Email: <strong>contact@witchhunt.org</strong></p>
+      <p>Email: <strong> info@thewitch-hunt.com</strong></p>
       <p>© 2026 WITCH HUNT — Women In Technology Challenge</p>
       <div class="footer-links">
         <a href="#">Privacy Policy</a>
