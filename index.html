@@ -33,7 +33,49 @@
 		.logo-circle{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:22px;box-shadow:0 4px 12px rgba(209,107,217,0.3)}
 		.brand-text h1{font-size:28px;font-weight:800;color:var(--dark);margin:0}
 		.brand-text p{font-size:11px;color:var(--gray-600);margin:0}
-		
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;          /* 🔥 critical */
+  max-width: 360px;     /* optional, keeps it neat */
+}
+
+
+.brand-tagline {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+}
+.brand-tagline {
+  display: block;       /* 🔥 critical */
+  width: 100%;          /* 🔥 critical */
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 1.3;
+}
+
+.initiative-credit {
+  /* display: block; */
+  /* width: 100%;          🔥 critical */
+  margin-top: 2px;
+  margin-left: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #f97316;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.brand-text h1,
+.brand-text p,
+.brand-text a {
+  margin: 0;
+  padding: 0;
+}
+
 		/* Mobile menu button */
 		.mobile-menu-btn{display:none;background:none;border:none;font-size:24px;color:var(--dark);cursor:pointer}
 		
@@ -1163,6 +1205,37 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+
+.initiative-credit:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.brand-tagline {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.brand-text h1,
+.brand-text p,
+.brand-text a {
+  margin: 0;
+  padding: 0;
+}
+
+
 	</style>
 </head>
 <body>
@@ -1173,15 +1246,29 @@
 				<div class="logo-avatar">
                                 <img src="witchhuntlogonew.jpeg" alt="Logo">
                         </div>
-				<div class="brand-text">
-				<h1>WitchHunt</h1>
-				<p>
-					<span class="highlight-witch">W</span>omen 
-					<span class="highlight-witch">I</span>n 
-					<span class="highlight-witch">T</span>echnology 
-					<span class="highlight-witch">Ch</span>allenge 
-				</p>
-				</div>
+
+<div class="brand-text">
+  <h1 style="margin-left: 10px;;">
+    WitchHunt
+  </h1>
+  <a></a>
+     <div class="brand-tagline" style="margin-left: 10px;">
+    <span class="highlight-witch">W</span>omen 
+    <span class="highlight-witch">I</span>n 
+    <span class="highlight-witch">T</span>echnology 
+    <span class="highlight-witch">Ch</span>allenge
+  </div>
+
+
+  <a href="https://www.hopeskipjump.org"
+     target="_blank"
+     rel="noopener"
+     class="initiative-credit" style=" margin-left: 10px;">
+    an initiative by <strong>HopeWorks Foundation</strong>
+  </a>
+</div>
+
+
 			</a>
 			<button class="mobile-menu-btn" onclick="toggleMenu()">
 				<i class="fas fa-bars"></i>
