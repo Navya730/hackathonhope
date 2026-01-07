@@ -26,13 +26,38 @@
 		html{scroll-behavior:smooth}
 		body{font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--gray-700);background:var(--gray-50);line-height:1.6;font-size:12px}
 
-		/* Header */
-		header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200);z-index:100;padding:8px 0}
-		.header-container{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
-		.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-		.logo-circle{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:22px;box-shadow:0 4px 12px rgba(209,107,217,0.3)}
-		.brand-text h1{font-size:28px;font-weight:800;color:var(--dark);margin:0}
-		.brand-text p{font-size:11px;color:var(--gray-600);margin:0}
+/* Header */
+header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200);z-index:100;padding:0px 0}
+.header-container{max-width:1280px;margin: 15px; padding:0 0;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-circle{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:22px;box-shadow:0 4px 12px rgba(209,107,217,0.3)}
+.brand-text h1{font-size:28px;font-weight:800;color:var(--dark);margin:0}
+.brand-text p{font-size:11px;color:var(--gray-600);margin:0}
+
+/* Navigation */
+#mainNav {
+	display: flex;
+	align-items: center;
+	gap: 30px; /* space between nav links */
+	width: 100%;
+	margin-left: 0px; /* space from the left/brand */
+}
+
+#mainNav a {
+	text-decoration: none;
+	color: var(--dark);
+	font-weight: 500;
+	transition: color 0.3s;
+}
+
+#mainNav a:hover {
+	color: var(--primary);
+}
+
+#mainNav .btn-primary {
+	margin-left: auto; /* pushes Register button to the right */
+	margin-right: 20px; /* gap from the right edge */
+}
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -627,40 +652,8 @@
   gap: 14px;
   text-decoration: none;
 }
-.logo-avatar {
-  width: 195px;        /* 65 × 3 */
-  height: 195px;
-  border-radius: 50%;
-  background: white;
-  border: 1px solid var(--gray-200);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.logo-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
 
 
-/* Mobile */
-@media (max-width: 600px) {
-  .logo-avatar {
-    width: 120px;     /* controlled scaling */
-    height: 120px;
-  }
-
-  .logo-avatar img {
-    width: 100%;
-    height: 100%;
-  }
-}
 
 .mentor-volunteer{padding:80px 24px;text-align:center;background:linear-gradient(135deg,#fff5f9,#f8f4fc);}
 .mv-intro{max-width:760px;margin:16px auto 32px;color:var(--gray-700);}
@@ -1209,8 +1202,8 @@
 
 .brand-text {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
 }
 
 .brand-tagline {
@@ -1228,21 +1221,74 @@
   margin: 0;
   padding: 0;
 }
+.top-banner {
+	width: 100%;
+	overflow: hidden;
+	background: #000; /* fallback color */
+}
 
+.top-banner img {
+	width: 100%;
+	height: 150px; 
+	/* display: block; */
+	object-fit: fill; /* this compresses/stretches the image to fit */
+}
 
+@media (max-width: 768px) {
+.top-banner {
+	width: 100%;
+	overflow: hidden;
+	background: #000; /* fallback color */
+}
+
+.top-banner img {
+	width: 100%;
+	height: 100px; 
+	/* display: block; */
+	object-fit: fill; /* this compresses/stretches the image to fit */
+}
+}
+/* Desktop - hide mobile register button */
+.mobile-register-btn {
+	display: none;
+}
+
+.desktop-register-btn {
+	display: block;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+	.mobile-register-btn {
+		display: block;
+		margin-left: 10px; /* gap between menu button and register button */
+	}
+	
+	.desktop-register-btn {
+		display: none; /* hide the register button inside the nav on mobile */
+	}
+	
+	.mobile-menu-btn {
+		display: block;
+	}
+}
 	</style>
 </head>
 <body>
 
+  <div class="top-banner">
+	<img src="banner.png" alt="Banner">
+</div>
+
 	<header>
 		<div class="header-container">
-			<a href="#home" class="brand">
-				<div class="logo-avatar">
+			<!-- <a href="#home" class="brand"> -->
+				<!-- <div class="logo-avatar">
                                 <img src="witchhuntlogonew.jpeg" alt="Logo">
-                        </div>
+                        </div> -->
 
-<div class="brand-text">
-  <h1 style="margin-left: 10px;;">
+<!-- <div class="brand-text"> -->
+  <!-- <h1 style="margin-left: 10px;;">
     WitchHunt
   </h1>
   <a></a>
@@ -1251,32 +1297,23 @@
     <span class="highlight-witch">I</span>n 
     <span class="highlight-witch">T</span>echnology 
     <span class="highlight-witch">Ch</span>allenge
-  </div>
-
-
-  <a href="https://www.hopeskipjump.org"
-     target="_blank"
-     rel="noopener"
-     class="initiative-credit" style=" margin-left: 10px;">
-    an initiative by <strong>HopeWorks Foundation</strong>
-  </a>
-</div>
-
-
-			</a>
+  </div> -->
+<!-- </div> -->
+			<!-- </a> -->
 			<button class="mobile-menu-btn" onclick="toggleMenu()">
-				<i class="fas fa-bars"></i>
-			</button>
-			<nav id="mainNav">
-				<a href="#home">Home</a>
-				<a href="#about">About</a>
-				<a href="#tracks">Tracks</a>
-				<a href="#roadmap">Roadmap</a>
-				<a href="#team">Team</a>
-				<a href="#awards">Awards</a>
-				<a href="#contact">Contact</a>
-                <button class="btn btn-primary" onclick="openRegisterModal()">Register Now</button>
-			</nav>
+	<i class="fas fa-bars"></i>
+</button>
+<button class="btn btn-primary mobile-register-btn" onclick="openRegisterModal()">Register Now</button>
+<nav id="mainNav">
+	<a href="#home">Home</a>
+	<a href="#about">About</a>
+	<a href="#tracks">Tracks</a>
+	<a href="#roadmap">Roadmap</a>
+	<a href="#team">Team</a>
+	<a href="#awards">Awards</a>
+	<a href="#contact">Contact</a>
+	<button class="btn btn-primary desktop-register-btn" onclick="openRegisterModal()">Register Now</button>
+</nav>
 		</div>
 	</header>
 
@@ -1466,13 +1503,27 @@
 			</div>
 		</section>
 
-<section class="team-section">
+<section class="team-section" id="team">
   <div class="section-header">
 					<h2>Meet Our Team</h2>
 					<p>The dedicated organizers, mentors, and judges driving WitchHunt</p>
 	</div>
 
   <div class="speaker-scroll">
+
+    <div class="speaker-card">
+      <div class="speaker-image">
+        <img src="speaker12.jpeg" alt="Jacintha Jayachandran">
+      </div>
+
+      <div class="speaker-details">
+        <h3>Jacintha Jayachandran</h3>
+        <p class="role">Hackathon Champion</p>
+        <!-- <p class="company"> </p> -->
+
+        <a href="https://www.linkedin.com/in/jacintha-jayachandran-empowering1milliongirls" class="linkedin">in</a>
+      </div>
+    </div>
 
     <div class="speaker-card">
       <div class="speaker-image">
@@ -1747,10 +1798,17 @@
       <div class="logo-glow">
         <img src="witchhuntlogonew.jpeg" class="footer-logo" alt="WITCH HUNT">
       </div>
+           <a href="https://www.hopeskipjump.org"
+     target="_blank"
+     rel="noopener"
+     class="initiative-credit" style=" margin-left: 10px;">
+    an initiative by <strong>HopeWorks Foundation</strong>
+  </a>
 
       <p class="footer-tagline">
         Empowering women to build bold, ethical AI solutions.
       </p>
+   
 
       <div class="social-icons">
         <a href="https://www.linkedin.com/company/hopeworks-foundation/?originalSubdomain=in"><i class="fab fa-linkedin-in"></i></a>
