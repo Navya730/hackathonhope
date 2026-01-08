@@ -34,31 +34,7 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 .brand-text h1{font-size:28px;font-weight:800;color:var(--dark);margin:0}
 .brand-text p{font-size:11px;color:var(--gray-600);margin:0}
 
-/* Navigation */
-#mainNav {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  width: 100%;
-}
 
-/* Nav links */
-#mainNav a {
-  text-decoration: none;
-  color: #4f033b;
-  font-weight: 800;
-  transition: color 0.3s;
-}
-
-#mainNav a:hover {
-  color: var(--primary);
-}
-
-/* Register button – RIGHT ALIGNED */
-#mainNav .btn-primary {
-  margin-left: auto;
-  margin-right: 20px;
-}
 
 .brand-text {
   display: flex;
@@ -707,27 +683,75 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 		.contact-content a{color:var(--primary);font-weight:700;text-decoration:none}
 		.contact-content a:hover{text-decoration:underline}
 
-		/* Mobile Responsive */
-    /* Mobile view */
+#mainNav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+/* Nav links */
+#mainNav a {
+  text-decoration: none;
+  color: #4f033b;
+  font-weight: 800;
+  transition: color 0.3s;
+}
+
+#mainNav a:hover {
+  color: var(--primary);
+}
+
+/* Register button – RIGHT ALIGNED */
+#mainNav .btn-primary {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+/* Mobile styles */
 @media (max-width: 768px) {
   .header-container {
     gap: 10px;
+    position: relative; /* needed for absolute menu */
   }
 
   #mainNav {
-    display: none; /* nav hidden, hamburger handles it */
+    display: none; /* hidden by default */
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* adjust if your header is taller */
+    right: 20px;
+    background-color: var(--gray-50);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    z-index: 999;
+  }
+
+  #mainNav.active {
+    display: flex; /* shows menu when toggled */
   }
 
   .mobile-menu-btn {
     display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark);
   }
 
   .mobile-register-btn {
     display: inline-flex;
     align-items: center;
-    white-space: nowrap; /* 🔥 keeps text in one line */
+    white-space: nowrap;
+  }
+
+  .desktop-register-btn {
+    display: none; /* hide desktop register button on mobile */
   }
 }
+
 		@media (max-width:968px){
 			.mobile-menu-btn{display:block}
 			nav{position:fixed;top:80px;left:-100%;width:100%;background:white;flex-direction:column;padding:24px;gap:16px;box-shadow:0 10px 40px rgba(0,0,0,0.1);transition:left 0.3s;border-bottom:1px solid var(--gray-200)}
@@ -1401,18 +1425,19 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 }
 
 @media (max-width: 768px) {
-.top-banner {
-	width: 100%;
-	overflow: hidden;
-	background: #000; /* fallback color */
-}
+	.top-banner {
+		width: 100%;
+		overflow: hidden;
+		background: #000;
+	}
 
-.top-banner img {
-	width: 100%;
-	height: 100px; 
-	/* display: block; */
-	object-fit: fill; /* this compresses/stretches the image to fit */
-}
+	.top-banner img {
+		width: 100%;
+		height: 80px; /* adjust height as needed */
+		display: block;
+		object-fit: cover; /* changed from fill to cover */
+		object-position: center; /* centers the image */
+	}
 }
 /* Desktop - hide mobile register button */
 .mobile-register-btn {
@@ -2403,11 +2428,10 @@ function closeEligibility(){
     if (e.target === this) closeRegisterModal();
   });
 
-  function toggleMenu() {
-    const nav = document.getElementById("mainNav");
-    nav.classList.toggle("active");
-  }
-
+function toggleMenu() {
+  const nav = document.getElementById("mainNav");
+  nav.classList.toggle("active");
+}
 
 function handleRegistration(e) {
   e.preventDefault();
