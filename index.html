@@ -1433,10 +1433,12 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 
 	.top-banner img {
 		width: 100%;
-		height: 80px; /* adjust height as needed */
+		height: auto;
+		min-height: 60px;
+		max-height: 100px;
 		display: block;
-		object-fit: cover; /* changed from fill to cover */
-		object-position: center; /* centers the image */
+		object-fit: contain;
+		object-position: center;
 	}
 }
 /* Desktop - hide mobile register button */
@@ -1715,11 +1717,56 @@ header {
 			</div>
 		</section>
 
-		<section id="about">
-			<div class="container">
-				<div class="section-header">
-					<h2>About The Challenge</h2>
-					<p>WitchHunt empowers women and girls across India to build practical, scalable AI solutions. The program combines mentorship, workshops, and resources to help teams progress from prototype to pilot, creating real-world impact in critical social sectors.</p>
+    <section id="about" style="
+			background: linear-gradient(135deg, #1e0b2c 0%, #3b0a45 50%, #5a1a5e 100%);
+			position: relative;
+			overflow: hidden;
+			padding: 50px 24px;
+		">
+			<!-- Decorative elements -->
+			<div style="
+				position: absolute;
+				top: -70px;
+				right: -70px;
+				width: 250px;
+				height: 250px;
+				background: radial-gradient(circle, rgba(209,107,217,0.15), transparent 70%);
+				border-radius: 50%;
+			"></div>
+			<div style="
+				position: absolute;
+				bottom: -50px;
+				left: -50px;
+				width: 200px;
+				height: 200px;
+				background: radial-gradient(circle, rgba(255,20,147,0.12), transparent 70%);
+				border-radius: 50%;
+			"></div>
+
+			<div class="container" style="position: relative; z-index: 2;">
+				<div class="section-header" style="margin-bottom: 0;">
+					<h2 style="
+						background: linear-gradient(135deg, #ff1493, #d16bd9, #ff7b85);
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+						background-clip: text;
+						font-size: clamp(28px, 4vw, 42px);
+						font-weight: 900;
+						margin-bottom: 20px;
+						text-shadow: 0 0 40px rgba(255,20,147,0.3);
+					">About The Challenge</h2>
+					<p style="
+						color: #f5eefa;
+						font-size: 16px;
+						line-height: 1.7;
+						max-width: 900px;
+						margin: 0 auto;
+						text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+						font-weight: 400;
+					">
+          WitchHunt empowers women and girls across India to build practical, scalable AI solutions that address real challenges in Education, Climate Action, Health, and Smart Cities. The program combines mentorship, workshops, and cutting-edge resources to help teams progress from prototype to pilot, creating measurable impact in critical social sectors.
+          <br><br>
+          Beyond a hackathon, WitchHunt is a movement championing diversity in tech and proving that when women lead in AI, innovation thrives. Join a community of changemakers, gain access to industry experts, and transform bold ideas into solutions that make a difference across India.</p>
 				</div>
 			</div>
 		</section>
