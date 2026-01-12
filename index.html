@@ -8,19 +8,30 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-		:root{
-			--primary: #d16bd9;
-			--primary-dark: #a85b93;
-			--accent: #ff7b85;
-			--accent-light: #ffb38a;
-			--dark: #111827;
-			--gray-50: #f9fafb;
-			--gray-100: #f3f4f6;
-			--gray-200: #e5e7eb;
-			--gray-600: #4b5563;
-			--gray-700: #374151;
-			--gray-900: #111827;
-		}
+		:root {
+  --primary: #a855f7;        
+  --primary-dark: #6b21a8;   
+  --accent: #ec4899;         
+  --accent-light: #f97316;   
+  --dark: #0f0a1a;    
+  --gray-50: #faf9fc;
+  --gray-100: #f2edf8;
+  --gray-200: #e6def2;
+  --gray-600: #6b7280;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  --brand-gradient: linear-gradient(
+  90deg,
+  #a855f7,
+  #ec4899,
+  #f97316
+);
+
+}
+
+
+
+
 
 		*{box-sizing:border-box;margin:0;padding:0}
 		html{scroll-behavior:smooth}
@@ -78,7 +89,6 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 .mobile-register-btn {
   flex-shrink: 0; /* 🔥 prevents wrapping */
 }
-		.mobile-menu-btn{display:none;background:none;border:none;font-size:24px;color:var(--dark);cursor:pointer}
 		
 		nav{display:flex;align-items:center;gap:32px}
 		nav a{color:var(--gray-700);text-decoration:none;font-weight:600;font-size:14px;transition:color 0.2s}
@@ -105,14 +115,7 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 		.stat-number{font-size:42px;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:8px}
 		.stat-label{color:var(--gray-600);font-weight:600;font-size:14px}
 
-		/* Countdown Card */
-		.countdown-wrapper{background:white;padding:14px 16px;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,0.06);max-width:380px;margin:0 auto}
-		.countdown-title{font-size:14px;font-weight:700;color:var(--gray-700);margin-bottom:16px;text-align:center}
-		.countdown-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
-		.countdown-item{background:var(--gray-100);padding:16px;border-radius:12px;text-align:center}
-		.countdown-item strong{display:block;font-size:32px;font-weight:800;color:var(--accent);line-height:1}
-		.countdown-item span{font-size:12px;color:var(--gray-600);margin-top:8px;display:block;font-weight:600}
-		.hero-cta{display:flex;flex-direction:column;gap:12px}
+    .hero-cta{display:flex;flex-direction:column;gap:12px}
 		.btn{display:block;padding:14px 24px;border-radius:10px;text-align:center;font-weight:700;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;font-size:14px}
 		.btn-primary{background:var(--primary);color:white}
 		.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(209,107,217,0.3)}
@@ -340,137 +343,8 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
   background: linear-gradient(90deg, var(--secondary), var(--primary));
 }
 
-/* Team card with gradient border effect */
-.team-member {
-  flex: 0 0 280px;
-  background: linear-gradient(135deg, #fff 0%, #fefefe 100%);
-  border-radius: 28px;
-  padding: 36px 20px 40px;
-  text-align: center;
-  position: relative;
-  scroll-snap-align: start;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
 
-/* Animated gradient border */
-.team-member::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 28px;
-  padding: 2px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
 
-/* Subtle background glow effect */
-.team-member::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
-.team-member:hover::before {
-  opacity: 1;
-}
-
-.team-member:hover::after {
-  opacity: 1;
-}
-
-.team-member:hover {
-  transform: translateY(-16px) scale(1.04);
-  box-shadow: 
-    0 25px 70px rgba(139, 92, 246, 0.25),
-    0 10px 30px rgba(59, 130, 246, 0.15);
-}
-
-/* Avatar with ring effect */
-.member-avatar {
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 24px;
-  border-radius: 50%;
-  position: relative;
-  padding: 4px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-  transition: transform 0.4s ease;
-}
-
-.team-member:hover .member-avatar {
-  transform: rotate(5deg) scale(1.05);
-}
-
-/* Inner circle for image */
-.member-avatar::before {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  background: #fff;
-  z-index: 1;
-}
-
-.member-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  position: relative;
-  z-index: 2;
-  transition: transform 0.5s ease, filter 0.4s ease;
-  filter: grayscale(0.2);
-}
-
-.team-member:hover .member-avatar img {
-  transform: scale(1.1);
-  filter: grayscale(0);
-}
-
-/* Text styling with gradient */
-.member-name {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--dark);
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-/* .team-member:hover .member-name {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-} */
-
-.member-role {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--primary);
-  opacity: 0.85;
-  transition: all 0.3s ease;
-  text-transform: capitalize;
-}
-
-.team-member:hover .member-role {
-  opacity: 1;
-  transform: translateY(-2px);
-  color: var(--secondary);
-}
 
 /* Floating animation for subtle movement */
 @keyframes float {
@@ -478,35 +352,6 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
   50% { transform: translateY(-8px); }
 }
 
-.team-member:hover {
-  animation: none;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .team-member {
-    flex: 0 0 280px;
-    padding: 28px 20px 32px;
-  }
-  
-  .member-avatar {
-    width: 160px;
-    height: 160px;
-  }
-  
-  .member-name {
-    font-size: 18px;
-  }
-  
-  .member-role {
-    font-size: 14px;
-  }
-}
-
-/* Add shine effect on hover */
-.team-member:hover::before {
-  animation: shine 1.5s ease-in-out;
-}
 
 @keyframes shine {
   0% { background-position: -200% center; }
@@ -540,7 +385,7 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 }
 
 
-.prize-pool.hero {
+.prize-pool.heroo {
   position: relative;
   background: linear-gradient(135deg,#fff7ed,#fffbeb);
   border-radius: 24px;
@@ -732,14 +577,7 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
     display: flex; /* shows menu when toggled */
   }
 
-  .mobile-menu-btn {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--dark);
-  }
+
 
   .mobile-register-btn {
     display: inline-flex;
@@ -810,33 +648,6 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
   padding: 12px 16px;
 }
 
-
-/* Team member photo avatar */
-.member-avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 16px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Image inside avatar */
-.member-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-@media (max-width: 600px) {
-  .member-avatar {
-    width: 90px;
-    height: 90px;
-  }
-}
 
 /* Header Brand */
 .brand {
@@ -1118,7 +929,7 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 
 
 .team-section::after {
-  content: "➜";
+  /* content: "➜"; */
   position: absolute;
   right: 16px;
   top: 55%;
@@ -1466,142 +1277,302 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 	}
 }
 
-/* =========================
+
+
+/* ===================================
    Modal Overlay
-========================= */
+=================================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   padding: 20px;
+  animation: fadeIn 0.2s ease;
 }
 
 .modal-overlay.active {
   display: flex;
 }
 
-/* =========================
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===================================
    Modal Card
-========================= */
+=================================== */
 .modal-card {
-  background: #fff;
+  background: #ffffff;
   width: 100%;
-  max-width: 520px;
-  border-radius: 16px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
-  animation: modalSlide 0.25s ease;
+  max-width: 540px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  animation: modalSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes modalSlide {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(-20px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-/* =========================
+/* ===================================
    Modal Header
-========================= */
+=================================== */
 .modal-header {
-  padding: 18px 24px;
+  padding: 20px 24px;
   border-bottom: 1px solid var(--gray-200);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: var(--gray-50);
 }
 
 .modal-header h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--dark);
+  letter-spacing: -0.02em;
 }
 
 .modal-close {
-  background: none;
+  background: transparent;
   border: none;
-  font-size: 26px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   color: var(--gray-500);
+  font-size: 24px;
   line-height: 1;
+  transition: var(--transition);
 }
 
-/* =========================
+.modal-close:hover {
+  background: var(--gray-200);
+  color: var(--gray-700);
+}
+
+.modal-close:active {
+  transform: scale(0.95);
+}
+
+/* ===================================
    Modal Form
-========================= */
+=================================== */
 .modal-form {
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+  overflow-y: auto;
 }
 
 .modal-form label {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--gray-700);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .modal-form input,
 .modal-form textarea {
   padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  border: 2px solid #d1d5db;
   font-size: 14px;
   font-family: inherit;
+  color: var(--dark);
+  transition: var(--transition);
+  background: #ffffff;
+}
+
+
+.modal-form input::placeholder,
+.modal-form textarea::placeholder {
+  color: var(--gray-500);
+}
+
+.modal-form input:hover,
+.modal-form textarea:hover {
+  border-color: var(--gray-500);
 }
 
 .modal-form input:focus,
 .modal-form textarea:focus {
   outline: none;
   border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .modal-form textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 100px;
+  max-height: 200px;
+  line-height: 1.5;
 }
 
-.modal-form small {
-  font-size: 11px;
-  color: var(--gray-500);
-}
-
-/* =========================
-   Submit Button
-========================= */
-.modal-submit {
-  margin-top: 8px;
-  align-self: flex-start;
-}
-
-
-.btn-outline {
-  flex: 1;
+.modal-form input[type="file"] {
   padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  background: transparent;
-  font-weight: 600;
   cursor: pointer;
 }
 
-.btn-outline:hover {
-  background: #f9fafb;
+.modal-form input[type="file"]::file-selector-button {
+  padding: 8px 16px;
+  border: none;
+  background: var(--gray-100);
+  color: var(--gray-700);
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin-right: 12px;
+  transition: var(--transition);
 }
 
+.modal-form input[type="file"]::file-selector-button:hover {
+  background: var(--gray-200);
+}
+
+.modal-form small {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gray-500);
+  line-height: 1.5;
+  margin-top: -2px;
+}
+
+.modal-form small strong {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* .btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+} */
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:disabled {
+  background: var(--gray-300);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-outline {
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--gray-300);
+  background: transparent;
+  color: var(--gray-700);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-outline:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-500);
+}
+
+.modal-submit {
+  margin-top: 4px;
+  align-self: flex-start;
+  min-width: 180px;
+}
+
+/* ===================================
+   Responsive Design
+=================================== */
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 16px;
+  }
+  
+  .modal-card {
+    max-width: 100%;
+    max-height: 95vh;
+  }
+  
+  .modal-header {
+    padding: 16px 20px;
+  }
+  
+  .modal-header h3 {
+    font-size: 18px;
+  }
+  
+  .modal-form {
+    padding: 20px;
+    gap: 16px;
+  }
+  
+  .modal-submit {
+    width: 100%;
+  }
+}
+
+/* ===================================
+   Focus Visible (Accessibility)
+=================================== */
+.modal-close:focus-visible,
+.btn:focus-visible,
+.modal-form input:focus-visible,
+.modal-form textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
 /* Animation */
 @keyframes slideUp {
   from {
@@ -1626,15 +1597,640 @@ header {
   z-index: 100; /* LOWER than modal */
 }
 
+/* Fix for submit button disappearing */
+.modal-submit {
+  margin-top: 4px;
+  align-self: flex-start;
+  min-width: 180px;
+  display: inline-flex; /* Add this */
+  visibility: visible; /* Add this */
+  opacity: 1; /* Add this */
+}
 
+.modal-submit:active {
+  transform: scale(0.98); /* Add slight feedback instead of disappearing */
+}
+
+/* Fix for mobile header layout */
+.header-container {
+  max-width: 1280px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto; /* Add this */
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px; /* Add gap between items */
+}
+
+/* Mobile register button */
+.mobile-register-btn {
+  display: none;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 8px 16px; /* Smaller padding for mobile */
+  font-size: 14px; /* Slightly smaller text */
+}
+
+/* Desktop register button */
+.desktop-register-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--dark);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 8px;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .mobile-register-btn {
+    display: block;
+    margin-left: auto; /* Push to the right */
+  }
+  
+  .desktop-register-btn {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .header-container {
+    padding: 10px 16px; /* Better mobile padding */
+  }
+  
+  .modal-submit {
+    width: 100%; /* Full width on mobile */
+    min-width: auto;
+  }
+}
+
+.team-section {
+  position: relative;
+}
+
+.team-section {
+  position: relative;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+  padding: 0 20px;
+}
+
+.carousel-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  background: white;
+  color: var(--primary);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+}
+
+.carousel-arrow:hover {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-arrow:active {
+  transform: scale(0.95);
+}
+
+.carousel-arrow.prev {
+  left: 0;
+}
+
+.carousel-arrow.next {
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .carousel-nav {
+    padding: 0 8px;
+  }
+  
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+/* ===================================
+   Register Section
+=================================== */
+#register {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 40vh;
+  padding: 80px 24px;
+  background: linear-gradient(135deg, #faf5ff 0%, #fce7f3 50%, #fff7ed 100%);
+  overflow: hidden;
+}
+
+/* Animated background effect */
+#register::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+  animation: pulse 8s ease-in-out infinite;
+}
+
+
+
+
+/* Heading Styles */
+#register h2 {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 16px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  animation: fadeInUp 0.6s ease;
+}
+
+/* Description Text */
+#register p {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  margin: 0 0 32px;
+  color: var(--dark);
+  font-weight: 500;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease;
+}
+
+/* Button Container */
+#register .btn-container {
+  display: flex;
+  justify-content: center;
+  animation: fadeInUp 1s ease;
+}
+
+/* Register Button */
+#register .btn-register {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  padding: 18px 48px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 
+    0 10px 25px rgba(168, 85, 247, 0.3),
+    0 4px 10px rgba(236, 72, 153, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button shine effect */
+#register .btn-register::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+#register .btn-register:hover::before {
+  left: 100%;
+}
+
+#register .btn-register:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 15px 35px rgba(168, 85, 247, 0.4),
+    0 8px 15px rgba(236, 72, 153, 0.3);
+}
+
+#register .btn-register:active {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 
+    0 8px 20px rgba(168, 85, 247, 0.35),
+    0 4px 10px rgba(236, 72, 153, 0.25);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   Responsive Design
+=================================== */
+@media (max-width: 768px) {
+  #register {
+    min-height: 50vh;
+    padding: 60px 20px;
+  }
+
+  #register h2 {
+    margin-bottom: 12px;
+  }
+
+  #register p {
+    margin-bottom: 24px;
+  }
+
+  #register .btn-register {
+    padding: 16px 40px;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  #register {
+    padding: 50px 16px;
+  }
+
+  #register .btn-register {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+}
+
+/* ===================================
+       Hero Section - Split Design
+    =================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #0f0a1a 0%, #1a0b2e 100%);
+    }
+
+    /* Video Section */
+    .hero-video-section {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(15, 10, 26, 0.3) 0%,
+        rgba(15, 10, 26, 0.7) 100%
+      );
+    }
+
+    /* Decorative shapes on video */
+    .video-shapes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.4;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .shape-1 {
+      width: 200px;
+      height: 200px;
+      background: var(--primary);
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      width: 150px;
+      height: 150px;
+      background: var(--accent);
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    .shape-3 {
+      width: 180px;
+      height: 180px;
+      background: var(--accent-light);
+      bottom: 15%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-20px) scale(1.1);
+      }
+    }
+
+    /* Content Section */
+    .hero-content-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      background: linear-gradient(135deg, #0f0a1a 0%, #1a0b2e 50%, #2d1b4e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background pattern */
+    .hero-content-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Text Content */
+    .hero-text {
+      animation: fadeInLeft 1s ease;
+    }
+
+    .hero-text h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.2;
+      color: white;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-text .highlight {
+      background: linear-gradient(135deg, var(--primary), var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-text .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+
+    .hero-text p {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #e0d4f7;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+
+
+    /* Countdown Wrapper */
+    .countdown-wrapper {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: fadeInRight 1s ease;
+    }
+
+    .countdown-title {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .countdown-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 20px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .countdown-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .countdown-item strong {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .countdown-item span {
+      color: #c8b6e2;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-cta {
+      text-align: center;
+    }
+
+    .hero-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Animations */
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* ===================================
+       Responsive Design
+    =================================== */
+    @media (max-width: 968px) {
+      .hero-video-section {
+        height: 40vh;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .countdown-item strong {
+        font-size: 2rem;
+      }
+
+      .shape {
+        width: 120px !important;
+        height: 120px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-video-section {
+        height: 35vh;
+      }
+
+      .hero-content-section {
+        padding: 40px 20px;
+      }
+
+      .countdown-grid {
+        gap: 12px;
+      }
+
+      .countdown-item {
+        padding: 16px 8px;
+      }
+
+      .countdown-item strong {
+        font-size: 1.8rem;
+      }
+
+      .countdown-item span {
+        font-size: 0.75rem;
+      }
+
+      .btn {
+        padding: 14px 28px;
+        font-size: 1rem;
+      }
+    }
 	</style>
 </head>
 <body>
 
 <div class="sticky-shell">
-  <div class="top-banner">
+  <!-- <div class="top-banner">
     <img src="banner.png" alt="Banner">
-  </div>
+  </div> -->
 
   <header>
     <div class="header-container">
@@ -1642,9 +2238,7 @@ header {
         <i class="fas fa-bars"></i>
       </button>
 
-      <button class="btn btn-primary mobile-register-btn" onclick="openRegisterModal()">
-        Register Now
-      </button>
+
 
       <nav id="mainNav">
         <a href="#home">Home</a>
@@ -1654,7 +2248,7 @@ header {
         <a href="#team">Team</a>
         <a href="#awards">Awards</a>
         <button class="btn btn-primary desktop-register-btn" onclick="openRegisterModal()">
-          Register Now
+          Pre-Register Now
         </button>
       </nav>
     </div>
@@ -1663,38 +2257,72 @@ header {
 
 
 	<main>
+
+
     <section class="hero" id="home">
-  <video class="hero-video" autoplay muted loop playsinline poster="witchhuntlogonew.jpeg">
-    <source src="bgvideo.mp4" type="video/mp4">
-  </video>
-
-  <div class="hero-overlay"></div>
-
-  <div class="hero-container">
-    <div class="hero-content">
-      <h2>Empowering Women to <span class="highlight">Build AI Solutions</span> for India</h2>
-      <p>Join India's largest women-led AI hackathon. Build scalable solutions across Education, Climate Action, Health, and Smart Cities.</p>
-      <div style="display:flex;gap:16px;flex-wrap:wrap">
-        <button class="btn btn-primary" onclick="openRegisterModal()">Register Now</button>
+    
+    <!-- Video Section -->
+    <div class="hero-video-section">
+      <video class="hero-video" autoplay muted loop playsinline poster="witchhuntlogonew.jpeg">
+        <source src="video.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay"></div>
+      
+      <!-- Decorative shapes -->
+      <div class="video-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
       </div>
     </div>
 
-    <div>
-      <div class="countdown-wrapper">
-        <div class="countdown-title">Event Launches In</div>
-        <div class="countdown-grid">
-          <div class="countdown-item"><strong id="cd-days">30</strong><span>Days</span></div>
-          <div class="countdown-item"><strong id="cd-hours">17</strong><span>Hours</span></div>
-          <div class="countdown-item"><strong id="cd-mins">13</strong><span>Mins</span></div>
-          <div class="countdown-item"><strong id="cd-secs">31</strong><span>Secs</span></div>
+    <!-- Content Section -->
+    <div class="hero-content-section">
+      <div class="hero-container">
+        
+        <!-- Text Content -->
+        <div class="hero-text">
+          <h2>Empowering Women to <span class="highlight">Build AI Solutions</span> for India</h2>
+          <p>Join India's largest women-led AI hackathon. Build scalable solutions across Education, Climate Action, Health, and Smart Cities.</p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="openRegisterModal()">
+              Pre-Register Now <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
         </div>
-        <div class="hero-cta">
-          <a href="#about" class="btn btn-primary">Explore Event</a>
+
+        <!-- Countdown -->
+        <div class="countdown-wrapper">
+          <div class="countdown-title">Event Launches In</div>
+          <div class="countdown-grid">
+            <div class="countdown-item">
+              <strong id="cd-days">30</strong>
+              <span>Days</span>
+            </div>
+            <div class="countdown-item">
+              <strong id="cd-hours">17</strong>
+              <span>Hours</span>
+            </div>
+            <div class="countdown-item">
+              <strong id="cd-mins">13</strong>
+              <span>Mins</span>
+            </div>
+            <div class="countdown-item">
+              <strong id="cd-secs">31</strong>
+              <span>Secs</span>
+            </div>
+          </div>
+          <div class="hero-cta">
+            <a href="#about" class="btn btn-primary">
+              Explore Event <i class="fas fa-arrow-down"></i>
+            </a>
+          </div>
         </div>
+
       </div>
     </div>
-  </div>
-</section>
+
+  </section>
 
 		<section class="stats-bar">
 			<div class="stats-container">
@@ -1775,7 +2403,7 @@ header {
 			<div class="container">
 				<div class="section-header">
 					<h2>Challenge Tracks</h2>
-					<p>Choose your track and build AI solutions that matter</p>
+					<p>To Enable the Underserved and unserved by leveraging the power of AI</p>
 				</div>
 				<div class="tracks-grid">
 					<div class="track-card">
@@ -1898,8 +2526,16 @@ header {
 					<h2>Meet Our Team</h2>
 					<p>The dedicated organizers, mentors, and judges driving WitchHunt</p>
 	</div>
+   <div class="carousel-nav">
+    <button class="carousel-arrow prev" onclick="scrollTeam(-1)">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="carousel-arrow next" onclick="scrollTeam(1)">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
 
-  <div class="speaker-scroll">
+  <div class="speaker-scroll" id="teamScroll">
 
     <div class="speaker-card">
       <div class="speaker-image">
@@ -2074,7 +2710,7 @@ header {
     <div class="awards-row">
 
       <!-- Prize Pool -->
-      <div class="prize-pool hero">
+      <div class="prize-pool heroo">
         <div class="trophy-bg">🏆</div>
         <div class="prize-badge">TOTAL PRIZE POOL</div>
         <div class="prize-amount">₹19,00,000</div>
@@ -2117,59 +2753,21 @@ header {
 </section>
 
 
-<section id="register" style="
-    display:flex; 
-    justify-content:center; 
-    align-items:center; 
-    text-align:center; 
-    height:40vh; 
-    padding:40px;
-    background-color: #edd9ef;
-    box-shadow:0 8px 20px rgba(20, 20, 20, 0.1);
-">
-  <div class="section-inner" style="max-width:600px; width:100%;">
-    <h2 style="
-        background: linear-gradient(90deg, var(--primary-dark), var(--primary)); 
-        -webkit-background-clip: text; 
-        color: transparent; 
-        font-size:2.5rem; 
-        margin:0 0 16px; 
-        font-weight:800;
-    ">
-      Register
-    </h2>
+<section id="register">
+  <div class="section-inner">
+    <h2>Register</h2>
     
-    <p style="
-        font-size:1.25rem; 
-        margin:0 0 24px; 
-        color: var(--dark); 
-        font-weight:500;
-    ">
+    <p>
       Registrations open now! — sign up to receive updates.
     </p>
     
-    <div style="display:flex; justify-content:center;">
-      <button class="btn btn-primary" style="
-          font-size:1.2rem; 
-          padding:16px 36px; 
-          background: linear-gradient(90deg, var(--accent), var(--primary-dark)); 
-          border:none; 
-          border-radius:50px; 
-          color:white; 
-          cursor:pointer; 
-          font-weight:700; 
-          box-shadow:0 5px 15px rgba(188, 130, 130, 0.15); 
-          transition: all 0.3s ease;
-      " 
-      onmouseover="this.style.transform='scale(1.05)'" 
-      onmouseout="this.style.transform='scale(1)'" 
-      onclick="openRegisterModal()">
-        Register Now
+    <div class="btn-container">
+      <button class="btn btn-primary btn-register" onclick="openRegisterModal()">
+        Pre-Register Now
       </button>
     </div>
   </div>
 </section>
-
 
 	</main>
 
@@ -2310,9 +2908,9 @@ header {
       <p>Email: <strong> info@thewitch-hunt.com</strong></p>
       <p>© 2026 WITCH HUNT — Women In Technology Challenge</p>
       <div class="footer-links">
-        <a href="#">Privacy Policy</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
         <span>|</span>
-        <a href="#">Terms & Conditions</a>
+        <a href="terms-and-conditions.html">Terms & Conditions</a>
       </div>
     </div>
   </div>
@@ -2436,11 +3034,17 @@ function closeEligibility(){
       name="team_members"
       placeholder="Enter names and emails (e.g., Jane Doe: jane@corp.com)"
     ></textarea>
-    <small>A maximum of 4 members per team (including yourself) is allowed.</small>
+<small>
+  A maximum of 4 members per team (including yourself) is allowed.
+  <br>
+  <strong style="color:#e11d48;">
+    Each team must have 50% or more women.
+  </strong>
+</small>
   </label>
 
   <label>
-    Photo of College/Company ID & Masked Aadhaar (Max 5MB) *
+    Photo of College or Company ID (Max 5MB) *
     <input
       type="file"
       name="id_proof"
@@ -2539,6 +3143,25 @@ function handleRegistration(e) {
 function closeMentorRegister() {
   document.getElementById("mentorModal").style.display = "none";
 }
+
+function scrollTeam(direction) {
+  const container = document.getElementById('teamScroll');
+  const scrollAmount = 320; // Adjust based on your card width
+  
+  container.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
+// Optional: Add keyboard support
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowLeft') {
+    scrollTeam(-1);
+  } else if (e.key === 'ArrowRight') {
+    scrollTeam(1);
+  }
+});
 
 </script>
 
