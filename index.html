@@ -418,7 +418,7 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 }
 
 .prize-amount {
-  font-size: 52px;
+  font-size: 48px;
   font-weight: 900;
   background: linear-gradient(135deg,#ec4899,#8b5cf6);
   -webkit-background-clip: text;
@@ -632,6 +632,7 @@ header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:b
 			  #roadmap .timeline-date {
     font-size: 0.7rem;
   }
+  
 
   #roadmap .timeline-content h3 {
     font-size: 0.9rem;
@@ -2223,6 +2224,141 @@ header {
         font-size: 1rem;
       }
     }
+    /* Add these media queries at the end of your CSS */
+
+@media (max-width: 968px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 20px; /* Add horizontal padding */
+  }
+
+  .countdown-wrapper {
+    padding: 30px 20px; /* Reduce padding */
+    margin: 0 auto; /* Center the wrapper */
+    max-width: 100%; /* Ensure it doesn't overflow */
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px; /* Reduce gap between items */
+  }
+
+  .countdown-item {
+    padding: 16px 8px; /* Reduce padding */
+  }
+
+  .countdown-item strong {
+    font-size: 2rem; /* Slightly smaller numbers */
+  }
+
+  .countdown-item span {
+    font-size: 0.75rem; /* Smaller labels */
+  }
+}
+
+@media (max-width: 640px) {
+  .countdown-wrapper {
+    padding: 20px 16px; 
+    width: 300px;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on very small screens */
+    gap: 10px;
+  }
+
+  .countdown-item {
+    padding: 14px 10px;
+  }
+
+  .countdown-item strong {
+    font-size: 1.75rem;
+  }
+
+  .countdown-item span {
+    font-size: 0.7rem;
+  }
+
+  .countdown-title {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-wrapper {
+    padding: 20px 12px;
+  }
+
+  .countdown-item {
+    padding: 12px 8px;
+  }
+
+  .countdown-item strong {
+    font-size: 1.5rem;
+  }
+}
+/* Mobile register button */
+.mobile-register-btn {
+  display: none;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-left: auto; /* Push to the right */
+}
+
+/* Desktop register button */
+.desktop-register-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--dark);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 8px;
+  margin-right: 12px; /* Add space between menu and register button */
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 10px 16px;
+    gap: 8px; /* Reduce gap */
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    order: 1; /* Menu button first */
+  }
+
+  .brand {
+    order: 2; /* Brand in middle */
+    flex: 1; /* Allow it to take available space */
+  }
+
+  .mobile-register-btn {
+    display: block;
+    order: 3; /* Register button last (right side) */
+  }
+  
+  .desktop-register-btn {
+    display: none;
+  }
+  
+  .modal-submit {
+    width: 100%;
+    min-width: auto;
+  }
+}
 	</style>
 </head>
 <body>
@@ -2237,6 +2373,10 @@ header {
       <button class="mobile-menu-btn" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
       </button>
+
+    <button class="btn btn-primary mobile-register-btn" onclick="openRegisterModal()">
+      Pre-Register Now
+    </button>
 
 
 
@@ -3005,7 +3145,7 @@ function closeEligibility(){
       <button class="modal-close" onclick="closeRegisterModal()">×</button>
     </div>
 
-	<form id="hackathonForm" class="modal-form" onsubmit="handleRegistration(event)">
+<form id="hackathonForm" class="modal-form" onsubmit="handleRegistration(event)">
 
   <label>
     Full Name*
@@ -3020,12 +3160,30 @@ function closeEligibility(){
   <label>
     College/Corporate Email Address*
     <input
-  type="email"
-  name="email"
-  placeholder="Enter your college or corporate email"
-  required
->
+      type="email"
+      name="email"
+      placeholder="Enter your college or corporate email"
+      required
+    >
+  </label>
 
+  <label>
+    Are you a HopeCitizen?*
+    <select name="hope_citizen" id="hopeCitizenSelect" onchange="toggleBatchNumber()" required>
+      <option value="">Select an option</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </label>
+
+  <label id="batchNumberLabel" style="display: none;">
+    Batch Number*
+    <input
+      type="text"
+      name="batch_number"
+      id="batchNumberInput"
+      placeholder="Enter your batch number"
+    >
   </label>
 
   <label>
@@ -3034,13 +3192,13 @@ function closeEligibility(){
       name="team_members"
       placeholder="Enter names and emails (e.g., Jane Doe: jane@corp.com)"
     ></textarea>
-<small>
-  A maximum of 4 members per team (including yourself) is allowed.
-  <br>
-  <strong style="color:#e11d48;">
-    Each team must have 50% or more women.
-  </strong>
-</small>
+    <small>
+      A maximum of 4 members per team (including yourself) is allowed.
+      <br>
+      <strong style="color:#e11d48;">
+        Each team must have 50% or more women.
+      </strong>
+    </small>
   </label>
 
   <label>
@@ -3057,7 +3215,6 @@ function closeEligibility(){
   </button>
 
 </form>
-
 
   </div>
 </div>
@@ -3162,6 +3319,21 @@ document.addEventListener('keydown', function(e) {
     scrollTeam(1);
   }
 });
+
+function toggleBatchNumber() {
+  const select = document.getElementById('hopeCitizenSelect');
+  const batchLabel = document.getElementById('batchNumberLabel');
+  const batchInput = document.getElementById('batchNumberInput');
+  
+  if (select.value === 'Yes') {
+    batchLabel.style.display = 'flex';
+    batchInput.required = true;
+  } else {
+    batchLabel.style.display = 'none';
+    batchInput.required = false;
+    batchInput.value = ''; // Clear the input when hidden
+  }
+}
 
 </script>
 
