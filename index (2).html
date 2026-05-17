@@ -1,0 +1,4876 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KSDXWD4C');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WitchHunt — Women In Technology Challenge 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #a855f7;
+      --primary-dark: #6b21a8;
+      --accent: #ec4899;
+      --accent-light: #f97316;
+      --dark: #0f0a1a;
+      --gray-50: #faf9fc;
+      --gray-100: #f2edf8;
+      --gray-200: #e6def2;
+      --gray-600: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --brand-gradient: linear-gradient(90deg,
+          #a855f7,
+          #ec4899,
+          #f97316);
+
+    }
+
+
+
+
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      color: var(--gray-700);
+      background: var(--gray-50);
+      line-height: 1.6;
+      font-size: 12px
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-200);
+      z-index: 100;
+      padding: 0px 0
+    }
+
+    .header-container {
+      max-width: 1280px;
+      padding: 10px;
+      margin-left: auto;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none
+    }
+
+    .logo-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #fff;
+      font-size: 22px;
+      box-shadow: 0 4px 12px rgba(209, 107, 217, 0.3)
+    }
+
+    .brand-text h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 0
+    }
+
+    .brand-text p {
+      font-size: 11px;
+      color: var(--gray-600);
+      margin: 0
+    }
+
+
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      /* 🔥 critical */
+      max-width: 360px;
+      /* optional, keeps it neat */
+    }
+
+
+    .brand-tagline {
+      font-size: 14px;
+      font-weight: 500;
+      display: block;
+      /* 🔥 critical */
+      width: 100%;
+      /* 🔥 critical */
+      margin-top: 6px;
+      color: #6b7280;
+      line-height: 1.3;
+    }
+
+    .initiative-credit {
+      /* display: block; */
+      /* width: 100%;          🔥 critical */
+      margin-top: 2px;
+      margin-left: 20px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #f97316;
+      opacity: 0.8;
+      text-decoration: none;
+    }
+
+    .brand-text h1,
+    .brand-text p,
+    .brand-text a {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Mobile menu button */
+    .mobile-menu-btn,
+    .mobile-register-btn {
+      flex-shrink: 0;
+      /* 🔥 prevents wrapping */
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px
+    }
+
+    nav a {
+      color: var(--gray-700);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.2s
+    }
+
+    nav a:hover {
+      color: var(--primary)
+    }
+
+    .nav-cta {
+      background: var(--primary);
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.2s
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(209, 107, 217, 0.3)
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #fef5f9 0%, #f8f4fc 100%);
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(209, 107, 217, 0.1), transparent);
+      border-radius: 50%
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 123, 133, 0.08), transparent);
+      border-radius: 50%
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2
+    }
+
+    .hero-content h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 20px
+    }
+
+    .hero-content h2 .highlight {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: white;
+      margin-bottom: 32px;
+      line-height: 1.7
+    }
+
+    .hero-logo-wrap {
+      background: white;
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s
+    }
+
+    .hero-logo-wrap:hover {
+      transform: translateY(-5px)
+    }
+
+    .hero-logo {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      background: white;
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 40px 24px
+    }
+
+    .stats-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px
+    }
+
+    .stat-item {
+      text-align: center
+    }
+
+    .stat-number {
+      font-size: 42px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 8px
+    }
+
+    .stat-label {
+      color: var(--gray-600);
+      font-weight: 600;
+      font-size: 14px
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .btn {
+      display: block;
+      padding: 14px 24px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 14px
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(209, 107, 217, 0.3)
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--gray-200);
+      color: var(--gray-700)
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary)
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 24px
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px
+    }
+
+    .section-header h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 16px
+    }
+
+    .section-header p {
+      font-size: 18px;
+      color: var(--gray-600);
+      max-width: 700px;
+      margin: 0 auto
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto
+    }
+
+    /* Tracks */
+    #tracks {
+      background: linear-gradient(135deg, #f8f4fc 0%, #fef5f9 100%)
+    }
+
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px
+    }
+
+    .track-card {
+      background: white;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s;
+      border: 1px solid var(--gray-200)
+    }
+
+    .track-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1)
+    }
+
+    .track-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px
+    }
+
+    .track-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px
+    }
+
+    .track-card p {
+      color: var(--gray-600);
+      line-height: 1.6
+    }
+
+    /* Timeline */
+    #roadmap {
+      background: white
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+      transform: translateX(-50%)
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 60px;
+      display: flex
+    }
+
+    .timeline-item:nth-child(odd) {
+      justify-content: flex-end;
+      padding-right: calc(50% + 40px)
+    }
+
+    .timeline-item:nth-child(even) {
+      justify-content: flex-start;
+      padding-left: calc(50% + 40px)
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--gray-200);
+      max-width: 380px
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border: 4px solid white;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 4px rgba(255, 123, 133, 0.2)
+    }
+
+    .timeline-date {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      text-transform: uppercase
+    }
+
+    .timeline-content h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px
+    }
+
+    .timeline-content p {
+      color: var(--gray-600);
+      font-size: 14px
+    }
+
+    /* Scroll container */
+    .timeline-wrapper {
+      max-height: 520px;
+      /* ⬅️ controls visible height */
+      overflow-y: auto;
+      padding-right: 12px;
+      /* space for scrollbar */
+      position: relative;
+    }
+
+    /* Smooth scrolling */
+    .timeline-wrapper {
+      scroll-behavior: smooth;
+    }
+
+    /* Optional: nicer scrollbar (Webkit browsers) */
+    .timeline-wrapper::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .timeline-wrapper::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg,
+          var(--primary),
+          var(--accent));
+      border-radius: 10px;
+    }
+
+    .timeline-wrapper::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .timeline {
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-wrapper {
+        max-height: 420px;
+      }
+    }
+
+    .site-footer {
+      position: relative;
+      padding: 50px 24px;
+      background: linear-gradient(135deg, #3b0a45, #1e0b2c);
+      color: #f5eefa;
+      overflow: hidden;
+    }
+
+    /* soft curved depth */
+    .footer-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(1200px 400px at 50% 20%, rgba(255, 255, 255, 0.08), transparent 60%);
+    }
+
+    /* mesh dots */
+    .footer-mesh {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: .4;
+    }
+
+    .footer-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (max-width:768px) {
+      .footer-left {
+        align-items: center;
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+    }
+
+    /* logo glow */
+    .logo-glow {
+      position: relative;
+      display: inline-block;
+    }
+
+    .logo-glow::before {
+      content: "";
+      position: absolute;
+      inset: -30px;
+      background: radial-gradient(circle, rgba(255, 94, 247, .35), transparent 65%);
+      filter: blur(40px);
+      z-index: -1;
+    }
+
+    .footer-logo {
+      width: 220px
+    }
+
+    .footer-tagline {
+      margin: 18px 0 22px;
+      font-size: 14px;
+      color: #e6d8ef;
+      line-height: 1.6;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      backdrop-filter: blur(6px);
+    }
+
+    .social-icons a:hover {
+      background: rgba(255, 255, 255, .28)
+    }
+
+    /* divider glow */
+    .footer-divider {
+      width: 1px;
+      height: 160px;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, .3), transparent);
+    }
+
+    .footer-right {
+      margin-left: auto;
+      text-align: right;
+    }
+
+    @media (max-width:768px) {
+      .footer-right {
+        margin-left: 0;
+        text-align: center;
+      }
+    }
+
+    .footer-right p {
+      margin: 8px 0
+    }
+
+    .footer-links a {
+      color: #f5eefa;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline
+    }
+
+    /* mobile */
+    @media(max-width:768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-divider {
+        display: none
+      }
+
+      .footer-right {
+        margin-left: 0
+      }
+    }
+
+
+
+    /*Team*/
+    /* Team Section */
+    /* Team Section */
+    .team-scroll {
+      display: flex;
+      gap: 40px;
+      overflow-x: auto;
+      padding: 48px 16px 32px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    .team-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .team-scroll::-webkit-scrollbar-track {
+      background: rgba(139, 92, 246, 0.1);
+      border-radius: 10px;
+    }
+
+    .team-scroll::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .team-scroll::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+    }
+
+
+
+
+    /* Floating animation for subtle movement */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+
+    @keyframes shine {
+      0% {
+        background-position: -200% center;
+      }
+
+      100% {
+        background-position: 200% center;
+      }
+    }
+
+    /* Awards */
+    /* Section */
+    #awards {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #fff5f8, #fef7fb);
+    }
+
+    .awards-inner {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .awards-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 32px;
+    }
+
+    /* ONE LINE ROW */
+    .awards-row {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+
+    .prize-pool.heroo {
+      position: relative;
+      background: linear-gradient(135deg, #fff7ed, #fffbeb);
+      border-radius: 24px;
+      padding: 40px;
+      overflow: hidden;
+      border: 2px solid #facc15;
+      box-shadow: 0 30px 60px rgba(250, 204, 21, 0.35);
+    }
+
+    /* Bigger background trophy */
+    .trophy-bg {
+      position: absolute;
+      top: -30px;
+      right: -10px;
+      font-size: 170px;
+      /* 🔥 bigger */
+      opacity: 0.18;
+      transform: rotate(-12deg);
+      pointer-events: none;
+    }
+
+
+    .prize-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #fde68a, #f59e0b);
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 900;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .prize-amount {
+      font-size: 48px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .prize-note {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    /* Award cards */
+    .award-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .award-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+    }
+
+    .award-icon {
+      font-size: 48px;
+      /* ⬆️ from 36px */
+      margin-bottom: 14px;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
+    }
+
+
+    .award-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .award-value {
+      font-size: 26px;
+      /* ⬆️ bigger */
+      font-weight: 900;
+      color: #ec4899;
+      margin: 8px 0;
+    }
+
+    .award-value span {
+      font-size: 13px;
+      font-weight: 700;
+      color: #6b7280;
+    }
+
+    .award-card::after {
+      content: "";
+      display: block;
+      margin: 14px 0 10px;
+      border-top: 2px dashed #e5e7eb;
+    }
+
+    .award-card {
+      background: white;
+      border-radius: 22px;
+      padding: 30px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .award-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.18);
+    }
+
+    .award-card:nth-child(2) {
+      background: linear-gradient(135deg, #ffffff, #fff7ed);
+    }
+
+    .award-card:nth-child(3) {
+      background: linear-gradient(135deg, #ffffff, #f5f3ff);
+    }
+
+    .award-card:nth-child(4) {
+      background: linear-gradient(135deg, #ffffff, #fdf2f8);
+    }
+
+
+    .award-detail {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 6px;
+    }
+
+    /* Footer */
+    .award-footer {
+      margin-top: 24px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .awards-row {
+        grid-template-columns: 1fr;
+      }
+
+      .trophy-bg {
+        font-size: 100px;
+      }
+    }
+
+
+
+    /* Contact & Register */
+    #contact,
+    #register {
+      background: white
+    }
+
+    .contact-content,
+    .register-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto
+    }
+
+    .contact-content a {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none
+    }
+
+    .contact-content a:hover {
+      text-decoration: underline
+    }
+
+    #mainNav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      width: 100%;
+    }
+
+    /* Nav links */
+    #mainNav a {
+      text-decoration: none;
+      color: #4f033b;
+      font-weight: 800;
+      transition: color 0.3s;
+    }
+
+    #mainNav a:hover {
+      color: var(--primary);
+    }
+
+    /* Register button – RIGHT ALIGNED */
+    #mainNav .btn-primary {
+      margin-left: auto;
+      margin-right: 20px;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .header-container {
+        gap: 10px;
+        position: relative;
+        /* needed for absolute menu */
+      }
+
+      #mainNav {
+        display: none;
+        /* hidden by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        /* adjust if your header is taller */
+        right: 20px;
+        background-color: var(--gray-50);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+      }
+
+      #mainNav.active {
+        display: flex;
+        /* shows menu when toggled */
+      }
+
+
+
+      .mobile-register-btn {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+      }
+
+      .desktop-register-btn {
+        display: none;
+        /* hide desktop register button on mobile */
+      }
+    }
+
+    @media (max-width:968px) {
+      .mobile-menu-btn {
+        display: block
+      }
+
+      nav {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: left 0.3s;
+        border-bottom: 1px solid var(--gray-200)
+      }
+
+      nav.active {
+        left: 0
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .hero-logo-wrap {
+        max-width: 400px;
+        margin: 0 auto
+      }
+
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(4, 1fr)
+      }
+
+      .timeline::before {
+        left: 20px
+      }
+
+      .timeline-item {
+        padding-left: 50px !important;
+        padding-right: 0 !important
+      }
+
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        justify-content: flex-start
+      }
+
+      .timeline-marker {
+        left: 20px
+      }
+
+      .awards-grid {
+        grid-template-columns: 1fr
+      }
+
+      section {
+        padding: 60px 24px
+      }
+
+      #roadmap .timeline-date {
+        font-size: 0.75rem;
+      }
+
+      #roadmap .timeline-content h3 {
+        font-size: 0.95rem;
+      }
+
+      #roadmap .timeline-content p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+      }
+
+    }
+
+    @media (max-width:600px) {
+      .hero {
+        padding: 60px 20px 40px
+      }
+
+      .hero-content h2 {
+        font-size: 32px
+      }
+
+      .hero-content p {
+        font-size: 16px
+      }
+
+      .stats-container {
+        grid-template-columns: 1fr;
+        gap: 20px
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .countdown-item strong {
+        font-size: 28px
+      }
+
+      .team-grid,
+      .tracks-grid {
+        grid-template-columns: 1fr
+      }
+
+      .award-cards {
+        grid-template-columns: 1fr
+      }
+
+      #roadmap .timeline-date {
+        font-size: 0.7rem;
+      }
+
+
+      #roadmap .timeline-content h3 {
+        font-size: 0.9rem;
+      }
+
+      #roadmap .timeline-content p {
+        font-size: 0.82rem;
+        line-height: 1.4;
+      }
+    }
+
+
+    #roadmap .timeline-content {
+      padding: 12px 16px;
+    }
+
+
+    /* Header Brand */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    /* Brand wrapper */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+
+
+    .mentor-volunteer {
+      padding: 80px 24px;
+      text-align: center;
+      background: white
+    }
+
+    .mv-intro {
+      max-width: 760px;
+      margin: 16px auto 32px;
+      color: var(--gray-700);
+    }
+
+    .mv-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .mv-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .link-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-content ul {
+      margin-top: 16px;
+      padding-left: 20px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 480px;
+      width: 90%;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+
+
+    /* =========================
+   Partners Section Design
+========================= */
+
+    /* Partners Section */
+    .partners-section {
+      background: linear-gradient(135deg, #fff5f9 0%, #f8f4fc 100%);
+      padding: 80px 24px;
+      overflow: hidden;
+    }
+
+    .section-header h2 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .section-header p {
+      text-align: center;
+      color: var(--gray-600);
+      margin-bottom: 40px;
+    }
+
+    .partners-row {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .partner-card {
+      background: white;
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+      text-align: center;
+      width: 100%;
+      max-width: 280px;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .partner-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--gray-700);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .partner-card img {
+      max-width: 140px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 16px;
+      object-fit: contain;
+    }
+
+    .partner-card p {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    @media (max-width: 768px) {
+      .partners-section {
+        padding: 60px 20px;
+      }
+
+      .partners-row {
+        gap: 24px;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .partner-card {
+        width: calc(50% - 12px);
+        min-width: 140px;
+        max-width: 200px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .partners-section {
+        padding: 60px 16px;
+      }
+
+      .partners-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .partner-card {
+        width: 90%;
+        max-width: 300px;
+      }
+    }
+
+
+
+
+
+
+
+    /* =========================
+   Modal Styles
+========================= */
+
+    /* .modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  background: white;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+  animation: modalFadeIn 0.25s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: var(--gray-600);
+}
+
+.modal-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-form label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-700);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-form span {
+  color: #e11d48;
+}
+
+.modal-form input,
+.modal-form textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.modal-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.modal-form small {
+  font-size: 11px;
+  color: var(--gray-600);
+}
+
+.modal-submit {
+  margin-top: 8px;
+} */
+    /* =========================
+   Hero Background Image
+========================= */
+
+
+    .hero-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        background-position: top;
+        padding: 60px 20px 40px;
+      }
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(209, 107, 217, 0.18), transparent 70%);
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -35%;
+      left: -15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 123, 133, 0.15), transparent 70%);
+      z-index: 0;
+    }
+
+    .highlight-witch {
+      color: #7c3aed;
+      font-weight: 700;
+    }
+
+    .team-section {
+      position: relative;
+      /* REQUIRED */
+      padding: 64px 24px;
+    }
+
+
+    .team-section::after {
+      /* content: "➜"; */
+      position: absolute;
+      right: 16px;
+      top: 55%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      /* doesn't block scroll */
+      animation: nudgeRight 1.6s ease-in-out infinite;
+      z-index: 5;
+    }
+
+    /* subtle movement */
+    @keyframes nudgeRight {
+      0% {
+        transform: translateY(-50%) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-50%) translateX(-6px);
+      }
+
+      100% {
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 32px;
+    }
+
+    /* Horizontal scroll */
+    .speaker-scroll {
+      display: flex;
+      gap: 28px;
+      overflow-x: auto;
+      padding-bottom: 24px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .speaker-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .speaker-details {
+      min-height: auto;
+      height: auto;
+    }
+
+    /* Card */
+    .speaker-card {
+      width: 280px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(124, 58, 237, 0.25);
+      ;
+      /* dark card base */
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Hover effect */
+    .speaker-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(124, 58, 237, 0.25);
+    }
+
+    /* Image */
+    .speaker-image {
+      height: 320px;
+      background: radial-gradient(circle at center, #d946ef, #6b21a8);
+    }
+
+    .speaker-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Details block (THIS is the key part) */
+    .speaker-details {
+      position: relative;
+      padding: 16px;
+      background: linear-gradient(135deg,
+          #3b0a45,
+          #1e0b2c);
+      color: #fff;
+    }
+
+    .speaker-details h3 {
+      margin: 0 0 4px;
+    }
+
+
+    .speaker-details .role {
+      margin: 0;
+    }
+
+
+    /* .speaker-details .company {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 4px;
+} */
+
+    /* LinkedIn icon */
+    .linkedin {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: #fff;
+      color: #000;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 24px 60px;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* background: linear-gradient(135deg, rgba(254,245,249,0.85) 0%, rgba(248,244,252,0.85) 100%); */
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(209, 107, 217, 0.1), transparent);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 123, 133, 0.08), transparent);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-content h2 .highlight {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: white;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .hero-logo-wrap {
+      background: white;
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+    }
+
+    .hero-logo-wrap:hover {
+      transform: translateY(-5px);
+    }
+
+    .hero-logo {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 20px 40px;
+      }
+
+      .hero-video {
+        object-fit: cover;
+        height: 100%;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 60px 20px 40px;
+      }
+
+      .hero-content h2 {
+        font-size: 32px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+
+    .initiative-credit:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .brand-text {
+      display: flex;
+      /* flex-direction: column; */
+      /* align-items: flex-start; */
+    }
+
+    .brand-tagline {
+      display: block;
+      width: 100%;
+      margin-top: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .brand-text h1,
+    .brand-text p,
+    .brand-text a {
+      margin: 0;
+      padding: 0;
+    }
+
+    .top-banner {
+      width: 100%;
+      overflow: hidden;
+      background: #000;
+      /* fallback color */
+    }
+
+    .top-banner img {
+      width: 100%;
+      /* height: 200px;  */
+      /* display: block; */
+      object-fit: fill;
+      /* this compresses/stretches the image to fit */
+    }
+
+    @media (max-width: 768px) {
+      .top-banner {
+        width: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .top-banner img {
+        width: 100%;
+        height: auto;
+        min-height: 60px;
+        max-height: 100px;
+        display: block;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+
+    /* Desktop - hide mobile register button */
+    .mobile-register-btn {
+      display: none;
+    }
+
+    .desktop-register-btn {
+      display: block;
+    }
+
+    /* Mobile view */
+    @media (max-width: 768px) {
+      .mobile-register-btn {
+        display: block;
+        margin-left: 10px;
+        /* gap between menu button and register button */
+      }
+
+      .desktop-register-btn {
+        display: none;
+        /* hide the register button inside the nav on mobile */
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+
+
+
+    /* ===================================
+   Modal Overlay
+=================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ===================================
+   Modal Card
+=================================== */
+    .modal-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 540px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      animation: modalSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes modalSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ===================================
+   Modal Header
+=================================== */
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--gray-50);
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: 24px;
+      line-height: 1;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: var(--gray-200);
+      color: var(--gray-700);
+    }
+
+    .modal-close:active {
+      transform: scale(0.95);
+    }
+
+    /* ===================================
+   Modal Form
+=================================== */
+    .modal-form {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+    }
+
+    .modal-form label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-700);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .modal-form input,
+    .modal-form textarea {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      border: 2px solid #d1d5db;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--dark);
+      transition: var(--transition);
+      background: #ffffff;
+    }
+
+
+    .modal-form input::placeholder,
+    .modal-form textarea::placeholder {
+      color: var(--gray-500);
+    }
+
+    .modal-form input:hover,
+    .modal-form textarea:hover {
+      border-color: var(--gray-500);
+    }
+
+    .modal-form input:focus,
+    .modal-form textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .modal-form textarea {
+      resize: vertical;
+      min-height: 100px;
+      max-height: 200px;
+      line-height: 1.5;
+    }
+
+    .modal-form input[type="file"] {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .modal-form input[type="file"]::file-selector-button {
+      padding: 8px 16px;
+      border: none;
+      background: var(--gray-100);
+      color: var(--gray-700);
+      font-weight: 600;
+      font-size: 13px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      margin-right: 12px;
+      transition: var(--transition);
+    }
+
+    .modal-form input[type="file"]::file-selector-button:hover {
+      background: var(--gray-200);
+    }
+
+    .modal-form small {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--gray-500);
+      line-height: 1.5;
+      margin-top: -2px;
+    }
+
+    .modal-form small strong {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* .btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+} */
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:disabled {
+      background: var(--gray-300);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-outline {
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--gray-300);
+      background: transparent;
+      color: var(--gray-700);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-outline:hover {
+      background: var(--gray-50);
+      border-color: var(--gray-500);
+    }
+
+    .modal-submit {
+      margin-top: 4px;
+      align-self: flex-start;
+      min-width: 180px;
+    }
+
+    /* ===================================
+   Responsive Design
+=================================== */
+    @media (max-width: 640px) {
+      .modal-overlay {
+        padding: 16px;
+      }
+
+      .modal-card {
+        max-width: 100%;
+        max-height: 95vh;
+      }
+
+      .modal-header {
+        padding: 16px 20px;
+      }
+
+      .modal-header h3 {
+        font-size: 18px;
+      }
+
+      .modal-form {
+        padding: 20px;
+        gap: 16px;
+      }
+
+      .modal-submit {
+        width: 100%;
+      }
+    }
+
+    /* ===================================
+   Focus Visible (Accessibility)
+=================================== */
+    .modal-close:focus-visible,
+    .btn:focus-visible,
+    .modal-form input:focus-visible,
+    .modal-form textarea:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    /* Animation */
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .sticky-shell {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: white;
+      /* avoids transparency issues */
+    }
+
+    .top-banner,
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      /* LOWER than modal */
+    }
+
+    /* Fix for submit button disappearing */
+    .modal-submit {
+      margin-top: 4px;
+      align-self: flex-start;
+      min-width: 180px;
+      display: inline-flex;
+      /* Add this */
+      visibility: visible;
+      /* Add this */
+      opacity: 1;
+      /* Add this */
+    }
+
+    .modal-submit:active {
+      transform: scale(0.98);
+      /* Add slight feedback instead of disappearing */
+    }
+
+    /* Fix for mobile header layout */
+    .header-container {
+      max-width: 1280px;
+      padding: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      /* Add this */
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 12px;
+      /* Add gap between items */
+    }
+
+    /* Mobile register button */
+    .mobile-register-btn {
+      display: none;
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding: 8px 16px;
+      /* Smaller padding for mobile */
+      font-size: 14px;
+      /* Slightly smaller text */
+    }
+
+    /* Desktop register button */
+    .desktop-register-btn {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Mobile menu button */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--dark);
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 8px;
+    }
+
+    /* Mobile view adjustments */
+    @media (max-width: 768px) {
+      .mobile-register-btn {
+        display: block;
+        margin-left: auto;
+        /* Push to the right */
+      }
+
+      .desktop-register-btn {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .header-container {
+        padding: 10px 16px;
+        /* Better mobile padding */
+      }
+
+      .modal-submit {
+        width: 100%;
+        /* Full width on mobile */
+        min-width: auto;
+      }
+    }
+
+    .team-section {
+      position: relative;
+    }
+
+    .team-section {
+      position: relative;
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 10;
+      padding: 0 20px;
+    }
+
+    .carousel-arrow {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      background: white;
+      color: var(--primary);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      pointer-events: auto;
+    }
+
+    .carousel-arrow:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-arrow:active {
+      transform: scale(0.95);
+    }
+
+    .carousel-arrow.prev {
+      left: 0;
+    }
+
+    .carousel-arrow.next {
+      right: 0;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-nav {
+        padding: 0 8px;
+      }
+
+      .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+    }
+
+    /* ===================================
+   Register Section
+=================================== */
+    #register {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 40vh;
+      padding: 80px 24px;
+      background: linear-gradient(135deg, #faf5ff 0%, #fce7f3 50%, #fff7ed 100%);
+      overflow: hidden;
+    }
+
+    /* Animated background effect */
+    #register::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+
+
+
+    /* Heading Styles */
+    #register h2 {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0 0 16px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    /* Description Text */
+    #register p {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      margin: 0 0 32px;
+      color: var(--dark);
+      font-weight: 500;
+      line-height: 1.6;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    /* Button Container */
+    #register .btn-container {
+      display: flex;
+      justify-content: center;
+      animation: fadeInUp 1s ease;
+    }
+
+    /* Register Button */
+    #register .btn-register {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      padding: 18px 48px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow:
+        0 10px 25px rgba(168, 85, 247, 0.3),
+        0 4px 10px rgba(236, 72, 153, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Button shine effect */
+    #register .btn-register::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    #register .btn-register:hover::before {
+      left: 100%;
+    }
+
+    #register .btn-register:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow:
+        0 15px 35px rgba(168, 85, 247, 0.4),
+        0 8px 15px rgba(236, 72, 153, 0.3);
+    }
+
+    #register .btn-register:active {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow:
+        0 8px 20px rgba(168, 85, 247, 0.35),
+        0 4px 10px rgba(236, 72, 153, 0.25);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===================================
+   Responsive Design
+=================================== */
+    @media (max-width: 768px) {
+      #register {
+        min-height: 50vh;
+        padding: 60px 20px;
+      }
+
+      #register h2 {
+        margin-bottom: 12px;
+      }
+
+      #register p {
+        margin-bottom: 24px;
+      }
+
+      #register .btn-register {
+        padding: 16px 40px;
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #register {
+        padding: 50px 16px;
+      }
+
+      #register .btn-register {
+        padding: 14px 32px;
+        font-size: 1rem;
+      }
+    }
+
+    /* ===================================
+       Hero Section - Split Design
+    =================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #0f0a1a 0%, #1a0b2e 100%);
+    }
+
+    /* Video Section */
+    .hero-video-section {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+          rgba(15, 10, 26, 0.3) 0%,
+          rgba(15, 10, 26, 0.7) 100%);
+    }
+
+    /* Decorative shapes on video */
+    .video-shapes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.4;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .shape-1 {
+      width: 200px;
+      height: 200px;
+      background: var(--primary);
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      width: 150px;
+      height: 150px;
+      background: var(--accent);
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    .shape-3 {
+      width: 180px;
+      height: 180px;
+      background: var(--accent-light);
+      bottom: 15%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-20px) scale(1.1);
+      }
+    }
+
+    /* Content Section */
+    .hero-content-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      background: linear-gradient(135deg, #0f0a1a 0%, #1a0b2e 50%, #2d1b4e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background pattern */
+    .hero-content-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Text Content */
+    .hero-text {
+      animation: fadeInLeft 1s ease;
+    }
+
+    .hero-text h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.2;
+      color: white;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-text .highlight {
+      background: linear-gradient(135deg, var(--primary), var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-text .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+
+    .hero-text p {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #e0d4f7;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+
+
+    /* Countdown Wrapper */
+    .countdown-wrapper {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: fadeInRight 1s ease;
+    }
+
+    .countdown-title {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .countdown-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 20px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .countdown-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .countdown-item strong {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .countdown-item span {
+      color: #c8b6e2;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-cta {
+      text-align: center;
+    }
+
+    .hero-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Animations */
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* ===================================
+       Responsive Design
+    =================================== */
+    @media (max-width: 968px) {
+      .hero-video-section {
+        height: 40vh;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .countdown-item strong {
+        font-size: 2rem;
+      }
+
+      .shape {
+        width: 120px !important;
+        height: 120px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-video-section {
+        height: 35vh;
+      }
+
+      .hero-content-section {
+        padding: 40px 20px;
+      }
+
+      .countdown-grid {
+        gap: 12px;
+      }
+
+      .countdown-item {
+        padding: 16px 8px;
+      }
+
+      .countdown-item strong {
+        font-size: 1.8rem;
+      }
+
+      .countdown-item span {
+        font-size: 0.75rem;
+      }
+
+      .btn {
+        padding: 14px 28px;
+        font-size: 1rem;
+      }
+    }
+
+    /* Add these media queries at the end of your CSS */
+
+    @media (max-width: 968px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px;
+        /* Add horizontal padding */
+      }
+
+      .countdown-wrapper {
+        padding: 30px 20px;
+        /* Reduce padding */
+        margin: 0 auto;
+        /* Center the wrapper */
+        max-width: 100%;
+        /* Ensure it doesn't overflow */
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        /* Reduce gap between items */
+      }
+
+      .countdown-item {
+        padding: 16px 8px;
+        /* Reduce padding */
+      }
+
+      .countdown-item strong {
+        font-size: 2rem;
+        /* Slightly smaller numbers */
+      }
+
+      .countdown-item span {
+        font-size: 0.75rem;
+        /* Smaller labels */
+      }
+    }
+
+    @media (max-width: 640px) {
+      .countdown-wrapper {
+        padding: 20px 16px;
+        width: 300px;
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on very small screens */
+        gap: 10px;
+      }
+
+      .countdown-item {
+        padding: 14px 10px;
+      }
+
+      .countdown-item strong {
+        font-size: 1.75rem;
+      }
+
+      .countdown-item span {
+        font-size: 0.7rem;
+      }
+
+      .countdown-title {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .countdown-wrapper {
+        padding: 20px 12px;
+      }
+
+      .countdown-item {
+        padding: 12px 8px;
+      }
+
+      .countdown-item strong {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Mobile register button */
+    .mobile-register-btn {
+      display: none;
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding: 8px 16px;
+      font-size: 14px;
+      margin-left: auto;
+      /* Push to the right */
+    }
+
+    /* Desktop register button */
+    .desktop-register-btn {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Mobile menu button */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--dark);
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 8px;
+      margin-right: 12px;
+      /* Add space between menu and register button */
+    }
+
+    /* Mobile view adjustments */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 10px 16px;
+        gap: 8px;
+        /* Reduce gap */
+      }
+
+      .mobile-menu-btn {
+        display: block;
+        order: 1;
+        /* Menu button first */
+      }
+
+      .brand {
+        order: 2;
+        /* Brand in middle */
+        flex: 1;
+        /* Allow it to take available space */
+      }
+
+      .mobile-register-btn {
+        display: block;
+        order: 3;
+        /* Register button last (right side) */
+      }
+
+      .desktop-register-btn {
+        display: none;
+      }
+
+      .modal-submit {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+    @media (max-width: 640px) {
+  .countdown-wrapper {
+    width: 100% !important;
+    padding: 24px 16px !important;
+  }
+
+  .countdown-wrapper > div[style*="grid-template-columns"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .countdown-wrapper .countdown-item {
+    padding: 12px 4px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .countdown-wrapper .countdown-item strong {
+    font-size: 1.0rem !important;
+    word-break: break-all !important;
+  }
+
+  .countdown-wrapper .countdown-item span {
+    font-size: 0.5rem !important;
+    letter-spacing: 0.3px !important;
+    word-break: break-word !important;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSDXWD4C" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="sticky-shell">
+    <!-- <div class="top-banner">
+    <img src="banner.png" alt="Banner">
+  </div> -->
+
+    <header>
+      <div class="header-container">
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div id="">
+  <button id="" class="btn btn-primary mobile-register-btn registerWitchhunt" onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})">
+    Contribute ❤️
+  </button>
+</div>
+
+
+
+        <nav id="mainNav">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#tracks">Tracks</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#team">Team</a>
+          <a href="#awards">Awards</a>
+          <a href="#donate">Contribute </a>
+          <!-- <a href="#faq">FAQ</a> -->
+          <button id="registerWitchhunt" class="btn btn-primary desktop-register-btn" onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})">
+            Contribute ❤️
+          </button>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+
+  <main>
+
+
+    <section class="hero" id="home">
+
+      <!-- Video Section -->
+      <div class="hero-video-section">
+        <video class="hero-video" autoplay muted loop playsinline poster="witchhuntlogonew.jpeg">
+          <source src="video.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+
+        <!-- Decorative shapes -->
+        <div class="video-shapes">
+          <div class="shape shape-1"></div>
+          <div class="shape shape-2"></div>
+          <div class="shape shape-3"></div>
+        </div>
+      </div>
+
+      <!-- Content Section -->
+      <div class="hero-content-section">
+        <div class="hero-container">
+
+          <!-- Text Content -->
+          <div class="hero-text">
+            <h2>Empowering Women to <span class="highlight">Build AI Solutions</span> for India</h2>
+            <p>Join India's largest women-led AI hackathon. Build scalable solutions across Education, Climate Action,
+              Health, and Smart Cities.</p>
+            <div class="hero-buttons">
+              <button id="witchhuntreg" class="btn btn-primary">
+                 Registration Closed <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Countdown -->
+<div class="countdown-wrapper">
+  <div class="countdown-title">WitchHunt by the Numbers</div>
+
+  <!-- 3 Stat Boxes -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:28px;">
+
+    <div class="countdown-item">
+      <strong style="font-size:2rem;">6,151</strong>
+      <span>Participants</span>
+      <span style="display:block;font-size:10px;color:rgba(200,182,226,0.6);margin-top:4px;text-transform:none;letter-spacing:0;">Registered</span>
+    </div>
+
+    <div class="countdown-item">
+      <strong style="font-size:2rem;">1,980</strong>
+      <span>Teams</span>
+      <span style="display:block;font-size:10px;color:rgba(200,182,226,0.6);margin-top:4px;text-transform:none;letter-spacing:0;">Formed</span>
+    </div>
+
+    <div class="countdown-item">
+      <strong style="font-size:2rem;">781</strong>
+      <span>Ideas</span>
+      <span style="display:block;font-size:10px;color:rgba(200,182,226,0.6);margin-top:4px;text-transform:none;letter-spacing:0;">Submitted</span>
+    </div>
+
+  </div>
+
+  <!-- Progress Bars -->
+  <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
+
+    <!-- Team Formation Rate -->
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span style="color:#c8b6e2;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Team Formation Rate</span>
+        <span style="color:#d8b4fe;font-size:11px;font-weight:700;">1,980 / 6,151 &nbsp;·&nbsp; 32%</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);border-radius:999px;height:7px;overflow:hidden;">
+        <div style="width:32%;height:100%;background:linear-gradient(90deg,#a855f7,#ec4899);border-radius:999px;box-shadow:0 0 8px rgba(168,85,247,0.5);"></div>
+      </div>
+    </div>
+
+    <!-- Idea Submission Rate -->
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span style="color:#c8b6e2;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Idea Submission Rate</span>
+        <span style="color:#d8b4fe;font-size:11px;font-weight:700;">1,781 / 1,980 &nbsp;·&nbsp; 90%</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);border-radius:999px;height:7px;overflow:hidden;">
+        <div style="width:90%;height:100%;background:linear-gradient(90deg,#ec4899,#f97316);border-radius:999px;box-shadow:0 0 8px rgba(236,72,153,0.5);"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Explore Button — unchanged -->
+  <div class="hero-cta">
+    <a href="#about" class="btn btn-primary">
+      Explore Event <i class="fas fa-arrow-down"></i>
+    </a>
+  </div>
+
+</div>
+
+        </div>
+      
+      
+      </div>
+
+    </section>
+
+    <section class="stats-bar">
+      <div class="stats-container">
+        <div class="stat-item">
+          <span class="stat-number">5,000+</span>
+          <span class="stat-label">Women Participants</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1,000+</span>
+          <span class="stat-label">Teams Competing</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">40</span>
+          <span class="stat-label">Finalists</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">₹19L</span>
+          <span class="stat-label">Prize Pool</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" style="
+			background: linear-gradient(135deg, #1e0b2c 0%, #3b0a45 50%, #5a1a5e 100%);
+			position: relative;
+			overflow: hidden;
+			padding: 50px 24px;
+		">
+      <!-- Decorative elements -->
+      <div style="
+				position: absolute;
+				top: -70px;
+				right: -70px;
+				width: 250px;
+				height: 250px;
+				background: radial-gradient(circle, rgba(209,107,217,0.15), transparent 70%);
+				border-radius: 50%;
+			"></div>
+      <div style="
+				position: absolute;
+				bottom: -50px;
+				left: -50px;
+				width: 200px;
+				height: 200px;
+				background: radial-gradient(circle, rgba(255,20,147,0.12), transparent 70%);
+				border-radius: 50%;
+			"></div>
+
+      <div class="container" style="position: relative; z-index: 2;">
+        <div class="section-header" style="margin-bottom: 0;">
+          <h2 style="
+						background: linear-gradient(135deg, #ff1493, #d16bd9, #ff7b85);
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+						background-clip: text;
+						font-size: clamp(28px, 4vw, 42px);
+						font-weight: 900;
+						margin-bottom: 20px;
+						text-shadow: 0 0 40px rgba(255,20,147,0.3);
+					">About The Challenge</h2>
+          <p style="
+						color: #f5eefa;
+						font-size: 16px;
+						line-height: 1.7;
+						max-width: 900px;
+						margin: 0 auto;
+						text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+						font-weight: 400;
+					">
+            WitchHunt empowers women and girls across India to build practical, scalable AI solutions that address real
+            challenges in Education, Climate Action, Health, and Smart Cities. The program combines mentorship,
+            workshops, and cutting-edge resources to help teams progress from prototype to pilot, creating measurable
+            impact in critical social sectors.
+            <br><br>
+            Beyond a hackathon, WitchHunt is a movement championing diversity in tech and proving that when women lead
+            in AI, innovation thrives. Join a community of changemakers, gain access to industry experts, and transform
+            bold ideas into solutions that make a difference across India.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tracks">
+      <div class="container">
+        <div class="section-header">
+          <h2>Challenge Tracks</h2>
+          <p>To Enable the Underserved and unserved by leveraging the power of AI</p>
+        </div>
+        <div class="tracks-grid">
+          <div class="track-card">
+            <div class="track-icon" style="background:rgba(255,179,138,0.2);color:#ff7b3d">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>Education</h3>
+            <p>Develop AI solutions to improve learning outcomes, increase access to quality education, and personalize
+              learning experiences for students across India.</p>
+          </div>
+          <div class="track-card">
+            <div class="track-icon" style="background:rgba(207,101,144,0.2);color:#cf6590">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3>Climate Action</h3>
+            <p>Create innovative solutions to mitigate climate challenges, promote sustainability, and help communities
+              adapt to environmental changes.</p>
+          </div>
+          <div class="track-card">
+            <div class="track-icon" style="background:rgba(168,91,147,0.2);color:#a85b93">
+              <i class="fas fa-heart-pulse"></i>
+            </div>
+            <h3>Health & Well-Being</h3>
+            <p>Build technology solutions for scalable healthcare delivery, mental health support, and community
+              well-being initiatives.</p>
+          </div>
+          <div class="track-card">
+            <div class="track-icon" style="background:rgba(255,123,133,0.2);color:#ff7b85">
+              <i class="fas fa-city"></i>
+            </div>
+            <h3>Smart Cities</h3>
+            <p>Design AI-driven solutions for urban resilience, efficient public services, and improved quality of life
+              in Indian cities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="roadmap">
+  <div class="container">
+    <div class="section-header">
+      <h2>Event Roadmap</h2>
+      <p>Your journey from registration to conference</p>
+    </div>
+
+    <div class="timeline-wrapper">
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">8th March 2026</div>
+            <h3>Registration & Team Formation</h3>
+            <p>Participants register and form teams to kickstart their hackathon journey.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">14th & 15th March 2026</div>
+            <h3>Bootcamp</h3>
+            <p>Hands-on sessions, mentorship, and guidance to help teams refine their ideas and approach.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">8th April 2026</div>
+            <h3>Proposal / Idea Submission</h3>
+            <p>Teams submit their ideas and proposals aligned with the hackathon themes.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">13th May 2026 (by 11:59 PM IST)</div>
+            <h3>POC Submission</h3>
+            <p>Submission of proof of concept demonstrating the feasibility and core functionality of the idea.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">26th May 2026</div>
+            <h3>Jury Decision Closure</h3>
+            <p>Evaluation process concludes and final decisions are made by the jury panel.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">30th May 2026</div>
+            <h3>Finalist Announcement</h3>
+            <p>Top teams are announced and move forward to the final stage.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">13th June 2026</div>
+            <h3>Demo Day</h3>
+            <p>Finalists present their solutions live to the jury and audience.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">14th June 2026</div>
+            <h3>Conference</h3>
+            <p>Closing event with talks, networking, and celebration of innovation.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="team-section" id="team">
+      <div class="section-header">
+        <h2>Meet Our Team</h2>
+        <p>The dedicated organizers, mentors, and judges driving WitchHunt</p>
+      </div>
+      <div class="carousel-nav">
+        <button class="carousel-arrow prev" onclick="scrollTeam(-1)">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-arrow next" onclick="scrollTeam(1)">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="speaker-scroll" id="teamScroll">
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker1.jpg" alt="Chithra Gurjar">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Chithra Gurjar</h3>
+            <p class="role">CHAIR</p>
+            <!-- <p class="company"> </p> -->
+
+            <a href="https://www.linkedin.com/in/chitra-gurjar/" class="linkedin">in</a>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker2.jpg" alt="Neeraja Ganesh">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Neeraja Ganesh</h3>
+            <p class="role">CO-CHAIR</p>
+
+            <a href="https://www.linkedin.com/in/neeraja-ganesh/" class="linkedin">in</a>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker3.jpg" alt="Varsha Verma">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Varsha Verma</h3>
+            <p class="role">CO-CHAIR</p>
+            <a href="https://www.linkedin.com/in/varsha-verma-70509711/" class="linkedin">in</a>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker12.jpeg" alt="Jacintha Jayachandran">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Jacintha Jayachandran</h3>
+            <p class="role">Hackathon Champion</p>
+            <!-- <p class="company"> </p> -->
+
+            <a href="https://www.linkedin.com/in/jacintha-jayachandran-empowering1milliongirls" class="linkedin">in</a>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker4.jpg" alt="Noella D'Souza Coutinho">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Noella D'Souza Coutinho</h3>
+            <p class="role">Chief of Staff</p>
+
+            <a href="https://www.linkedin.com/in/noella-d%E2%80%99souza-coutinho-5baa2926/" class="linkedin">in</a>
+          </div>
+        </div>
+
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker5.jpg" alt="Sanjay Kumar">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Sanjay Kumar</h3>
+            <p class="role">Finance Controller</p>
+
+            <a href="https://www.linkedin.com/in/sanjay-kumar-a449825/" class="linkedin">in</a>
+          </div>
+        </div>
+
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker6.jpg" alt="Shanmugapriya Gnanasekara">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Shanmugapriya Gnanasekara</h3>
+            <p class="role">Head of PMO</p>
+
+            <a href="https://www.linkedin.com/in/shanmugapriya-gnanasekaran-274b3915/" class="linkedin">in</a>
+          </div>
+        </div>
+
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker7.jpg" alt="Dr. Muthukumaraswamy B">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Dr. Muthukumaraswamy B</h3>
+            <p class="role">Lead, Tech Track</p>
+
+            <a href="https://www.linkedin.com/in/drmuthukumaraswamy-agentic-ai-llm/" class="linkedin">in</a>
+          </div>
+        </div>
+
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker8.jpg" alt="Bhuvana Subramanyan">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Bhuvana Subramanyan</h3>
+            <p class="role">Head, Marketing & Outreach</p>
+
+            <a href="https://www.linkedin.com/in/bhuvanasubramanyan/" class="linkedin">in</a>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker9.jpg" alt="Riththika">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Riththika</h3>
+            <p class="role">Young women community outreach</p>
+            <a href="https://www.linkedin.com/in/riththika-s-629aa91ba/" class="linkedin">in</a>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="speaker10.jpg" alt="Riththika">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Yasmeen MS</h3>
+            <p class="role">Member, Tech Track</p>
+
+            <a href="https://www.linkedin.com/in/yasmeenms/" class="linkedin">in</a>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-image">
+            <img src="Member11.jpg" alt="Kaajal Ahuja">
+          </div>
+
+          <div class="speaker-details">
+            <h3>Kaajal Ahuja</h3>
+            <p class="role">Member, Marketing & Outreach</p>
+
+            <a href="https://www.linkedin.com/in/kaajal-ahuja-89b71713b/" class="linkedin">in</a>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section id="donate" style="padding: 80px 24px; background: linear-gradient(135deg, #1e0b2c 0%, #3b0a45 50%, #5a1a5e 100%); position: relative; overflow: hidden;">
+
+  <!-- Decorative blobs -->
+  <div style="position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(209,107,217,0.15),transparent 70%);border-radius:50%;"></div>
+  <div style="position:absolute;bottom:-40px;left:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(255,20,147,0.12),transparent 70%);border-radius:50%;"></div>
+
+  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:2;">
+
+    <!-- Section Header -->
+    <div style="text-align:center;margin-bottom:52px;">
+      <h2 style="background:linear-gradient(135deg,#ff1493,#d16bd9,#ff7b85);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:clamp(28px,4vw,42px);font-weight:900;margin-bottom:14px;">
+        Fund WitchHunt
+      </h2>
+      <p style="color:#e6d8ef;font-size:16px;max-width:600px;margin:0 auto;line-height:1.7;">
+        Your contribution directly empowers women builders across India. Every donation fuels mentorship, resources, and opportunities.
+      </p>
+    </div>
+
+    <!-- Two-Column Payment Layout -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
+
+      <!-- ===== LEFT: Razorpay ===== -->
+      <div style="background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:36px;text-align:center;">
+
+        <!-- Badge -->
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,0.2);border:1px solid rgba(168,85,247,0.35);border-radius:999px;padding:6px 16px;font-size:12px;font-weight:700;color:#d8b4fe;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:24px;">
+          <span>💳</span> Pay via Razorpay
+        </div>
+
+        <h3 style="color:#fff;font-size:20px;font-weight:800;margin-bottom:8px;">Donate Online</h3>
+        <p style="color:#c8b6e2;font-size:13px;margin-bottom:28px;line-height:1.6;">
+          Click the button below to donate securely through Razorpay. Fast, safe, and instant.
+        </p>
+
+        <!-- Razorpay Donate Button -->
+        <a href="https://rzp.io/rzp/p3rSQiOn" target="_blank" rel="noopener"
+          style="display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;font-weight:800;font-size:15px;padding:16px 36px;border-radius:50px;text-decoration:none;box-shadow:0 10px 28px rgba(168,85,247,0.35);transition:all 0.3s ease;margin-bottom:32px;"
+          onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 36px rgba(168,85,247,0.45)';"
+          onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 10px 28px rgba(168,85,247,0.35)';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="white"/>
+            <path d="M11 8h2v8h-2zM7 10l5-4 5 4" stroke="white" stroke-width="1.5" fill="none"/>
+          </svg>
+          Donate Now
+        </a>
+
+        <!-- Divider -->
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+          <div style="flex:1;height:1px;background:rgba(255,255,255,0.15);"></div>
+          <span style="color:#9ca3af;font-size:12px;font-weight:600;white-space:nowrap;">OR SCAN QR CODE</span>
+          <div style="flex:1;height:1px;background:rgba(255,255,255,0.15);"></div>
+        </div>
+
+        <!-- Razorpay QR Code -->
+        <div style="background:white;border-radius:16px;padding:20px;display:inline-block;margin-bottom:14px;box-shadow:0 8px 24px rgba(0,0,0,0.2);">
+          <!-- Replace src with your actual Razorpay QR image -->
+          <img src="razorqr.jpeg" alt="Razorpay QR Code"
+            style="width:160px;height:160px;display:block;object-fit:contain;"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <!-- Fallback placeholder if image not found -->
+          <div style="display:none;width:160px;height:160px;background:#f3f4f6;border-radius:8px;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="1" stroke="#9ca3af" stroke-width="1.5"/><rect x="13" y="3" width="8" height="8" rx="1" stroke="#9ca3af" stroke-width="1.5"/><rect x="3" y="13" width="8" height="8" rx="1" stroke="#9ca3af" stroke-width="1.5"/><rect x="13" y="13" width="8" height="8" rx="1" stroke="#9ca3af" stroke-width="1.5"/></svg>
+            <span style="font-size:11px;color:#9ca3af;text-align:center;">Add razorpay-qr.png</span>
+          </div>
+        </div>
+
+        <p style="color:#9ca3af;font-size:12px;font-style:italic;line-height:1.5;">
+          📌 This QR takes you to the Razorpay page of <strong style="color:#d8b4fe;">Hope Box</strong>
+        </p>
+
+      </div>
+
+      <!-- ===== RIGHT: Direct Bank Transfer ===== -->
+      <div style="background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:36px;text-align:center;">
+
+        <!-- Badge -->
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(236,72,153,0.2);border:1px solid rgba(236,72,153,0.35);border-radius:999px;padding:6px 16px;font-size:12px;font-weight:700;color:#fbcfe8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:24px;">
+          <span>🏦</span> Direct Bank Transfer
+        </div>
+
+        <h3 style="color:#fff;font-size:20px;font-weight:800;margin-bottom:8px;">Transfer Directly to HopeWorks</h3>
+        <p style="color:#c8b6e2;font-size:13px;margin-bottom:28px;line-height:1.6;">
+          Use the bank details below to transfer directly. Please use your name as the payment reference.
+        </p>
+
+        <!-- Bank Details Card -->
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:24px;text-align:left;margin-bottom:28px;">
+
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:14px;">
+            <span style="color:#9ca3af;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Account Name</span>
+            <span style="color:#fff;font-size:13px;font-weight:700;text-align:right;max-width:55%;">HopeWorks Foundation</span>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:14px;">
+            <span style="color:#9ca3af;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Account No.</span>
+            <span style="color:#fff;font-size:13px;font-weight:700;font-family:monospace;letter-spacing:0.05em;">
+              <!-- Replace with actual account number -->
+              000205031807
+            </span>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:14px;">
+            <span style="color:#9ca3af;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">IFSC Code</span>
+            <span style="color:#fff;font-size:13px;font-weight:700;font-family:monospace;letter-spacing:0.08em;">
+              <!-- Replace with actual IFSC -->
+              ICIC0000002
+            </span>
+          </div>
+
+
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="color:#9ca3af;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Account Type</span>
+            <span style="color:#fff;font-size:13px;font-weight:700;">Current / Domestic</span>
+          </div>
+
+        </div>
+
+        <!-- Divider -->
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+          <div style="flex:1;height:1px;background:rgba(255,255,255,0.15);"></div>
+          <span style="color:#9ca3af;font-size:12px;font-weight:600;white-space:nowrap;">OR SCAN FOR UPI</span>
+          <div style="flex:1;height:1px;background:rgba(255,255,255,0.15);"></div>
+        </div>
+
+        <!-- UPI QR Code -->
+        <div style="background:white;border-radius:16px;padding:20px;display:inline-block;margin-bottom:14px;box-shadow:0 8px 24px rgba(0,0,0,0.2);">
+          <!-- Replace src with your actual UPI QR image -->
+          <img src="UPIQR.jpeg" alt="UPI QR Code"
+            style="width:160px;height:160px;display:block;object-fit:contain;"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <!-- Fallback placeholder -->
+          <div style="display:none;width:160px;height:160px;background:#f3f4f6;border-radius:8px;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="1" stroke="#9ca3af" stroke-width="1.5"/><rect x="13" y="3" width="8" height="8" rx="1" stroke="#9ca3af" stroke-width="1.5"/><rect x="3" y="13" width="8" height="8" rx="1" stroke="#9ca3af" stroke-width="1.5"/><rect x="13" y="13" width="8" height="8" rx="1" stroke="#9ca3af" stroke-width="1.5"/></svg>
+            <span style="font-size:11px;color:#9ca3af;text-align:center;">Add upi-qr.png</span>
+          </div>
+        </div>
+
+        <p style="color:#9ca3af;font-size:12px;font-style:italic;line-height:1.5;">
+          📱 Scan with any UPI app — GPay, PhonePe, Paytm &amp; more
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom note -->
+    <p style="text-align:center;margin-top:36px;color:#9ca3af;font-size:13px;line-height:1.6;">
+      🔒 All donations go directly to <strong style="color:#d8b4fe;">HopeWorks Foundation</strong> and support WitchHunt participants.<br>
+       For all contributions in Forex please write to <a href="mailto:donations@hopeskipjump.org" style="color:#ec4899;text-decoration:none;font-weight:600;">donations@hopeskipjump.org</a>
+    </p>
+
+  </div>
+
+  <!-- Mobile responsive -->
+  <style>
+    @media (max-width: 768px) {
+      #donate > div > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+
+</section>
+
+    <section id="awards">
+      <div class="section-inner awards-inner">
+
+        <h2 class="awards-title">Awards & Prize Distribution</h2>
+
+        <div class="awards-row">
+
+          <!-- Prize Pool -->
+          <div class="prize-pool heroo">
+            <div class="trophy-bg">🏆</div>
+            <div class="prize-badge">TOTAL PRIZE POOL</div>
+            <div class="prize-amount">₹19,00,000</div>
+            <div class="prize-note">
+              Support, incubation opportunities, mentorship and recognition included.
+            </div>
+          </div>
+
+          <!-- Winners -->
+          <div class="award-card">
+            <div class="award-icon">🏆</div>
+            <div class="award-title">Winners</div>
+            <div class="award-value">₹2.5L <span>Per Track</span></div>
+            <div class="award-detail">4 Winners × ₹2.5L = ₹10L</div>
+          </div>
+
+          <!-- Runners Up -->
+          <div class="award-card">
+            <div class="award-icon">🥈</div>
+            <div class="award-title">Runners-Up</div>
+            <div class="award-value">₹1L <span>Per Track</span></div>
+            <div class="award-detail">4 Runners-Up × ₹1L = ₹4L</div>
+          </div>
+
+          <!-- Special Mentions -->
+          <div class="award-card">
+            <div class="award-icon">🌟</div>
+            <div class="award-title">Special Mentions</div>
+            <div class="award-value">₹50K <span>Per Team</span></div>
+            <div class="award-detail">8 Teams × ₹50K = ₹4L</div>
+          </div>
+
+        </div>
+
+        <div class="award-footer">
+          🎖️ All participants receive Certificates & Recognition
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- <section id="register">
+      <div class="section-inner">
+        <h2>Register</h2>
+
+        <p>
+          Registrations closed.
+        </p>
+
+        <div class="btn-container">
+          <button class="btn btn-primary btn-register"
+            onclick="window.location.href='https://hackculture.io/hackathons/witchhunt'">
+            Registration Closed
+          </button>
+        </div>
+      </div>
+    </section> -->
+
+  </main>
+
+
+  <section class="mentor-volunteer">
+    <div class="container">
+      <h2>Join Us as a Mentor or Volunteer</h2>
+      <p class="mv-intro">
+        Are you interested in creating tech solutions that help change the world?
+        Your experience can change a life. Join us as a mentor or volunteer and
+        contribute your time, skills, and perspective.
+      </p>
+
+      <div class="mv-actions">
+        <button class="btn btn-primary" onclick="openMentorRegister()">
+          Register as Volunteer/Mentor
+        </button>
+      </div>
+
+      <div class="mv-links">
+        <button class="link-btn" onclick="openEligibility('volunteer')">Check Volunteer Eligibility</button>
+        <button class="link-btn" onclick="openEligibility('mentor')">Check Mentor Eligibility</button>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="modal" id="eligibilityModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeEligibility()">x</button>
+      <h3 id="eligibilityTitle"></h3>
+      <ul id="eligibilityList"></ul>
+    </div>
+  </div>
+
+
+  <section id="partners" class="partners-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Partners & Collaborators</h2>
+        <p>Organizations supporting women to build impactful AI solutions</p>
+      </div>
+
+      <div class="partners-row">
+        <div class="partner-card">
+          <h3>Organizing Partner</h3>
+          <img src="hopeworkslogo.jpeg" alt="HopeWorks Foundation">
+          <p>HopeWorks Foundation</p>
+        </div>
+
+        <!-- <div class="partner-card">
+        <h3>Community Partner</h3>
+        <img src="partner3logo.jpeg" alt="Celebration Experts">
+        <p>Celebration Experts</p>
+      </div> -->
+
+        <div class="partner-card">
+          <h3>Event Partner</h3>
+          <img src="AI4Indialogo.jpg" alt="AI4India">
+          <p>AI4India</p>
+        </div>
+
+        <div class="partner-card">
+          <h3>Impact Partner</h3>
+          <img src="Anita.jpeg" alt="Anita">
+          <p>AnitaB.org</p>
+        </div>
+
+         <div class="partner-card">
+          <h3>Ecosystem Partner</h3>
+          <img src="hen.jpeg" alt="HEN ">
+          <p>HEN</p>
+        </div>
+
+        <div class="partner-card">
+          <h3>Knowledge Accelerator</h3>
+          <img src="infosysspringboard.png" alt="Infosys Springboard">
+          <p>Infosys Springboard</p>
+        </div>
+
+         <div class="partner-card">
+          <h3>Education Partner</h3>
+          <img src="skillscafe.jpeg" alt="Skills Cafe">
+          <p>Skills Cafe</p>
+        </div>
+
+        <div class="partner-card">
+          <h3>Strategic partner</h3>
+          <img src="KDEM.jpeg" alt="KDEM">
+          <p>The Karnataka Digital Economy Mission</p>
+        </div>
+
+        <div class="partner-card">
+          <h3>Industry Partner</h3>
+          <img src="vital.jpeg" alt="VitalEdge">
+          <p>VitalEdge</p>
+        </div>
+
+        <div class="partner-card">
+          <h3>Ethical AI Partner</h3>
+          <img src="W4EAI.jpeg" alt="W4EAI">
+          <p>Women 4 Ethical AI</p>
+        </div>
+      </div>
+  </section>
+
+
+
+  <section id="recordings" style="padding: 80px 24px; background: linear-gradient(135deg, #f8f4fc 0%, #fef5f9 100%);">
+  <div class="container">
+
+    <div class="section-header">
+      <h2>Session Recordings</h2>
+      <p>Watch all workshop and bootcamp sessions from each week</p>
+    </div>
+
+    <style>
+      .rec-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+      .rec-card {
+        background: #fff;
+        border: 1px solid var(--gray-200);
+        border-radius: 16px;
+        padding: 28px;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        transition: transform 0.25s, box-shadow 0.25s;
+        position: relative;
+        overflow: hidden;
+      }
+      .rec-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #a855f7, #ec4899, #f97316);
+      }
+      .rec-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(168, 85, 247, 0.12);
+      }
+      .rec-week-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #a855f7;
+        background: rgba(168, 85, 247, 0.08);
+        padding: 4px 12px;
+        border-radius: 20px;
+        width: fit-content;
+      }
+      .rec-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--dark);
+        margin: 0;
+        line-height: 1.3;
+      }
+      .rec-desc {
+        font-size: 13px;
+        color: var(--gray-600);
+        margin: 0;
+        line-height: 1.6;
+      }
+      .rec-cta {
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #ec4899;
+        padding: 10px 18px;
+        border-radius: 8px;
+        border: 1.5px solid rgba(236, 72, 153, 0.25);
+        width: fit-content;
+        transition: background 0.2s, border-color 0.2s;
+      }
+      .rec-card:hover .rec-cta {
+        background: rgba(236, 72, 153, 0.06);
+        border-color: rgba(236, 72, 153, 0.5);
+      }
+      .rec-yt-icon {
+        width: 18px;
+        height: 18px;
+        background: #FF0000;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .rec-yt-icon svg { display: block; }
+      @media (max-width: 600px) {
+        .rec-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+
+    <div class="rec-grid">
+
+      <a class="rec-card" href="https://www.youtube.com/playlist?list=PLLT7Qe3VYqva_r0Ph2YVSBveJbFanvsmx" target="_blank" rel="noopener">
+        <div class="rec-week-badge">Week 1 &middot; Day 1</div>
+        <p class="rec-title">Opening Sessions &amp; Kickoff</p>
+        <p class="rec-desc">Introductory workshops, challenge briefs, and orientation for all registered participants.</p>
+        <div class="rec-cta">
+          <span class="rec-yt-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="3,2 8,5 3,8" fill="#fff"/></svg>
+          </span>
+          Watch on YouTube
+        </div>
+      </a>
+
+      <a class="rec-card" href="https://www.youtube.com/playlist?list=PLLT7Qe3VYqvaq7D1r3H35UkT3Jgj1ATcp" target="_blank" rel="noopener">
+        <div class="rec-week-badge">Week 1 &middot; Day 2</div>
+        <p class="rec-title">Deep-Dive Workshops</p>
+        <p class="rec-desc">Track-specific deep dives across Education, Climate Action, Health, and Smart Cities.</p>
+        <div class="rec-cta">
+          <span class="rec-yt-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="3,2 8,5 3,8" fill="#fff"/></svg>
+          </span>
+          Watch on YouTube
+        </div>
+      </a>
+
+      <a class="rec-card" href="https://www.youtube.com/playlist?list=PLLT7Qe3VYqvY-Vu64LwgtC4_Bcwy9dQlb" target="_blank" rel="noopener">
+        <div class="rec-week-badge">Week 2</div>
+        <p class="rec-title">Proposal Crafting &amp; Mentorship</p>
+        <p class="rec-desc">Sessions on building strong proposals, ideation frameworks, and mentor introductions.</p>
+        <div class="rec-cta">
+          <span class="rec-yt-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="3,2 8,5 3,8" fill="#fff"/></svg>
+          </span>
+          Watch on YouTube
+        </div>
+      </a>
+
+      <a class="rec-card" href="https://www.youtube.com/playlist?list=PLLT7Qe3VYqvZVIG2i5B8XYtIWEMQPvoEQ" target="_blank" rel="noopener">
+        <div class="rec-week-badge">Week 3</div>
+        <p class="rec-title">AI Bootcamp &amp; Tech Tracks</p>
+        <p class="rec-desc">Hands-on AI literacy sessions, technical bootcamps, and prototype planning guidance.</p>
+        <div class="rec-cta">
+          <span class="rec-yt-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="3,2 8,5 3,8" fill="#fff"/></svg>
+          </span>
+          Watch on YouTube
+        </div>
+      </a>
+
+      <a class="rec-card" href="https://www.youtube.com/playlist?list=PLLT7Qe3VYqvaYsmKN-0RNaIaBBZtGmi-j" target="_blank" rel="noopener">
+        <div class="rec-week-badge">Week 4</div>
+        <p class="rec-title">Prototype Reviews &amp; Pitching</p>
+        <p class="rec-desc">Demo feedback sessions, storytelling for impact, and final submission prep.</p>
+        <div class="rec-cta">
+          <span class="rec-yt-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="3,2 8,5 3,8" fill="#fff"/></svg>
+          </span>
+          Watch on YouTube
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="faqs" style="
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    text-align:center; 
+    padding:60px 20px; 
+    background-color: var(--gray-50);
+">
+  <div class="section-inner" style="max-width:700px; width:100%;">
+    <h2 style="
+        background: linear-gradient(90deg, var(--primary-dark), var(--primary)); 
+        -webkit-background-clip: text; 
+        color: transparent; 
+        font-size:2.5rem; 
+        margin:0 0 40px; 
+        font-weight:800;
+    ">
+      FAQs
+    </h2>
+
+    <style>
+      .faq-category {
+        margin-bottom: 32px;
+        text-align: left;
+      }
+      .faq-category-title {
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--primary);
+        margin: 0 0 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--primary);
+        opacity: 0.85;
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--gray-200, #e5e7eb);
+        overflow: hidden;
+      }
+      .faq-item:last-child {
+        border-bottom: none;
+      }
+      .faq-question {
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 16px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--gray-900, #111827);
+        text-align: left;
+        line-height: 1.4;
+        transition: color 0.2s;
+      }
+      .faq-question:hover {
+        color: var(--primary);
+      }
+      .faq-icon {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--primary, #6c3fc5);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1;
+        transition: transform 0.3s ease, background 0.2s;
+      }
+      .faq-item.open .faq-icon {
+        transform: rotate(45deg);
+        background: var(--primary-dark, #4b2a9e);
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.2s;
+        font-size: 0.95rem;
+        color: var(--gray-700, #374151);
+        line-height: 1.65;
+        padding: 0 0 0;
+      }
+      .faq-item.open .faq-answer {
+        max-height: 600px;
+        padding-bottom: 16px;
+      }
+      .faq-answer ul {
+        margin: 6px 0 0 0;
+        padding-left: 20px;
+      }
+      .faq-answer li {
+        margin-bottom: 4px;
+      }
+    </style>
+
+    <!-- Category 1 -->
+    <div class="faq-category">
+      <p class="faq-category-title">General Participation &amp; Team Structure</p>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Who can participate as a teammate or mentor?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>The hackathon is open to both technical and non-technical participants, including working and non-working women.</li>
+            <li>Retired parents aged 60+ are encouraged to join as teammates — experience is a huge asset and there is no upper age limit.</li>
+            <li>Mentors should be experienced developers, designers, product managers, or industry professionals willing to guide participants.</li>
+            <li>Mentoring is a voluntary and unpaid role — a way to give back to the community and network with other professionals.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What are the team requirements?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>Teams must have a minimum of 2 members and a maximum of 5.</li>
+            <li>Solo participation is not allowed.</li>
+            <li>Teams must have a majority of women — at least 50% or more (e.g., one woman and one man in a two-person team is acceptable).</li>
+            <li>Participants are responsible for forming their own teams; organizers will not match individuals.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Are external or inter-college members allowed?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>Yes, inter-college and inter-county teams are permitted.</li>
+            <li>Teams may include members from outside the HopeWorks community.</li>
+            <li>Some teams may be joined by one HopeWorks Scholar — this does not impact the standard team size limit.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 2 -->
+    <div class="faq-category">
+      <p class="faq-category-title">Mentorship Program Access</p>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How does the mentoring process work?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>Mentorship is included as part of the hackathon experience at no additional cost.</li>
+            <li>A mentor is assigned to each team based on skills, time zone, and the issues described — no manual signup needed.</li>
+            <li>Once assigned, the team and mentor will receive a common email to connect.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is the role of a "Mentee"?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>A mentee is any participant or team member who seeks guidance from mentors during the hackathon.</li>
+            <li>Participants are limited to one role — you cannot be both a mentee and a team lead.</li>
+            <li>An AI background is not mandatory; boot camps will be conducted to help with AI literacy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What will mentors do and not do?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li><strong>Mentors will:</strong> assist with scoping ideas, choosing tech stacks, debugging, UX feedback, and pitching/storytelling.</li>
+            <li><strong>Mentors will not:</strong> write large chunks of code, finish tasks on the team's behalf, or guarantee a win.</li>
+            <li>Their role is to guide and suggest approaches — not deliver the final project.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 3 -->
+    <div class="faq-category">
+      <p class="faq-category-title">Logistics, Scheduling &amp; Documentation</p>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I register and what documentation is needed?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>Use the official registration link provided by the organizers.</li>
+            <li>A student or company ID is typically required; recent graduates may upload a previous college ID.</li>
+            <li>Participants not affiliated with an institution may use any standard photo ID.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is this event offline or online?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>All workshops, bootcamps, and learning sessions are 100% virtual.</li>
+            <li>The final round is an offline event held in Bengaluru — no hybrid option for the finale.</li>
+            <li>The exact venue will be finalized and shared soon.</li>
+            <li>Mentors associated with the top 40 teams are required to attend the final event in May.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What if a member can't attend the offline Demo Day?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>A team member may contribute remotely if they cannot attend in person due to valid commitments (e.g., an internship).</li>
+            <li>This must be disclosed upfront with documented proof.</li>
+            <li>Logistics for remote participation must be organized by the team itself.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do we communicate and handle travel?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>Mentorship timings and modes are determined between the team and their mentor.</li>
+            <li>Organizers recommend creating a WhatsApp or alternate group for quick coordination.</li>
+            <li>All mentoring calls are expected to be recorded.</li>
+            <li>For offline rounds, travel via authorized modes will be reimbursed against invoices, and accommodation in Bengaluru will be arranged by HopeWorks.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 4 -->
+    <div class="faq-category">
+      <p class="faq-category-title">Project Scope &amp; Submissions</p>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do we choose our own ideas?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Teams have autonomy in project selection, but must work within the four predefined theme areas established for the hackathon.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can we build physical prototypes?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Physical prototypes involving liquid or solid substances are allowed if they follow safety guidelines and receive prior approval. Teams must clearly outline the technology and requirements behind any physical prototype.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How many teams will be shortlisted?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Once the full Proof of Concept (PoC) is submitted, only the top 40 teams from all entries will be shortlisted to move forward to the offline final stage.
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 5 -->
+    <div class="faq-category">
+      <p class="faq-category-title">Judging, IP &amp; Safety</p>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Who owns the project and how is it judged?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>Teams retain full ownership of the intellectual property (IP) they build — mentors do not gain IP rights by advising.</li>
+            <li>Mentors are expected to maintain confidentiality and not share or reuse your specific ideas.</li>
+            <li>Submissions are evaluated based on predefined judging criteria and weightages, which will be shared with participants.</li>
+            <li>Mentors are not involved in the final judging process.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What if there is a conflict or safety concern?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <ul>
+            <li>If a mentor or teammate is disrespectful or violates the code of conduct, end the interaction immediately.</li>
+            <li>Report the incident to the official support email to request a mentor change or further investigation.</li>
+            <li>Organizers will investigate and may take disciplinary action, including removing participants from the event.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all open items in same category
+      const category = item.closest('.faq-category');
+      category.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      // Toggle clicked
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</section>
+
+  <!-- <section id="contact">
+			<div class="section-inner" style="background: linear-gradient(135deg,#fff5f9,#f8f4fc)">
+				<h2 style="color:var(--black-rock);margin:0 0 8px;">Contact</h2>
+				<p style="margin:0 0 12px">Questions? Reach out at <a href="mailto: info@thewitch-hunt.com" style="color:var(--red-violet)"> info@thewitch-hunt.com</a>.</p>
+			</div>
+		</section> -->
+
+
+  <footer class="site-footer">
+    <div class="footer-bg"></div>
+    <div class="footer-mesh"></div>
+
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="logo-glow">
+          <img src="witchhuntlogonew.jpeg" class="footer-logo" alt="WITCH HUNT">
+        </div>
+        <a href="https://www.hopeskipjump.org" target="_blank" rel="noopener" class="initiative-credit"
+          style=" margin-left: 10px;">
+          an initiative by <strong>HopeWorks Foundation</strong>
+        </a>
+
+        <p class="footer-tagline">
+          Empowering women to build bold, ethical AI solutions.
+        </p>
+
+
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/company/hopeworks-foundation/?originalSubdomain=in"><i
+              class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/hopeworksfoundation/"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/hopeworksf"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.youtube.com/@hopeworksfoundation3784"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/hopeworksIndia/"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-right">
+        <p>Email: <strong> support@witchhunt.in</strong></p>
+        <p>© 2026 WITCH HUNT — Women In Technology Challenge</p>
+        <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <span>|</span>
+          <a href="terms-and-conditions.html">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+<div style="text-align:center;padding:20px 24px;background:var(--gray-100);border-top:2px solid var(--gray-200);">
+  <p style="color:var(--gray-700);font-size:13px;margin:0 0 4px;font-weight:600;">
+    Made with ❤️ by Alumni of <strong style="background:linear-gradient(135deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">HopeWorks</strong>
+  </p>
+  <p style="color:var(--gray-600);font-size:11px;margin:0;font-style:italic;">
+    Proof that when women are given a chance, they build things that matter.
+  </p>
+</div>
+
+
+
+  <script>
+
+    function openMentorRegister() {
+      window.open(
+        "https://forms.gle/abJ4HptthVifnhkt7",
+        "_blank"
+      );
+    }
+
+
+    const eligibilityData = {
+      volunteer: [
+        "Open to students, young professionals, and HopeWorks alumni",
+        "Must be 18+ and available for the hackathon duration",
+        "Interest in technology, education, and social impact",
+        "Willing to support event coordination and participant engagement"
+      ],
+      mentor: [
+        "Industry professionals, academicians, or domain experts",
+        "2+ years of relevant experience",
+        "Expertise in tech, design, data, business, or social impact",
+        "Availability during mentorship and review phases"
+      ]
+    };
+
+    function openEligibility(type) {
+      const modal = document.getElementById("eligibilityModal");
+      const title = document.getElementById("eligibilityTitle");
+      const list = document.getElementById("eligibilityList");
+
+      title.innerText = type === "mentor" ? "Mentor Eligibility" : "Volunteer Eligibility";
+      list.innerHTML = "";
+
+      eligibilityData[type].forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      modal.style.display = "flex";
+    }
+
+    function closeEligibility() {
+      const modal = document.getElementById("eligibilityModal");
+      modal.style.display = "none";
+    }
+
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpc4zHLJTTUPd2CUKiuITxfCWsps-ggYW1326pRxJH32-dx9xFNcUhrIdIzQZrTNf2/exec";
+
+    // Countdown to Feb 07, 2026 00:00:00 (local timezone)
+    (function () {
+      const target = new Date('2026-03-08T00:00:00');
+      const $days = document.getElementById('cd-days');
+      const $hours = document.getElementById('cd-hours');
+      const $mins = document.getElementById('cd-mins');
+      const $secs = document.getElementById('cd-secs');
+
+      function update() {
+        const now = new Date();
+        let diff = Math.max(0, target - now);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        diff -= days * (1000 * 60 * 60 * 24);
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        diff -= hours * (1000 * 60 * 60);
+        const mins = Math.floor(diff / (1000 * 60));
+        diff -= mins * (1000 * 60);
+        const secs = Math.floor(diff / 1000);
+
+        $days.textContent = String(days).padStart(2, '0');
+        $hours.textContent = String(hours).padStart(2, '0');
+        $mins.textContent = String(mins).padStart(2, '0');
+        $secs.textContent = String(secs).padStart(2, '0');
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+  </script>
+
+  <!-- Registration Modal -->
+  <div id="registerModal" class="modal-overlay">
+    <div class="modal-card">
+
+      <div class="modal-header">
+        <h3>Hackathon Registration</h3>
+        <button class="modal-close" onclick="closeRegisterModal()">×</button>
+      </div>
+
+      <form id="hackathonForm" class="modal-form" onsubmit="handleRegistration(event)">
+
+        <label>
+          Full Name*
+          <input type="text" name="name" placeholder="Enter your full name" required>
+        </label>
+
+        <label>
+          College/Corporate Email Address*
+          <input type="email" name="email" placeholder="Enter your college or corporate email" required>
+        </label>
+
+        <label>
+          Are you a HopeCitizen?*
+          <select name="hope_citizen" id="hopeCitizenSelect" onchange="toggleBatchNumber()" required>
+            <option value="">Select an option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+
+        <label id="batchNumberLabel" style="display: none;">
+          Batch Number*
+          <input type="text" name="batch_number" id="batchNumberInput" placeholder="Enter your batch number">
+        </label>
+
+        <label>
+          Team Members (Names & Emails)
+          <textarea name="team_members" placeholder="Enter names and emails (e.g., Jane Doe: jane@corp.com)"></textarea>
+          <small>
+            A maximum of 4 members per team (including yourself) is allowed.
+            <br>
+            <strong style="color:#e11d48;">
+              Each team must have 50% or more women.
+            </strong>
+          </small>
+        </label>
+
+        <label>
+          Photo of College or Company ID (Max 5MB) *
+          <input type="file" name="id_proof" required>
+        </label>
+
+        <button id="submitBtn" type="submit" class="btn btn-primary modal-submit">
+          Submit Registration
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BML0LK7FS"></script>
+  <script>
+    function openRegisterModal() {
+      document.getElementById('registerModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeRegisterModal() {
+      document.getElementById('registerModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('registerModal').addEventListener('click', function (e) {
+      if (e.target === this) closeRegisterModal();
+    });
+
+    function toggleMenu() {
+      const nav = document.getElementById("mainNav");
+      nav.classList.toggle("active");
+    }
+
+    function handleRegistration(e) {
+      e.preventDefault();
+
+      const form = document.getElementById("hackathonForm");
+      const btn = document.getElementById("submitBtn");
+
+      const formData = new FormData(form);
+
+      btn.textContent = "Submitting...";
+      btn.disabled = true;
+
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: formData
+      })
+        .then(res => res.text())
+        .then(response => {
+          if (response === "success") {
+            form.classList.add("hidden");
+            document.getElementById("successMessage").classList.remove("hidden");
+          }
+          else if (response === "duplicate") {
+            alert("This email is already registered.");
+          }
+          else {
+            alert("Error: " + response);
+          }
+        })
+        .catch(err => {
+          alert("Submission failed. Please try again.");
+          console.error(err);
+        })
+        .finally(() => {
+          btn.textContent = "Submit Registration";
+          btn.disabled = false;
+        });
+    }
+
+
+
+
+    window.onclick = function (event) { const regModal = document.getElementById('registerModal'); if (event.target == regModal) { closeRegisterModal(); } const modals = document.querySelectorAll('.modal'); modals.forEach(modal => { if (event.target === modal) modal.style.display = 'none'; }); }
+    const countdownTimer = document.getElementById('countdownTimer'); if (countdownTimer) { const countdownTargets = { days: document.getElementById('countdownDays'), hours: document.getElementById('countdownHours'), minutes: document.getElementById('countdownMinutes'), seconds: document.getElementById('countdownSeconds'), }; const eventDate = new Date('2026-02-15T09:00:00+05:30').getTime(); let countdownInterval; const updateCountdown = () => { const now = Date.now(); let distance = eventDate - now; if (distance <= 0) { distance = 0; if (countdownInterval) clearInterval(countdownInterval); } const days = Math.floor(distance / (1000 * 60 * 60 * 24)); const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); const seconds = Math.floor((distance % (1000 * 60)) / 1000); countdownTargets.days.textContent = String(days).padStart(2, '0'); countdownTargets.hours.textContent = String(hours).padStart(2, '0'); countdownTargets.minutes.textContent = String(minutes).padStart(2, '0'); countdownTargets.seconds.textContent = String(seconds).padStart(2, '0'); }; updateCountdown(); countdownInterval = setInterval(updateCountdown, 1000); }
+    const infoCards = document.querySelectorAll('.info-card'); const aboutObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.2 }) : null; if (aboutObserver) { infoCards.forEach(card => aboutObserver.observe(card)); } else { infoCards.forEach(card => card.classList.add('visible')); }
+    const closeButtons = document.querySelectorAll('.modal .close'); infoCards.forEach(card => { card.addEventListener('click', () => { const modalId = card.getAttribute('data-modal'); const modal = document.getElementById(modalId); if (modal) modal.style.display = 'flex'; }); }); closeButtons.forEach(btn => { btn.addEventListener('click', () => { const modal = btn.closest('.modal'); if (modal) modal.style.display = 'none'; }); });
+
+    // Back to top scroll visibility logic
+    window.addEventListener('scroll', function () {
+      const backToTopBtn = document.getElementById('backToTop');
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+
+    function closeMentorRegister() {
+      document.getElementById("mentorModal").style.display = "none";
+    }
+
+    function scrollTeam(direction) {
+      const container = document.getElementById('teamScroll');
+      const scrollAmount = 320; // Adjust based on your card width
+
+      container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    // Optional: Add keyboard support
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') {
+        scrollTeam(-1);
+      } else if (e.key === 'ArrowRight') {
+        scrollTeam(1);
+      }
+    });
+
+    function toggleBatchNumber() {
+      const select = document.getElementById('hopeCitizenSelect');
+      const batchLabel = document.getElementById('batchNumberLabel');
+      const batchInput = document.getElementById('batchNumberInput');
+
+      if (select.value === 'Yes') {
+        batchLabel.style.display = 'flex';
+        batchInput.required = true;
+      } else {
+        batchLabel.style.display = 'none';
+        batchInput.required = false;
+        batchInput.value = ''; // Clear the input when hidden
+      }
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-7BML0LK7FS');
+  </script>
+
+
+
+<!-- Because of You — sticky right floater -->
+<a href="because-of-you.html" id="boyFloater" style="
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+">
+  <!-- Expanded panel -->
+  <div id="boyPanel" style="
+    background: linear-gradient(135deg, #0a0312, #1a0526);
+    border: 1.5px solid rgba(236,72,153,0.6);
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    padding: 20px 16px;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: -6px 0 28px rgba(168,85,247,0.3);
+  ">
+    <span style="
+      background: linear-gradient(135deg,#a855f7,#ec4899);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 10px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      width: fit-content;
+    ">Because of You</span>
+
+    <p style="
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 900;
+      margin: 0;
+      line-height: 1.5;
+      white-space: nowrap;
+    ">Real stories.<br>Real change.</p>
+
+    <div style="
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #ec4899;
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 4px;
+      white-space: nowrap;
+    ">
+      Explore campaign
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Label tab -->
+  <div id="boyTab" style="
+    background: linear-gradient(180deg, #6b21a8, #9d174d);
+    color: #fff;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    padding: 18px 10px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 0 10px 10px 0;
+    white-space: nowrap;
+    box-shadow: 4px 0 20px rgba(107,33,168,0.5);
+    transition: all 0.3s ease;
+  ">
+    ✦ Because of You
+  </div>
+</a>
+
+<script>
+  (function() {
+    const floater = document.getElementById('boyFloater');
+    const panel = document.getElementById('boyPanel');
+    const tab = document.getElementById('boyTab');
+
+    floater.addEventListener('mouseenter', function() {
+      panel.style.width = '160px';
+      panel.style.opacity = '1';
+      tab.style.boxShadow = '4px 0 24px rgba(236,72,153,0.6)';
+    });
+
+    floater.addEventListener('mouseleave', function() {
+      panel.style.width = '0';
+      panel.style.opacity = '0';
+      tab.style.boxShadow = '4px 0 20px rgba(107,33,168,0.5)';
+    });
+  })();
+</script>
+</body>
+
+</html>
+
+
+<!-- G-7BML0LK7FS -->
+<!-- G-7BML0LK7FS -->
